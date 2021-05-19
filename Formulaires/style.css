@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: teal;
+    font-family: 'Crimson Pro', sans-serif;
+    font-size: 25px;
+}
+
+.greyBox{
+    text-align: right;
+    background-color: #ddd;
+    width: 70vw;
+    height: 75vh;
+
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 10px;
+}
+
+#submitButton{
+    text-decoration: none;
+    color: white;
+    padding: 9px;
+    background-color: blue;
+    border : none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#submitButton:hover{
+    text-decoration: none;
+    color: white;
+    padding: 9px;
+    background-color: blue;
+    border : none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+#name, #email, #nombre, #experience {
+    width: 400px;
+}
+
+#experience{
+    height: 60px;
+}
+
+.blockHappen{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-end;
+
+}
+
+.sameLine{
+    display: flex;
+    flex-direction: column;
+}
