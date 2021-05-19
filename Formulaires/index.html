@@ -4,95 +4,61 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Formulaire de contact</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-
-        <div class="greyBox">
-            <form id="teacherForm">
-                <div>
-                    <label for="name">Name </label>
-                    <input type="text" id="name" name="name" required placeholder="Enter you name">
+        <div class="container">
+            <header class="header">
+                <h1 class="text-center" id="title">Cindano Jonathan Formulaire</h1>
+                <p id="description" class="description text-center">
+                    Merci de prendre le temps de m'écrire ✌
+                </p>
+            </header>
+            <form id="survey-form">
+                <div class="form-group">
+                <label id="name-label" for="name">Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    placeholder="Entre ton nom"
+                    required
+                />
                 </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email adress">
-                </div>
-                <div>
-                    <label for="number">On a scale of 1-10, how good was it ?</label>
-                    <input type="number" id="nombre" name="nombre" min="1" max="10" placeholder="Enter a number between 1 and 10">
-                </div>
-                <div>
-                    <label for="where">Where dit it happen ?</label>
-                    <select name="position" id="where" form="carform">
-                        <option value="home">At home</option>
-                        <option value="work">At work</option>
-                        <option value="park">At the park</option>
-                    </select>
-                </div>
-
-                <div class="blockHappen">
-                    <p>At what time of the day did it happen ?</p>
-                    <div class="sameLine">
-                        <div>
-                            <input type="radio" id="morning" name="dayTime" value="huey"
-                                checked>
-                            <label for="huey">Morning</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="afternoon" name="dayTime" value="huey"
-                                checked>
-                            <label for="huey">Afternoon</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="evening" name="dayTime" value="huey">
-                            <label for="huey">Evening</label>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label id="email-label" for="email">Email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Ente ton adresse Email"
+                      required
+                    />
                 </div>
 
-                <div class="blockHappen">
-                    <div class="sameLine">
-                        <p>What emotion did you experience ? (select all that apply)</p>
-                        <label class="container">Excited
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <br>
-                        <label class="container">Humbled
-                            <input type="checkbox" >
-                            <span class="checkmark"></span>
-                        </label>
-                        <br>
-                        <label class="container">Elated
-                            <input type="checkbox" >
-                            <span class="checkmark"></span>
-                        </label>
-                        <br>
-                        <label class="container">Loved
-                            <input type="checkbox" >
-                            <span class="checkmark"></span>
-                        </label>
-                        <br>
-                        <label class="container">Enthusiastic
-                            <input type="checkbox" >
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                <div class="form-group">
+                    <p>Votre message</p>
+                    <textarea
+                      id="comments"
+                      class="input-textarea"
+                      name="comment"
+                      placeholder="Enter your comment here..."
+                    ></textarea>
                 </div>
 
-                <div>
-                    <p>Please describe your positive experience.</p>
-                    <textarea name="experience" form="teacherForm" id="experience">Enter your experience here...</textarea>
+                <div class="form-group">
+                    <button type="submit" id="submit" class="submit-button">
+                      Submit
+                    </button>
                 </div>
-
-                <input id="submitButton" type="submit" name="inscription" value="Submit">
-
             </form>
         </div>
-
+        
+        <script src="main.js" async defer></script>
     </body>
 </html>
