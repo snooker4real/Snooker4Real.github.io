@@ -4,7 +4,7 @@ body{
 }
 
 .landing{
-    background-image: url('/img/bg.png');
+    background-image: url('img/bg.png');
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -72,8 +72,6 @@ header{
 .line2{
     display: flex;
     flex-direction: row;
-
-
 }
 
 .card{
@@ -113,4 +111,9 @@ header{
 
 h2{
     font-size: x-large;
+}
+
+.space{
+    display: flex;
+    justify-content: space-evenly;
 }
