@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.landing{
+    background-image: url('/img/bg.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+header{
+    display: flex;
+    height: 15%;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: rgb(255, 0, 19);
+}
+
+.logo{
+    cursor: pointer;
+    margin-right: auto;
+    height: 100px;
+}
+
+#connexion{
+    display: flex;
+    flex-direction: row;
+}
+
+.form_group{
+    display: inline-block;
+    padding: 0px 30px;
+}
+
+.landing_img{
+    height: 200px;
+    padding: 30px;
+}
+
+
+.center{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: aliceblue;
+}
+
+.grey_highlight{
+    background-color: rgba(16, 17, 17, 0.404);
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.lines{
+    display: flex;
+    flex-direction: column;
+}
+
+.line1{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.line2{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.card{
+    margin: 30px;
+}
+
+.section2{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 250px;
+}
+
+.grey_bg{
+    height: 100vh;
+    background-color: rgb(168, 167, 167);
+    padding-bottom: 100px;
+}
+
+.section3{
+    display: flex;
+}
+
+.progress{
+    margin-bottom: 50px;
+}
+
+.centre{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.text_justified{
+    text-align: justify;
+}
+
+h2{
+    font-size: x-large;
+}
