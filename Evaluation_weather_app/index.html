@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="#" />
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/quartz/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="all">
+      <form action="">
+        <div class="form-group">
+          <label class="col-form-label col-form-label-sm mt-4" for="inputSmall"
+            >Insérer votre ville (Sinon t'aura celle de Paris)</label
+          >
+          <input
+            class="form-control form-control-sm"
+            type="text"
+            placeholder="Ville"
+            id="rechercher"
+            name="ville"
+          />
+        </div>
+        <br />
+        <button id="searchBtn" type="submit" class="btn btn-success">
+          Voir Météo 🌥️
+        </button>
+
+        <div id="weather"></div>
+      </form>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
