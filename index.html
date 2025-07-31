@@ -552,7 +552,7 @@
               <!--==================== QUALIFICATION 3 ====================-->
               <div class="qualification__data">
                 <div>
-                  <h3 class="qualifcation__title">Java Developer</h3>
+                  <h3 class="qualifcation__title">Développeur Java</h3>
                   <span class="qualification__subtitle">Lyon 3e - Fokus[it]</span>
                   <div class="qualification__calendar">
                     <i class="uil uil-calendar-alt"></i>
@@ -562,7 +562,26 @@
 
                 <div>
                   <span class="qualification__rounder"></span>
+                  <span class="qualification__line"></span>
+                </div>
+              </div>
+
+              <!--==================== QUALIFICATION 4 ====================-->
+              <div class="qualification__data">
+                <div></div>
+
+                <div>
+                  <span class="qualification__rounder"></span>
 <!--                   <span class="qualification__line"></span> -->
+                </div>
+
+                <div>
+                  <h3 class="qualifcation__title">Développeur Full Stack</h3>
+                  <span class="qualification__subtitle">Lyon - Fiducial Informatique</span>
+                  <div class="qualification__calendar">
+                    <i class="uil uil-calendar-alt"></i>
+                    2023 - Présent
+                  </div>
                 </div>
               </div>
             </div>
@@ -981,6 +1000,28 @@
 
     <!--==================== SWIPER JS ====================-->
     <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--==================== PARTICLES JS ====================-->
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particlesContainer = document.createElement('div');
+        particlesContainer.className = 'particles';
+        document.body.appendChild(particlesContainer);
+
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 20 + 's';
+          particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      // Initialize particles when page loads
+      window.addEventListener('load', createParticles);
+    </script>
 
     <!--==================== MAIN JS ====================-->
     <script src="/assets/js/main.js"></script>
