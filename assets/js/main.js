@@ -68,8 +68,12 @@ const modalViews = document.querySelectorAll('.services__modal'),
       modalBtns = document.querySelectorAll('.services__button'),
       modalCloses = document.querySelectorAll('.services__modal-close')
 
+// Optimize modal performance
 let modal = function(modalClick){
-    modalViews[modalClick].classList.add('active-modal')
+    // Use requestAnimationFrame for smoother animations
+    requestAnimationFrame(() => {
+        modalViews[modalClick].classList.add('active-modal')
+    })
 }
 
 modalBtns.forEach((modalBtn, i) => {
@@ -80,10 +84,36 @@ modalBtns.forEach((modalBtn, i) => {
 
 modalCloses.forEach((modalClose) => {
     modalClose.addEventListener('click', () => {
-        modalViews.forEach((modalView) => {
-            modalView.classList.remove('active-modal')
+        // Use requestAnimationFrame for smoother closing
+        requestAnimationFrame(() => {
+            modalViews.forEach((modalView) => {
+                modalView.classList.remove('active-modal')
+            })
         })
     })
+})
+
+// Close modal when clicking outside
+modalViews.forEach((modalView) => {
+    modalView.addEventListener('click', (e) => {
+        if (e.target === modalView) {
+            requestAnimationFrame(() => {
+                modalView.classList.remove('active-modal')
+            })
+        }
+    })
+})
+
+// Optimize modal with keyboard support
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.active-modal')
+        if (activeModal) {
+            requestAnimationFrame(() => {
+                activeModal.classList.remove('active-modal')
+            })
+        }
+    }
 })
 /*==================== PORTFOLIO SWIPER  ====================*/
 let swiper = new Swiper('.portfolio__container', {
