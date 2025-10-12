@@ -1,9 +1,9 @@
 /*==================== MENU SHOW Y HIDDEN ====================*/
 const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close')
+    navToggle = document.getElementById('nav-toggle'),
+    navClose = document.getElementById('nav-close')
+
 /*===== MENU SHOW =====*/
-/* Validate if constant exists */
 if(navToggle){
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-menu')
@@ -11,7 +11,6 @@ if(navToggle){
 }
 
 /*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
 if(navClose){
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu')
@@ -23,13 +22,14 @@ const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
-    // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show-menu')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
+
 /*==================== ACCORDION SKILLS ====================*/
 const skillsContent = document.getElementsByClassName('skills__content'),
-      skillsHeader = document.querySelectorAll('.skills__header')
+    skillsHeader = document.querySelectorAll('.skills__header')
+
 function toggleSkills(){
     let itemClass = this.parentNode.className
 
@@ -47,7 +47,7 @@ skillsHeader.forEach((el) =>{
 
 /*==================== QUALIFICATION TABS ====================*/
 const tabs = document.querySelectorAll('[data-target]'),
-      tabContents = document.querySelectorAll('[data-content]')
+    tabContents = document.querySelectorAll('[data-content]')
 
 tabs.forEach(tab =>{
     tab.addEventListener('click', () =>{
@@ -63,14 +63,13 @@ tabs.forEach(tab =>{
         tab.classList.add('qualification__active')
     })
 })
+
 /*==================== SERVICES MODAL ====================*/
 const modalViews = document.querySelectorAll('.services__modal'),
-      modalBtns = document.querySelectorAll('.services__button'),
-      modalCloses = document.querySelectorAll('.services__modal-close')
+    modalBtns = document.querySelectorAll('.services__button'),
+    modalCloses = document.querySelectorAll('.services__modal-close')
 
-// Optimize modal performance
 let modal = function(modalClick){
-    // Use requestAnimationFrame for smoother animations
     requestAnimationFrame(() => {
         modalViews[modalClick].classList.add('active-modal')
     })
@@ -84,7 +83,6 @@ modalBtns.forEach((modalBtn, i) => {
 
 modalCloses.forEach((modalClose) => {
     modalClose.addEventListener('click', () => {
-        // Use requestAnimationFrame for smoother closing
         requestAnimationFrame(() => {
             modalViews.forEach((modalView) => {
                 modalView.classList.remove('active-modal')
@@ -93,7 +91,6 @@ modalCloses.forEach((modalClose) => {
     })
 })
 
-// Close modal when clicking outside
 modalViews.forEach((modalView) => {
     modalView.addEventListener('click', (e) => {
         if (e.target === modalView) {
@@ -104,7 +101,6 @@ modalViews.forEach((modalView) => {
     })
 })
 
-// Optimize modal with keyboard support
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         const activeModal = document.querySelector('.active-modal')
@@ -115,20 +111,41 @@ document.addEventListener('keydown', (e) => {
         }
     }
 })
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiper = new Swiper('.portfolio__container', {
-    cssMode: true,
-    loop: true,
 
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
+/*==================== PORTFOLIO FILTER ====================*/
+function initPortfolioFilter() {
+    const filters = document.querySelectorAll('.portfolio__filter');
+    const cards = document.querySelectorAll('.portfolio__card');
+
+    // Vérifier si les éléments existent (nouveau design de portfolio)
+    if (filters.length > 0 && cards.length > 0) {
+        filters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                filters.forEach(f => f.classList.remove('active'));
+                this.classList.add('active');
+
+                const filterValue = this.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
     }
-});
+}
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
@@ -149,19 +166,16 @@ function scrollActive(){
 }
 window.addEventListener('scroll', scrollActive)
 
-
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
+/*==================== CHANGE BACKGROUND HEADER ====================*/
 function scrollHeader(){
     const nav = document.getElementById('header')
-    // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
     if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
 }
 window.addEventListener('scroll', scrollHeader)
 
-/*==================== SHOW SCROLL UP ====================*/ 
+/*==================== SHOW SCROLL UP ====================*/
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
     if(this.scrollY >= 560) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
 }
 window.addEventListener('scroll', scrollUp)
@@ -171,27 +185,47 @@ const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'uil-sun'
 
-// Previously selected topic (if user selected)
 const selectedTheme = localStorage.getItem('selected-theme')
 const selectedIcon = localStorage.getItem('selected-icon')
 
-// We obtain the current theme that the interface has by validating the dark-theme class
 const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
 const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun'
 
-// We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-  themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+    themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme)
 }
 
-// Activate / deactivate the theme manually with the button
 themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+/*==================== INITIALIZE EVERYTHING ====================*/
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser le filtrage du portfolio
+    initPortfolioFilter();
+
+    // Désactiver Swiper si on utilise le nouveau design de portfolio
+    const portfolioContainer = document.querySelector('.portfolio__container');
+    if (portfolioContainer && portfolioContainer.classList.contains('grid')) {
+        // Nouveau design avec grille - pas besoin de Swiper
+        console.log('Nouveau design portfolio détecté - Swiper désactivé');
+    } else if (portfolioContainer && portfolioContainer.classList.contains('swiper-container')) {
+        // Ancien design avec Swiper
+        let swiper = new Swiper('.portfolio__container', {
+            cssMode: true,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            }
+        });
+    }
+});

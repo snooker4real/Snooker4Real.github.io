@@ -732,167 +732,173 @@
     <section class="portfolio section" id="portfolio">
         <h2 class="section__title">Portfolio</h2>
         <span class="section__subtitle">Most recent work</span>
-        <div class="portfolio__container container swiper-container">
-            <div class="swiper-wrapper">
-                <!--==================== PORTFOLIO 1 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/athlytics.png"
-                            alt="ATHlytics Crypto Analytics Platform"
-                            class="portfolio__img"
-                    />
 
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">ATHlytics Crypto Analytics</h3>
-                        <p class="portfolio__description">
-                            Plateforme d'analyse crypto nouvelle génération pour analyser les ATH
-                            et découvrir les opportunités cachées du marché avec des outils professionnels.
-                        </p>
-                        <a
-                                href="https://athlytics.netlify.app/"
-                                target="_blank"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!--==================== PORTFOLIO 2 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/des_project.png"
-                            alt="Dice Roller App"
-                            class="portfolio__img"
-                    />
-
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">Dice Roller</h3>
-                        <p class="portfolio__description">
-                            Simulating rolling of dice, on typing button.
-                        </p>
-                        <a
-                                href="https://snooker4real.github.io/RollDice.github.io/"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!--==================== PORTFOLIO 3 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/invoice.png"
-                            alt="InvoiceFR - Générateur de Factures"
-                            class="portfolio__img"
-                    />
-
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">InvoiceFR</h3>
-                        <p class="portfolio__description">
-                            Générateur de factures françaises professionnelles avec calcul automatique de la TVA,
-                            téléchargement PDF et gestion des clients.
-                        </p>
-                        <a
-                                href="https://invoicefr.netlify.app/"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!--==================== PORTFOLIO 4 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/newsletter.png"
-                            alt="SnookDev Newsletter"
-                            class="portfolio__img"
-                    />
-
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">SnookDev Newsletter</h3>
-                        <p class="portfolio__description">
-                            Plateforme d'abonnement à ma newsletter développement web avec gestion des emails,
-                            contenu exclusif et mise à jour régulière sur mes projets et tutoriels.
-                        </p>
-                        <a
-                                href="https://snookdev.netlify.app/"
-                                target="_blank"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!--==================== PORTFOLIO 5 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/popep.png"
-                            alt="POPEP - Plateforme de Gestion"
-                            class="portfolio__img"
-                    />
-
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">POPEP Jeu T'adore</h3>
-                        <p class="portfolio__description">
-                            Site e-commerce de jeux de société innovants pour couples et amis.
-                            Plateforme de vente avec gestion de panier, présentation des différentes
-                            versions de jeu et système de commande en ligne.
-                        </p>
-                        <a
-                                href="https://popep.fr/"
-                                target="_blank"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!--==================== PORTFOLIO 6 ====================-->
-                <div class="portfolio__content grid swiper-slide">
-                    <img
-                            src="assets/img/cvxpert.png"
-                            alt="CVXpert - Générateur de CV Professionnels"
-                            class="portfolio__img"
-                    />
-
-                    <div class="portfolio__data">
-                        <h3 class="portfolio__title">CVXpert</h3>
-                        <p class="portfolio__description">
-                            Application web de création de CV professionnels avec modèles personnalisables,
-                            édition en temps réel et export PDF. Outil complet pour optimiser sa recherche d'emploi.
-                        </p>
-                        <a
-                                href="https://cvxpert.netlify.app/"
-                                target="_blank"
-                                class="button button--flex button--small portfolio__button"
-                        >
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                    </div>
-                </div>
+        <!-- Filtres par catégorie -->
+        <div class="portfolio__filters container">
+            <span class="portfolio__filter active" data-filter="all">All</span>
+            <span class="portfolio__filter" data-filter="web">Web Apps</span>
+            <span class="portfolio__filter" data-filter="crypto">Crypto</span>
+            <span class="portfolio__filter" data-filter="ecommerce">E-commerce</span>
+            <span class="portfolio__filter" data-filter="tools">Tools</span>
         </div>
 
-            <!-- Add Arrows -->
-            <div class="swiper-button-next">
-                <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-            </div>
-            <div class="swiper-button-prev">
-                <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
+        <div class="portfolio__container container grid">
+            <!--==================== PORTFOLIO 1 ====================-->
+            <div class="portfolio__card" data-category="crypto">
+                <div class="portfolio__image">
+                    <img src="assets/img/athlytics.png" alt="ATHlytics Crypto Analytics Platform" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://athlytics.netlify.app/" target="_blank" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">ATHlytics Crypto Analytics</h3>
+                    <p class="portfolio__description">
+                        Plateforme d'analyse crypto nouvelle génération pour analyser les ATH
+                        et découvrir les opportunités cachées du marché.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">Crypto</span>
+                        <span class="portfolio__tag">Analytics</span>
+                    </div>
+                    <a href="https://athlytics.netlify.app/" target="_blank" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
             </div>
 
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <!--==================== PORTFOLIO 2 ====================-->
+            <div class="portfolio__card" data-category="tools">
+                <div class="portfolio__image">
+                    <img src="assets/img/des_project.png" alt="Dice Roller App" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://snooker4real.github.io/RollDice.github.io/" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">Dice Roller</h3>
+                    <p class="portfolio__description">
+                        Application interactive de simulation de lancers de dés avec interface intuitive.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">Games</span>
+                        <span class="portfolio__tag">Tools</span>
+                    </div>
+                    <a href="https://snooker4real.github.io/RollDice.github.io/" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!--==================== PORTFOLIO 3 ====================-->
+            <div class="portfolio__card" data-category="tools">
+                <div class="portfolio__image">
+                    <img src="assets/img/invoice.png" alt="InvoiceFR - Générateur de Factures" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://invoicefr.netlify.app/" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">InvoiceFR</h3>
+                    <p class="portfolio__description">
+                        Générateur de factures françaises professionnelles avec calcul automatique TVA et export PDF.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">Business</span>
+                        <span class="portfolio__tag">Tools</span>
+                    </div>
+                    <a href="https://invoicefr.netlify.app/" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!--==================== PORTFOLIO 4 ====================-->
+            <div class="portfolio__card" data-category="web">
+                <div class="portfolio__image">
+                    <img src="assets/img/newsletter.png" alt="SnookDev Newsletter" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://snookdev.netlify.app/" target="_blank" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">SnookDev Newsletter</h3>
+                    <p class="portfolio__description">
+                        Plateforme d'abonnement newsletter avec contenu exclusif sur le développement web et projets.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">Web</span>
+                        <span class="portfolio__tag">Marketing</span>
+                    </div>
+                    <a href="https://snookdev.netlify.app/" target="_blank" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!--==================== PORTFOLIO 5 ====================-->
+            <div class="portfolio__card" data-category="ecommerce">
+                <div class="portfolio__image">
+                    <img src="assets/img/popep.png" alt="POPEP - Plateforme de Gestion" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://popep.fr/" target="_blank" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">POPEP Jeu T'adore</h3>
+                    <p class="portfolio__description">
+                        Site e-commerce de jeux de société innovants pour couples et amis avec système de panier.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">E-commerce</span>
+                        <span class="portfolio__tag">Games</span>
+                    </div>
+                    <a href="https://popep.fr/" target="_blank" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!--==================== PORTFOLIO 6 ====================-->
+            <div class="portfolio__card" data-category="tools">
+                <div class="portfolio__image">
+                    <img src="assets/img/cvxpert.png" alt="CVXpert - Générateur de CV Professionnels" class="portfolio__img">
+                    <div class="portfolio__overlay">
+                        <a href="https://cvxpert.netlify.app/" target="_blank" class="portfolio__link">
+                            <i class="uil uil-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio__content">
+                    <h3 class="portfolio__title">CVXpert</h3>
+                    <p class="portfolio__description">
+                        Application web de création de CV professionnels avec modèles personnalisables et export PDF.
+                    </p>
+                    <div class="portfolio__tags">
+                        <span class="portfolio__tag">Tools</span>
+                        <span class="portfolio__tag">Career</span>
+                    </div>
+                    <a href="https://cvxpert.netlify.app/" target="_blank" class="button button--flex button--small portfolio__button">
+                        Live Demo
+                        <i class="uil uil-arrow-right button__icon"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
