@@ -1717,3 +1717,69 @@ textarea.form-input::-webkit-resizer { display: none; }
 @keyframes progressAnimation {
     from { width: 0%; }
 }
+
+/*========== SIDEBAR DOWNLOAD BUTTON ==========*/
+.sidebar-download {
+    padding: 0 10px;
+    margin: 15px 0;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--border-gradient-onyx);
+    border-radius: 12px;
+    color: var(--first-color);
+    text-decoration: none;
+    transition: all var(--transition-1);
+    position: relative;
+    z-index: 1;
+    border: 1px solid transparent;
+}
+
+.download-btn::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.download-btn:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-3);
+}
+
+.download-btn:hover::before {
+    background: var(--first-color-lighter);
+}
+
+.download-btn .icon-box {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+}
+
+.download-btn span {
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 1250px) {
+    .sidebar-download {
+        padding: 0;
+    }
+
+    .download-btn {
+        justify-content: center;
+    }
+}
