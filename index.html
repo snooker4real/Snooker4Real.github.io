@@ -79,6 +79,16 @@
 
                 <li class="contact-item">
                     <div class="icon-box">
+                        <ion-icon name="calendar-outline"></ion-icon>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Birthday</p>
+                        <time datetime="1999-08-05">August 5, 1999</time>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
                         <ion-icon name="location-outline"></ion-icon>
                     </div>
                     <div class="contact-info">
@@ -208,7 +218,7 @@
 
                     <li class="service-item">
                         <div class="service-icon-box">
-                            <img src="./assets/img/icon-photo.svg" alt="camera icon" width="40">
+                            <img src="assets/img/icon-btc.svg" alt="camera icon" width="40">
                         </div>
                         <div class="service-content-box">
                             <h4 class="h4 service-item-title">Web3 & Blockchain</h4>
@@ -230,7 +240,7 @@
                     <li class="testimonials-item">
                         <div class="content-card" data-testimonials-item>
                             <figure class="testimonials-avatar-box">
-                                <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="60"
+                                <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="100"
                                      data-testimonials-avatar>
                             </figure>
                             <h4 class="h4 testimonials-item-title" data-testimonials-title>Client Review</h4>
@@ -247,7 +257,7 @@
                     <li class="testimonials-item">
                         <div class="content-card" data-testimonials-item>
                             <figure class="testimonials-avatar-box">
-                                <img src="./assets/img/avatar-2.png" alt="Jessica miller" width="60"
+                                <img src="./assets/img/avatar-2.png" alt="Jessica miller" width="100"
                                      data-testimonials-avatar>
                             </figure>
                             <h4 class="h4 testimonials-item-title" data-testimonials-title>Project Partner</h4>
@@ -275,7 +285,7 @@
                     </button>
                     <div class="modal-img-wrapper">
                         <figure class="modal-avatar-box">
-                            <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                            <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="100" data-modal-img>
                         </figure>
                         <img src="./assets/img/icon-quote.svg" alt="quote icon">
                     </div>
@@ -981,10 +991,14 @@
                 <form action="https://formsubmit.co/ba441248eea5239dcc3283586f042ae1" class="form" data-form
                       method="POST" target="_blank">
                     <div class="input-wrapper">
-                        <input type="text" name="fullname" class="form-input" placeholder="Full name" required
-                               data-form-input>
-                        <input type="email" name="email" class="form-input" placeholder="Email address" required
-                               data-form-input>
+                        <label>
+                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required
+                                   data-form-input>
+                        </label>
+                        <label>
+                            <input type="email" name="email" class="form-input" placeholder="Email address" required
+                                   data-form-input>
+                        </label>
                     </div>
                     <textarea name="message" class="form-input" placeholder="Your Message" required
                               data-form-input></textarea>

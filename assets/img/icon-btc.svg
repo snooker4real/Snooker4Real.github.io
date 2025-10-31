@@ -1,0 +1,46 @@
+<svg class="web3-icon" viewBox="0 0 42 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer coin ring -->
+    <circle cx="21" cy="16" r="14.5" stroke="url(#ring_grad)" stroke-width="1" opacity="0.4"/>
+
+    <!-- Soft inner glow -->
+    <circle cx="21" cy="16" r="13" fill="url(#inner_glow)" opacity="0.25"/>
+
+    <!-- Background base -->
+    <circle cx="21" cy="16" r="11.5" fill="url(#base_grad)" opacity="0.15"/>
+
+    <!-- Bitcoin "B" symbol -->
+    <path d="M23.4 8.6H18.8V6.6C18.8 6.2 18.5 5.9 18.1 5.9H16.9C16.5 5.9 16.2 6.2 16.2 6.6V8.6H14.7C14.3 8.6 14 8.9 14 9.3V24.7C14 25.1 14.3 25.4 14.7 25.4H16.2V27.4C16.2 27.8 16.5 28.1 16.9 28.1H18.1C18.5 28.1 18.8 27.8 18.8 27.4V25.4H21.5C25 25.4 27.8 23.3 27.8 20C27.8 18.3 26.9 17.1 25.3 16.5C26.9 15.7 27.7 14.4 27.7 12.8C27.7 9.9 25.2 8.6 23.4 8.6ZM21.1 14.6H18.8V10.7H21.1C22.6 10.7 23.7 11.5 23.7 12.8C23.7 14.1 22.6 14.6 21.1 14.6ZM21.6 23.1H18.8V18.3H21.6C23.2 18.3 24.2 19.2 24.2 20.7C24.2 22.2 23.1 23.1 21.6 23.1Z"
+          fill="url(#symbol_grad)" stroke="url(#symbol_stroke)" stroke-width="0.35" stroke-linejoin="round"/>
+
+    <!-- Optional subtle shadow -->
+    <ellipse cx="21" cy="28.5" rx="7" ry="1.5" fill="black" opacity="0.1"/>
+
+    <defs>
+        <!-- Metallic gradients -->
+        <linearGradient id="base_grad" x1="8" y1="3" x2="31" y2="29" gradientUnits="userSpaceOnUse">
+            <stop offset="0.25" stop-color="#FFDC70"/>
+            <stop offset="1" stop-color="#FFB94F"/>
+        </linearGradient>
+
+        <linearGradient id="ring_grad" x1="8" y1="3" x2="31" y2="29" gradientUnits="userSpaceOnUse">
+            <stop offset="0.1" stop-color="#FFD984"/>
+            <stop offset="0.5" stop-color="#FFC85A"/>
+            <stop offset="0.9" stop-color="#FFAE46"/>
+        </linearGradient>
+
+        <radialGradient id="inner_glow" cx="0" cy="0" r="1" gradientTransform="translate(21 16) scale(13)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFEAB4" stop-opacity="0.9"/>
+            <stop offset="1" stop-color="#FFBC5E" stop-opacity="0"/>
+        </radialGradient>
+
+        <linearGradient id="symbol_grad" x1="14" y1="6" x2="28" y2="27" gradientUnits="userSpaceOnUse">
+            <stop offset="0.25" stop-color="#FFDB6E"/>
+            <stop offset="1" stop-color="#FFBC5E"/>
+        </linearGradient>
+
+        <linearGradient id="symbol_stroke" x1="14" y1="6" x2="28" y2="27" gradientUnits="userSpaceOnUse">
+            <stop offset="0.25" stop-color="#FFE5A2"/>
+            <stop offset="1" stop-color="#FFB24B"/>
+        </linearGradient>
+    </defs>
+</svg>
