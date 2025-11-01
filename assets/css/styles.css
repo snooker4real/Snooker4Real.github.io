@@ -2408,3 +2408,316 @@ textarea.form-input::-webkit-resizer { display: none; }
         height: 220px;
     }
 }
+
+/*-----------------------------------*\
+  #CASE STUDY MODALS
+\*-----------------------------------*/
+
+.case-study-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-gradient-onyx);
+    color: var(--orange-yellow-crayola);
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+    border: 1px solid var(--jet);
+    transition: var(--transition-1);
+    margin-top: 15px;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.case-study-btn:hover {
+    background: var(--bg-gradient-yellow-1);
+    border-color: var(--orange-yellow-crayola);
+    color: var(--smoky-black);
+}
+
+.case-study-btn ion-icon {
+    font-size: 18px;
+}
+
+.case-study-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.case-study-modal-container.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.case-study-modal-container .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 0%, 0.75);
+    z-index: -1;
+}
+
+.case-study-modal {
+    background: var(--eerie-black-2);
+    position: relative;
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid var(--jet);
+    box-shadow: var(--shadow-5);
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.case-study-modal-container.active .case-study-modal {
+    transform: scale(1);
+}
+
+.case-study-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.case-study-modal::-webkit-scrollbar-track {
+    background: var(--eerie-black-1);
+    border-radius: 4px;
+}
+
+.case-study-modal::-webkit-scrollbar-thumb {
+    background: var(--orange-yellow-crayola);
+    border-radius: 4px;
+}
+
+.case-study-modal .modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--border-gradient-onyx);
+    color: var(--white-2);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: var(--transition-1);
+    z-index: 10;
+}
+
+.case-study-modal .modal-close-btn:hover {
+    background: var(--bg-gradient-yellow-1);
+    color: var(--smoky-black);
+}
+
+.case-study-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.case-study-header {
+    border-bottom: 1px solid var(--jet);
+    padding-bottom: 20px;
+}
+
+.case-study-header .h2 {
+    color: var(--white-1);
+    margin-bottom: 10px;
+}
+
+.case-study-subtitle {
+    color: var(--light-gray);
+    font-size: var(--fs-5);
+    margin-bottom: 15px;
+}
+
+.case-study-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--light-gray-70);
+    font-size: var(--fs-7);
+}
+
+.meta-item ion-icon {
+    font-size: 18px;
+    color: var(--orange-yellow-crayola);
+}
+
+.meta-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--orange-yellow-crayola);
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    transition: var(--transition-1);
+}
+
+.meta-link:hover {
+    color: var(--white-1);
+}
+
+.meta-link ion-icon {
+    font-size: 18px;
+}
+
+.case-study-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.case-study-section .h3 {
+    color: var(--white-1);
+    font-size: var(--fs-4);
+    position: relative;
+    padding-left: 15px;
+}
+
+.case-study-section .h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    background: var(--text-gradient-yellow);
+    border-radius: 2px;
+}
+
+.case-study-section p {
+    color: var(--light-gray);
+    font-size: var(--fs-6);
+    line-height: 1.7;
+}
+
+.case-study-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.case-study-list li {
+    color: var(--light-gray);
+    font-size: var(--fs-6);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+}
+
+.case-study-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange-yellow-crayola);
+    font-weight: var(--fw-600);
+}
+
+.case-study-list strong {
+    color: var(--white-2);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.feature-item {
+    background: var(--border-gradient-onyx);
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--jet);
+    transition: var(--transition-1);
+}
+
+.feature-item:hover {
+    border-color: var(--orange-yellow-crayola);
+    transform: translateY(-3px);
+}
+
+.feature-item ion-icon {
+    font-size: 32px;
+    color: var(--orange-yellow-crayola);
+    margin-bottom: 12px;
+}
+
+.feature-item h4 {
+    color: var(--white-1);
+    font-size: var(--fs-5);
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    color: var(--light-gray-70);
+    font-size: var(--fs-7);
+}
+
+.tech-stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-badge {
+    background: var(--border-gradient-onyx);
+    color: var(--orange-yellow-crayola);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    border: 1px solid var(--jet);
+    transition: var(--transition-1);
+}
+
+.tech-badge:hover {
+    background: var(--bg-gradient-yellow-1);
+    color: var(--smoky-black);
+    border-color: var(--orange-yellow-crayola);
+}
+
+@media (min-width: 580px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .case-study-modal {
+        padding: 40px;
+    }
+}
+
+@media (min-width: 768px) {
+    .case-study-btn {
+        width: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .case-study-modal {
+        max-width: 1000px;
+    }
+}

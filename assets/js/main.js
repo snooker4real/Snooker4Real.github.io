@@ -442,3 +442,66 @@ ctaButtons.forEach(btn => {
         });
     });
 });
+
+// Case Study Modals
+const caseStudyBtns = document.querySelectorAll('[data-project]');
+const caseStudyModals = document.querySelectorAll('[data-case-study-modal]');
+const caseStudyOverlays = document.querySelectorAll('[data-case-study-overlay]');
+const caseStudyCloseBtns = document.querySelectorAll('[data-case-study-close]');
+
+// Function to open case study modal
+const openCaseStudyModal = (projectName) => {
+    const modal = document.querySelector(`#${projectName}-modal`);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+// Function to close case study modal
+const closeCaseStudyModal = () => {
+    caseStudyModals.forEach(modal => {
+        modal.classList.remove('active');
+    });
+    document.body.style.overflow = 'auto';
+};
+
+// Add click event to case study buttons
+caseStudyBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const projectName = btn.getAttribute('data-project');
+        openCaseStudyModal(projectName);
+    });
+});
+
+// Add click event to close buttons
+caseStudyCloseBtns.forEach(btn => {
+    btn.addEventListener('click', closeCaseStudyModal);
+});
+
+// Add click event to overlays
+caseStudyOverlays.forEach(overlay => {
+    overlay.addEventListener('click', closeCaseStudyModal);
+});
+
+// Close modal with ESC key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeCaseStudyModal();
+    }
+});
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registered successfully:', registration.scope);
+            })
+            .catch((error) => {
+                console.log('Service Worker registration failed:', error);
+            });
+    });
+}
