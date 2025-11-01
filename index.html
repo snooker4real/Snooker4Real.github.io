@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KVD5JRCW');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Jonathan Cindano - Full Stack Developer specializing in React, Node.js, Web3, and modern web technologies. View my portfolio of projects."/>
@@ -46,12 +54,19 @@
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="assets/css/styles.css"/>
 
+    <!--==================== TRANSLATIONS ====================-->
+    <script src="./assets/js/translations.js"></script>
+
     <title>Jonathan Cindano - Full Stack Developer | Spring Boot, React, Node.js, Web3 Portfolio</title>
 
     <!--==================== LOGO ====================-->
     <link rel="shortcut icon" href="./assets/img/CJ.png" type="image/x-icon"/>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVD5JRCW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!--
   - #MAIN
@@ -170,7 +185,17 @@
                 <button class="theme-toggle-btn" id="theme-button" title="Toggle dark/light mode">
                     <ion-icon name="moon-outline" class="uil-moon"></ion-icon>
                     <ion-icon name="sunny-outline" class="uil-sun"></ion-icon>
-                    <span class="theme-text">Theme</span>
+                    <span class="theme-text" data-i18n="theme">Theme</span>
+                </button>
+            </div>
+
+            <div class="separator"></div>
+
+            <!-- Language Toggle Button -->
+            <div class="language-toggle-wrapper">
+                <button class="language-toggle-btn" id="language-button" title="Switch language / Changer de langue">
+                    <ion-icon name="language-outline"></ion-icon>
+                    <span class="language-text"><span class="current-lang">EN</span> / <span class="other-lang">FR</span></span>
                 </button>
             </div>
 
@@ -190,19 +215,25 @@
         <nav class="navbar">
             <ul class="navbar-list">
                 <li class="navbar-item">
-                    <button class="navbar-link active" data-nav-link>About</button>
+                    <button class="navbar-link active" data-nav-link data-i18n="navAbout">About</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Resume</button>
+                    <button class="navbar-link" data-nav-link data-i18n="navResume">Resume</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Portfolio</button>
+                    <button class="navbar-link" data-nav-link data-i18n="navPortfolio">Portfolio</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Contact</button>
+                    <button class="navbar-link" data-nav-link data-i18n="navContact">Contact</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Blog</button>
+                    <button class="navbar-link" data-nav-link data-i18n="navBlog">Blog</button>
+                </li>
+                <li class="navbar-item navbar-language">
+                    <button class="navbar-language-btn" id="navbar-language-button" title="Switch language / Changer de langue">
+                        <ion-icon name="language-outline"></ion-icon>
+                        <span class="navbar-lang-text"><span class="current-lang">EN</span></span>
+                    </button>
                 </li>
             </ul>
         </nav>
