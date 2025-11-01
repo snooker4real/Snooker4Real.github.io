@@ -158,6 +158,9 @@
                 <li class="navbar-item">
                     <button class="navbar-link" data-nav-link>Contact</button>
                 </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Blog</button>
+                </li>
             </ul>
         </nav>
 
@@ -1018,6 +1021,32 @@
                         <span>Send Message</span>
                     </button>
                 </form>
+            </section>
+        </article>
+
+        <!--
+          - #BLOG
+        -->
+
+        <article class="blog" data-page="blog">
+            <header>
+                <h2 class="h2 article-title">Blog</h2>
+            </header>
+
+            <section class="blog-posts">
+                <div class="blog-loading" id="blog-loading">
+                    <ion-icon name="hourglass-outline"></ion-icon>
+                    <p>Loading articles from Substack...</p>
+                </div>
+
+                <div class="blog-error" id="blog-error" style="display: none;">
+                    <ion-icon name="alert-circle-outline"></ion-icon>
+                    <p>Unable to load articles. Please visit <a href="https://cindanojonathan.substack.com/" target="_blank">my Substack</a> directly.</p>
+                </div>
+
+                <ul class="blog-posts-list" id="blog-posts-list">
+                    <!-- Articles will be dynamically loaded here -->
+                </ul>
             </section>
         </article>
 
