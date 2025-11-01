@@ -2837,3 +2837,119 @@ textarea.form-input::-webkit-resizer { display: none; }
         max-width: 1000px;
     }
 }
+/*-----------------------------------*\
+  #LANGUAGE SWITCHER
+\*-----------------------------------*/
+
+.language-toggle-wrapper {
+    padding: 15px 20px;
+}
+
+.language-toggle-btn {
+    background: var(--border-gradient-onyx);
+    color: var(--orange-yellow-crayola);
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-size: var(--fs-7);
+    box-shadow: var(--shadow-2);
+    transition: var(--transition-1);
+    z-index: 1;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.language-toggle-btn::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.language-toggle-btn:hover {
+    background: var(--bg-gradient-yellow-1);
+    border-color: var(--orange-yellow-crayola);
+}
+
+.language-toggle-btn:hover::before {
+    background: var(--bg-gradient-yellow-2);
+}
+
+.language-toggle-btn ion-icon {
+    font-size: 20px;
+    --ionicon-stroke-width: 50px;
+}
+
+.language-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--fs-6);
+}
+
+.current-lang {
+    font-weight: var(--fw-500);
+    color: var(--white-2);
+}
+
+.other-lang {
+    color: var(--light-gray-70);
+}
+
+/* Navbar Language Button */
+.navbar-language {
+    margin-left: auto;
+}
+
+.navbar-language-btn {
+    color: var(--light-gray);
+    font-size: var(--fs-8);
+    font-family: var(--ff-poppins);
+    text-transform: capitalize;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    transition: var(--transition-1);
+}
+
+.navbar-language-btn ion-icon {
+    font-size: 18px;
+}
+
+.navbar-language-btn:hover {
+    background: var(--border-gradient-onyx);
+    color: var(--orange-yellow-crayola);
+}
+
+.navbar-lang-text {
+    font-weight: var(--fw-500);
+    color: var(--white-2);
+}
+
+@media (max-width: 580px) {
+    .navbar-language {
+        display: none;
+    }
+}
+
+@media (min-width: 580px) {
+    .language-toggle-wrapper {
+        display: none;
+    }
+    
+    .navbar-language {
+        display: block;
+    }
+}

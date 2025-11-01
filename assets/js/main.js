@@ -99,17 +99,29 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Map of i18n keys to page names
+const navMapping = {
+    'navAbout': 'about',
+    'navResume': 'resume',
+    'navPortfolio': 'portfolio',
+    'navContact': 'contact',
+    'navBlog': 'blog'
+};
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
     navigationLinks[i].addEventListener("click", function () {
-        for (let i = 0; i < pages.length; i++) {
-            if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-                pages[i].classList.add("active");
-                navigationLinks[i].classList.add("active");
+        const i18nKey = this.getAttribute('data-i18n');
+        const targetPage = navMapping[i18nKey] || this.innerHTML.toLowerCase();
+
+        for (let j = 0; j < pages.length; j++) {
+            if (targetPage === pages[j].dataset.page) {
+                pages[j].classList.add("active");
+                navigationLinks[j].classList.add("active");
                 window.scrollTo(0, 0);
             } else {
-                pages[i].classList.remove("active");
-                navigationLinks[i].classList.remove("active");
+                pages[j].classList.remove("active");
+                navigationLinks[j].classList.remove("active");
             }
         }
     });
@@ -345,20 +357,25 @@ if (blogPage) {
 
 // Hero - Typing Animation
 const typingText = document.getElementById('typing-text');
+window.typingText = typingText;
 if (typingText) {
-    const texts = [
+    // Get initial texts from translations
+    const lang = localStorage.getItem('selected-language') || 'en';
+    window.currentTypingRoles = translations && translations[lang] ? translations[lang].heroRoles : [
         'Full Stack Developer',
         'Web3 Enthusiast',
         'UI/UX Designer',
         'Problem Solver',
         'Mobile App Developer'
     ];
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let typingSpeed = 100;
 
     function type() {
+        const texts = window.currentTypingRoles;
         const currentText = texts[textIndex];
 
         if (isDeleting) {
@@ -492,6 +509,263 @@ document.addEventListener('keydown', (e) => {
         closeCaseStudyModal();
     }
 });
+
+// Language Toggle functionality
+const languageButton = document.getElementById('language-button');
+const navbarLanguageButton = document.getElementById('navbar-language-button');
+let currentLanguage = localStorage.getItem('selected-language') || 'en';
+
+// Set initial language
+document.documentElement.lang = currentLanguage;
+updateLanguage(currentLanguage);
+updateLanguageButtonDisplay(currentLanguage);
+
+function updateLanguage(lang) {
+    if (!translations || !translations[lang]) return;
+
+    const t = translations[lang];
+
+    // Update all elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (t[key]) {
+            element.textContent = t[key];
+        }
+    });
+
+    // Update typing animation roles
+    if (window.typingText) {
+        window.currentTypingRoles = t.heroRoles;
+    }
+
+    // Update sidebar
+    const sidebarBtn = document.querySelector('[data-sidebar-btn] span');
+    if (sidebarBtn) {
+        const isExpanded = document.querySelector('[data-sidebar]').classList.contains('active');
+        sidebarBtn.textContent = isExpanded ? t.hideContacts : t.showContacts;
+    }
+
+    // Update contact labels
+    updateContactLabels(t);
+
+    // Update page titles and sections
+    updatePageContent(t);
+
+    // Update form placeholders
+    updateFormPlaceholders(t);
+
+    // Store current language
+    localStorage.setItem('selected-language', lang);
+    document.documentElement.lang = lang;
+}
+
+function updateContactLabels(t) {
+    const contactTitles = document.querySelectorAll('.contact-title');
+    const labels = ['email', 'phone', 'birthday', 'location'];
+    contactTitles.forEach((title, index) => {
+        if (labels[index]) {
+            title.textContent = t[labels[index]];
+        }
+    });
+
+    // Update download CV button
+    const downloadBtn = document.querySelector('.download-btn span');
+    if (downloadBtn) downloadBtn.textContent = t.downloadCV;
+}
+
+function updatePageContent(t) {
+    // Hero section
+    const heroGreeting = document.querySelector('.hero-greeting');
+    if (heroGreeting) heroGreeting.textContent = t.heroGreeting;
+
+    const heroDescription = document.querySelector('.hero-description');
+    if (heroDescription) heroDescription.textContent = t.heroDescription;
+
+    // CTA buttons
+    const ctaBtns = document.querySelectorAll('.cta-btn span');
+    if (ctaBtns[0]) ctaBtns[0].textContent = t.viewMyWork;
+    if (ctaBtns[1]) ctaBtns[1].textContent = t.getInTouch;
+
+    // Stats labels
+    const statLabels = document.querySelectorAll('.stat-label');
+    const stats = ['yearsExperience', 'projectsCompleted', 'happyClients', 'technologies'];
+    statLabels.forEach((label, index) => {
+        if (stats[index]) {
+            label.textContent = t[stats[index]];
+        }
+    });
+
+    // About section
+    const aboutTitle = document.querySelector('.about .article-title');
+    if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+
+    const aboutTexts = document.querySelectorAll('.about-text p');
+    if (aboutTexts[0]) aboutTexts[0].textContent = t.aboutText1;
+    if (aboutTexts[1]) aboutTexts[1].textContent = t.aboutText2;
+
+    // Services section
+    const serviceTitle = document.querySelector('.service-title');
+    if (serviceTitle) serviceTitle.textContent = t.servicesTitle;
+
+    const serviceTitles = document.querySelectorAll('.service-item-title');
+    const serviceTexts = document.querySelectorAll('.service-item-text');
+    const services = [
+        { title: 'serviceWeb', text: 'serviceWebDesc' },
+        { title: 'serviceMobile', text: 'serviceMobileDesc' },
+        { title: 'serviceDesign', text: 'serviceDesignDesc' },
+        { title: 'serviceWeb3', text: 'serviceWeb3Desc' }
+    ];
+
+    services.forEach((service, index) => {
+        if (serviceTitles[index]) serviceTitles[index].textContent = t[service.title];
+        if (serviceTexts[index]) serviceTexts[index].textContent = t[service.text];
+    });
+
+    // Tech stack
+    const techStackTitle = document.querySelector('.tech-stack-title');
+    if (techStackTitle) techStackTitle.textContent = t.techStackTitle;
+
+    // Testimonials
+    const testimonialsTitle = document.querySelector('.testimonials-title');
+    if (testimonialsTitle) testimonialsTitle.textContent = t.testimonialsTitle;
+
+    const testimonialTitles = document.querySelectorAll('.testimonials-item-title');
+    if (testimonialTitles[0]) testimonialTitles[0].textContent = t.testimonial1Title;
+    if (testimonialTitles[1]) testimonialTitles[1].textContent = t.testimonial2Title;
+
+    const testimonialTexts = document.querySelectorAll('.testimonials-text p');
+    if (testimonialTexts[0]) testimonialTexts[0].textContent = t.testimonial1Text;
+    if (testimonialTexts[1]) testimonialTexts[1].textContent = t.testimonial2Text;
+
+    // Resume section
+    const resumeTitle = document.querySelector('.resume .article-title');
+    if (resumeTitle) resumeTitle.textContent = t.resumeTitle;
+
+    const educationTitle = document.querySelectorAll('.timeline .h3')[0];
+    const experienceTitle = document.querySelectorAll('.timeline .h3')[1];
+    if (educationTitle) educationTitle.textContent = t.educationTitle;
+    if (experienceTitle) experienceTitle.textContent = t.experienceTitle;
+
+    const skillsTitle = document.querySelector('.skills-title');
+    if (skillsTitle) skillsTitle.textContent = t.skillsTitle;
+
+    // Skills categories
+    const skillsCategoryTitles = document.querySelectorAll('.skills-category-title');
+    const categories = ['skillsFrontend', 'skillsBackend', 'skillsDatabase', 'skillsMobile', 'skillsDevOps', 'skillsWeb3', 'skillsProfessional'];
+    skillsCategoryTitles.forEach((title, index) => {
+        if (categories[index] && t[categories[index]]) {
+            // Keep the icon, only update text
+            const textNode = Array.from(title.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
+            if (textNode) {
+                textNode.textContent = t[categories[index]];
+            } else {
+                title.append(document.createTextNode(t[categories[index]]));
+            }
+        }
+    });
+
+    // Portfolio section
+    const portfolioTitle = document.querySelector('.portfolio .article-title');
+    if (portfolioTitle) portfolioTitle.textContent = t.portfolioTitle;
+
+    // Update filter buttons
+    const filterButtons = document.querySelectorAll('[data-filter-btn]');
+    const filters = ['filterAll', 'filterWebApps', 'filterCrypto', 'filterEcommerce', 'filterTools', 'filterAnime', 'filterVideo', 'filterProductivity'];
+    filterButtons.forEach((btn, index) => {
+        if (filters[index]) {
+            btn.textContent = t[filters[index]];
+        }
+    });
+
+    // Update select items
+    const selectItems = document.querySelectorAll('[data-select-item]');
+    selectItems.forEach((item, index) => {
+        if (filters[index]) {
+            item.textContent = t[filters[index]];
+        }
+    });
+
+    // Update select value
+    const selectValue = document.querySelector('[data-selecct-value]');
+    if (selectValue) selectValue.textContent = t.selectCategory;
+
+    // Contact section
+    const contactTitle = document.querySelector('.contact .article-title');
+    if (contactTitle) contactTitle.textContent = t.contactTitle;
+
+    const formTitle = document.querySelector('.form-title');
+    if (formTitle) formTitle.textContent = t.formTitle;
+
+    // Blog section
+    const blogTitle = document.querySelector('.blog .article-title');
+    if (blogTitle) blogTitle.textContent = t.blogTitle;
+
+    const blogLoading = document.querySelector('#blog-loading p');
+    if (blogLoading) blogLoading.textContent = t.blogLoading;
+
+    // Update "Present" text in timeline
+    const timelineSpans = document.querySelectorAll('.timeline-item span');
+    timelineSpans.forEach(span => {
+        if (span.textContent.includes('Present') || span.textContent.includes('Présent')) {
+            span.textContent = span.textContent.replace(/Present|Présent/, t.present);
+        }
+    });
+}
+
+function updateFormPlaceholders(t) {
+    const fullNameInput = document.querySelector('input[name="fullname"]');
+    const emailInput = document.querySelector('input[name="email"]');
+    const messageInput = document.querySelector('textarea[name="message"]');
+    const sendBtn = document.querySelector('.form-btn span');
+
+    if (fullNameInput) fullNameInput.placeholder = t.fullName;
+    if (emailInput) emailInput.placeholder = t.emailAddress;
+    if (messageInput) messageInput.placeholder = t.yourMessage;
+    if (sendBtn) sendBtn.textContent = t.sendMessage;
+}
+
+function updateLanguageButtonDisplay(lang) {
+    const currentLangElements = document.querySelectorAll('.current-lang');
+    const otherLangElements = document.querySelectorAll('.other-lang');
+
+    currentLangElements.forEach(el => {
+        el.textContent = lang.toUpperCase();
+    });
+
+    otherLangElements.forEach(el => {
+        el.textContent = lang === 'en' ? 'FR' : 'EN';
+    });
+}
+
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'fr' : 'en';
+    updateLanguage(currentLanguage);
+    updateLanguageButtonDisplay(currentLanguage);
+}
+
+// Add event listeners to both language buttons
+if (languageButton) {
+    languageButton.addEventListener('click', toggleLanguage);
+}
+
+if (navbarLanguageButton) {
+    navbarLanguageButton.addEventListener('click', toggleLanguage);
+}
+
+// Update sidebar button text when toggled
+const sidebarBtnElement = document.querySelector('[data-sidebar-btn]');
+if (sidebarBtnElement) {
+    sidebarBtnElement.addEventListener('click', function() {
+        setTimeout(() => {
+            const t = translations[currentLanguage];
+            const isExpanded = document.querySelector('[data-sidebar]').classList.contains('active');
+            const btnText = this.querySelector('span');
+            if (btnText && t) {
+                btnText.textContent = isExpanded ? t.hideContacts : t.showContacts;
+            }
+        }, 10);
+    });
+}
 
 // Service Worker Registration
 if ('serviceWorker' in navigator) {
