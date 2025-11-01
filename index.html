@@ -292,6 +292,127 @@
             </section>
 
             <!--
+              - technologies
+            -->
+
+            <section class="tech-stack">
+                <h3 class="h3 tech-stack-title">Technologies I Work With</h3>
+                <ul class="tech-list">
+                    <!-- Frontend -->
+                    <li class="tech-item" data-tooltip="React">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-react"></ion-icon>
+                        </div>
+                        <span class="tech-name">React</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="JavaScript">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-javascript"></ion-icon>
+                        </div>
+                        <span class="tech-name">JavaScript</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="Vue.js">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-vue"></ion-icon>
+                        </div>
+                        <span class="tech-name">Vue.js</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="Angular">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-angular"></ion-icon>
+                        </div>
+                        <span class="tech-name">Angular</span>
+                    </li>
+
+                    <!-- Backend -->
+                    <li class="tech-item" data-tooltip="Node.js">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-nodejs"></ion-icon>
+                        </div>
+                        <span class="tech-name">Node.js</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="Python">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-python"></ion-icon>
+                        </div>
+                        <span class="tech-name">Python</span>
+                    </li>
+
+                    <!-- Database & Cloud -->
+                    <li class="tech-item" data-tooltip="Firebase">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-firebase"></ion-icon>
+                        </div>
+                        <span class="tech-name">Firebase</span>
+                    </li>
+
+                    <!-- DevOps -->
+                    <li class="tech-item" data-tooltip="Docker">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-docker"></ion-icon>
+                        </div>
+                        <span class="tech-name">Docker</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="Git">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </div>
+                        <span class="tech-name">Git</span>
+                    </li>
+
+                    <!-- CSS Frameworks -->
+                    <li class="tech-item" data-tooltip="Sass">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-sass"></ion-icon>
+                        </div>
+                        <span class="tech-name">Sass</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="CSS3">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-css3"></ion-icon>
+                        </div>
+                        <span class="tech-name">CSS3</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="HTML5">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-html5"></ion-icon>
+                        </div>
+                        <span class="tech-name">HTML5</span>
+                    </li>
+
+                    <!-- Web3 -->
+                    <li class="tech-item" data-tooltip="Bitcoin">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-bitcoin"></ion-icon>
+                        </div>
+                        <span class="tech-name">Bitcoin</span>
+                    </li>
+
+                    <!-- Mobile -->
+                    <li class="tech-item" data-tooltip="iOS">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </div>
+                        <span class="tech-name">iOS</span>
+                    </li>
+
+                    <li class="tech-item" data-tooltip="Android">
+                        <div class="tech-icon-box">
+                            <ion-icon name="logo-android"></ion-icon>
+                        </div>
+                        <span class="tech-name">Android</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!--
               - testimonials
             -->
 
@@ -867,8 +988,8 @@
 
                 <ul class="project-list">
                     <!--==================== ATHLYTICS CRYPTO ANALYTICS ====================-->
-                    <li class="project-item active" data-filter-item data-category="crypto">
-                        <a href="https://athlytics.netlify.app/" target="_blank">
+                    <li class="project-item active" data-filter-item data-category="crypto" data-has-case-study="true" data-project-id="athlytics">
+                        <a href="https://athlytics.netlify.app/" target="_blank" class="project-link">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>
@@ -876,9 +997,21 @@
                                 <img src="assets/img/athlytics.png" alt="ATHlytics Crypto Analytics Platform"
                                      loading="lazy">
                             </figure>
-                            <h3 class="project-title">ATHlytics Crypto Analytics</h3>
-                            <p class="project-category">Crypto Analytics Platform</p>
+                            <div class="project-content">
+                                <h3 class="project-title">ATHlytics Crypto Analytics</h3>
+                                <p class="project-category">Crypto Analytics Platform</p>
+                                <div class="project-tech-stack">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">Chart.js</span>
+                                    <span class="tech-tag">CoinGecko API</span>
+                                </div>
+                            </div>
                         </a>
+                        <button class="case-study-btn" data-project="athlytics">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>View Case Study</span>
+                        </button>
                     </li>
 
                     <!--==================== DICE ROLLER ====================-->
@@ -939,17 +1072,29 @@
                     </li>
 
                     <!--==================== JON SHOP ====================-->
-                    <li class="project-item active" data-filter-item data-category="e-commerce">
-                        <a href="https://jonshop.vercel.app/" target="_blank">
+                    <li class="project-item active" data-filter-item data-category="e-commerce" data-has-case-study="true" data-project-id="jonshop">
+                        <a href="https://jonshop.vercel.app/" target="_blank" class="project-link">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>
                                 </div>
                                 <img src="assets/img/jon_shop.png" alt="Jon Shop - E-commerce Platform" loading="lazy">
                             </figure>
-                            <h3 class="project-title">Jon Shop</h3>
-                            <p class="project-category">Modern E-commerce Platform</p>
+                            <div class="project-content">
+                                <h3 class="project-title">Jon Shop</h3>
+                                <p class="project-category">Modern E-commerce Platform</p>
+                                <div class="project-tech-stack">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">Stripe</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                </div>
+                            </div>
                         </a>
+                        <button class="case-study-btn" data-project="jonshop">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>View Case Study</span>
+                        </button>
                     </li>
 
                     <!--==================== CVXPERT ====================-->
@@ -983,8 +1128,8 @@
                     </li>
 
                     <!--==================== CLIPZILLA ====================-->
-                    <li class="project-item active" data-filter-item data-category="video">
-                        <a href="https://clipzilla.netlify.app/sign-in" target="_blank">
+                    <li class="project-item active" data-filter-item data-category="video" data-has-case-study="true" data-project-id="clipzilla">
+                        <a href="https://clipzilla.netlify.app/sign-in" target="_blank" class="project-link">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>
@@ -992,9 +1137,21 @@
                                 <img src="assets/img/clipzilla.png"
                                      alt="ClipZilla - Plateforme de Partage de Vidéos Tutoriels" loading="lazy">
                             </figure>
-                            <h3 class="project-title">ClipZilla</h3>
-                            <p class="project-category">Video Tutorial Platform</p>
+                            <div class="project-content">
+                                <h3 class="project-title">ClipZilla</h3>
+                                <p class="project-category">Video Tutorial Platform</p>
+                                <div class="project-tech-stack">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">Clerk Auth</span>
+                                    <span class="tech-tag">Cloudinary</span>
+                                </div>
+                            </div>
                         </a>
+                        <button class="case-study-btn" data-project="clipzilla">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>View Case Study</span>
+                        </button>
                     </li>
 
                     <!--==================== MIRACLE MORNING ====================-->

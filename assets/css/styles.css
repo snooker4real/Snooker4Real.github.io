@@ -522,6 +522,130 @@ main {
     line-height: 1.6;
 }
 
+/* Technologies Stack */
+.tech-stack {
+    margin-bottom: 35px;
+}
+
+.tech-stack-title {
+    margin-bottom: 20px;
+    color: var(--white-2);
+}
+
+.tech-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tech-item {
+    position: relative;
+    background: var(--border-gradient-onyx);
+    padding: 20px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--shadow-2);
+    transition: all var(--transition-1);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.tech-item::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.tech-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: var(--onyx);
+    color: var(--first-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: var(--fw-500);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-1);
+    z-index: 10;
+    box-shadow: var(--shadow-3);
+}
+
+.tech-item:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+.tech-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-4);
+    background: var(--first-color);
+}
+
+.tech-item:hover::before {
+    background: var(--first-color-lighter);
+}
+
+.tech-icon-box {
+    font-size: 40px;
+    color: var(--first-color);
+    transition: all var(--transition-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tech-item:hover .tech-icon-box {
+    color: var(--smoky-black);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.tech-name {
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    color: var(--light-gray);
+    transition: var(--transition-1);
+    text-align: center;
+}
+
+.tech-item:hover .tech-name {
+    color: var(--smoky-black);
+    font-weight: var(--fw-600);
+}
+
+/* Responsive Tech Stack */
+@media (min-width: 580px) {
+    .tech-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (min-width: 768px) {
+    .tech-list {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .tech-list {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
 /* Testimonials */
 .testimonials { margin-bottom: 30px; }
 .testimonials-title { margin-bottom: 20px; }
@@ -1506,6 +1630,94 @@ textarea.form-input::-webkit-resizer { display: none; }
     color: var(--first-color);
     font-size: var(--fs-7);
     font-weight: var(--fw-400);
+}
+
+/* Project Tech Stack Tags */
+.project-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tech-tag {
+    background: var(--border-gradient-onyx);
+    color: var(--first-color);
+    font-size: 11px;
+    font-weight: var(--fw-500);
+    padding: 4px 10px;
+    border-radius: 8px;
+    transition: all var(--transition-1);
+    position: relative;
+    z-index: 1;
+}
+
+.tech-tag::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.project-item:hover .tech-tag {
+    background: var(--first-color);
+    color: var(--smoky-black);
+    transform: translateY(-2px);
+}
+
+.project-item:hover .tech-tag::before {
+    opacity: 0;
+}
+
+/* Case Study Button */
+.project-item {
+    position: relative;
+}
+
+.case-study-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--first-color);
+    color: var(--first-color);
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: var(--fw-500);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-1);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.case-study-btn ion-icon {
+    font-size: 16px;
+}
+
+.project-item:hover .case-study-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.case-study-btn:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 198, 0, 0.3);
+}
+
+/* Project Content Wrapper */
+.project-content {
+    padding: 0 10px;
 }
 
 /* Filter select box for mobile */
