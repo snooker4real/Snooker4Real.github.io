@@ -2276,6 +2276,25 @@ textarea.form-input::-webkit-resizer { display: none; }
     animation: fadeIn 1s ease 0.7s backwards;
 }
 
+.tech-icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tech-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-logo {
+    transform: scale(1.1);
+}
+
 .stat-item {
     background: var(--border-gradient-onyx);
     padding: 25px 20px;
