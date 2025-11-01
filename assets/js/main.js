@@ -342,3 +342,103 @@ if (blogPage) {
         fetchSubstackArticles();
     }
 }
+
+// Hero - Typing Animation
+const typingText = document.getElementById('typing-text');
+if (typingText) {
+    const texts = [
+        'Full Stack Developer',
+        'Web3 Enthusiast',
+        'UI/UX Designer',
+        'Problem Solver',
+        'Mobile App Developer'
+    ];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function type() {
+        const currentText = texts[textIndex];
+
+        if (isDeleting) {
+            typingText.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typingText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            // Pause at end
+            typingSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 500;
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start typing animation
+    type();
+}
+
+// Hero - Animated Counter for Statistics
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16); // 60fps
+    let current = 0;
+
+    const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+
+    updateCounter();
+}
+
+// Observe when hero stats come into view
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    animateCounter(stat);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(heroStats);
+}
+
+// Hero CTA - Navigation
+const ctaButtons = document.querySelectorAll('[data-nav-to]');
+ctaButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetPage = btn.getAttribute('data-nav-to');
+
+        // Find the corresponding nav link and trigger click
+        const navLinks = document.querySelectorAll('[data-nav-link]');
+        navLinks.forEach(link => {
+            if (link.textContent.toLowerCase() === targetPage) {
+                link.click();
+            }
+        });
+    });
+});
