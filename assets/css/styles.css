@@ -20,32 +20,39 @@
     --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
     --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
 
-    /* Dark theme colors */
-    --smoky-black: hsl(0, 0%, 7%);
-    --eerie-black-1: hsl(240, 2%, 13%);
-    --eerie-black-2: hsl(240, 2%, 12%);
-    --jet: hsl(0, 0%, 22%);
-    --onyx: hsl(240, 1%, 17%);
-    --white-1: hsl(0, 0%, 100%);
-    --white-2: hsl(0, 0%, 98%);
-    --light-gray: hsl(0, 0%, 84%);
-    --light-gray-70: hsla(0, 0%, 84%, 0.7);
+    /* Original dark theme color definitions (kept for gradients) */
+    --smoky-black-fixed: hsl(0, 0%, 7%);
+    --eerie-black-1-fixed: hsl(240, 2%, 13%);
+    --eerie-black-2-fixed: hsl(240, 2%, 12%);
+    --jet-fixed: hsl(0, 0%, 22%);
+    --onyx-fixed: hsl(240, 1%, 17%);
 
-    /* Gradients using your colors */
+    /* Theme-aware colors (light theme) */
+    --smoky-black: hsl(0, 0%, 95%);
+    --eerie-black-1: hsl(0, 0%, 98%);
+    --eerie-black-2: hsl(0, 0%, 100%);
+    --jet: hsl(0, 0%, 85%);
+    --onyx: hsl(0, 0%, 92%);
+    --white-1: hsl(0, 0%, 15%);
+    --white-2: hsl(0, 0%, 20%);
+    --light-gray: hsl(0, 0%, 45%);
+    --light-gray-70: hsla(0, 0%, 45%, 0.7);
+
+    /* Gradients - light theme versions */
     --bg-gradient-onyx: linear-gradient(
             to bottom right,
-            var(--jet) 3%,
-            var(--onyx) 97%
+            hsl(0, 0%, 90%) 3%,
+            hsl(0, 0%, 95%) 97%
     );
     --bg-gradient-jet: linear-gradient(
             to bottom right,
-            hsla(240, 1%, 18%, 0.251) 0%,
-            hsla(240, 2%, 11%, 0) 100%
+            hsla(0, 0%, 85%, 0.3) 0%,
+            hsla(0, 0%, 95%, 0) 100%
     ), var(--eerie-black-2);
     --border-gradient-onyx: linear-gradient(
             to bottom right,
-            var(--jet) 0%,
-            hsla(0, 0%, 25%, 0) 50%
+            hsl(0, 0%, 80%) 0%,
+            hsla(0, 0%, 70%, 0) 50%
     );
     --text-gradient-yellow: linear-gradient(
             to right,
@@ -110,13 +117,41 @@
 /*========== Dark theme ==========*/
 body.dark-theme {
     --first-color-second: hsl(var(--hue-color), 30%, 8%);
-    --title-color: hsl(var(--hue-color), 8%, 95%);
-    --text-color: hsl(var(--hue-color), 8%, 75%);
+    --title-color: hsl(0, 0%, 96%);
+    --text-color: hsl(0, 0%, 82%);
     --input-color: hsl(var(--hue-color), 29%, 16%);
     --body-color: hsl(var(--hue-color), 28%, 12%);
     --container-color: hsl(var(--hue-color), 29%, 16%);
     --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
     --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
+
+    /* Dark theme color overrides - Improved whites for better readability */
+    --smoky-black: hsl(0, 0%, 7%);
+    --eerie-black-1: hsl(240, 2%, 13%);
+    --eerie-black-2: hsl(240, 2%, 12%);
+    --jet: hsl(0, 0%, 22%);
+    --onyx: hsl(240, 1%, 17%);
+    --white-1: hsl(0, 0%, 96%);
+    --white-2: hsl(0, 0%, 92%);
+    --light-gray: hsl(0, 0%, 82%);
+    --light-gray-70: hsla(0, 0%, 82%, 0.7);
+
+    /* Dark theme gradients */
+    --bg-gradient-onyx: linear-gradient(
+            to bottom right,
+            var(--jet-fixed) 3%,
+            var(--onyx-fixed) 97%
+    );
+    --bg-gradient-jet: linear-gradient(
+            to bottom right,
+            hsla(240, 1%, 18%, 0.251) 0%,
+            hsla(240, 2%, 11%, 0) 100%
+    ), var(--eerie-black-2-fixed);
+    --border-gradient-onyx: linear-gradient(
+            to bottom right,
+            var(--jet-fixed) 0%,
+            hsla(0, 0%, 25%, 0) 50%
+    );
 }
 
 /*========== Base Styles ==========*/
@@ -433,6 +468,87 @@ main {
 
 .social-item .social-link:hover {
     color: var(--first-color);
+}
+
+/*========== THEME TOGGLE ==========*/
+.theme-toggle-wrapper {
+    padding: 15px 7px 0;
+}
+
+.theme-toggle-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    background: var(--border-gradient-onyx);
+    padding: 12px 16px;
+    border-radius: 12px;
+    transition: all var(--transition-1);
+    border: 1px solid var(--jet);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.theme-toggle-btn::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.theme-toggle-btn:hover {
+    background: var(--first-color);
+    border-color: var(--first-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-3);
+}
+
+.theme-toggle-btn:hover::before {
+    background: var(--first-color-lighter);
+}
+
+.theme-toggle-btn ion-icon {
+    font-size: 20px;
+    color: var(--first-color);
+    transition: var(--transition-1);
+}
+
+.theme-toggle-btn:hover ion-icon {
+    color: var(--smoky-black);
+}
+
+.theme-toggle-btn .uil-sun {
+    display: none;
+}
+
+.theme-toggle-btn .uil-moon {
+    display: block;
+}
+
+/* When dark theme is active, show sun icon */
+body.dark-theme .theme-toggle-btn .uil-sun {
+    display: block;
+}
+
+body.dark-theme .theme-toggle-btn .uil-moon {
+    display: none;
+}
+
+.theme-text {
+    color: var(--light-gray);
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition-1);
+}
+
+.theme-toggle-btn:hover .theme-text {
+    color: var(--smoky-black);
 }
 
 /*========== NAVBAR ==========*/
