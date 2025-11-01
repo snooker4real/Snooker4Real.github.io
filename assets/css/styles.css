@@ -2020,11 +2020,14 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .hero-typing-wrapper {
-    display: block;
+    /*display: block;*/
     font-size: var(--fs-1);
     font-weight: var(--fw-600);
     color: var(--white-2);
     min-height: 50px;
+
+    display: inline-flex;
+    align-items: center;
 }
 
 .hero-typing-text {
@@ -2032,12 +2035,20 @@ textarea.form-input::-webkit-resizer { display: none; }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    display: inline-block;
+    vertical-align: middle;
+    font-size: inherit;
 }
 
 .hero-cursor {
     color: var(--first-color);
-    animation: blink 1s infinite;
+    animation: blink 1s steps(2, start) infinite;
     font-weight: var(--fw-300);
+
+    display: inline-block;
+    vertical-align: middle;
+    font-size: inherit;
 }
 
 @keyframes blink {
@@ -2053,6 +2064,8 @@ textarea.form-input::-webkit-resizer { display: none; }
     to {
         opacity: 1;
         transform: translateY(0);
+        visibility: hidden;
+
     }
 }
 
