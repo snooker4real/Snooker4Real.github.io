@@ -60,9 +60,32 @@ for (let i = 0; i < selectItems.length; i++) {
     });
 }
 
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
+// Filter projects
+const filterBtns = document.querySelectorAll('[data-filter-btn]');
+const projectItems = document.querySelectorAll('[data-filter-item]');
 
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+
+        const filterValue = this.textContent.trim();
+
+        projectItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+
+            if (filterValue === 'All' || category === filterValue.toLowerCase()) {
+                item.classList.add('active');
+                item.style.display = 'block';
+            } else {
+                item.classList.remove('active');
+                item.style.display = 'none';
+            }
+        });
+    });
+});
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
@@ -161,19 +184,6 @@ if (form && formBtn) {
         formBtn.removeAttribute("disabled");
     } else {
         formBtn.setAttribute("disabled", "");
-    }
-}
-
-// Update the filter function to handle all categories
-const filterFunc = function (selectedValue) {
-    for (let i = 0; i < filterItems.length; i++) {
-        if (selectedValue === "all") {
-            filterItems[i].classList.add("active");
-        } else if (selectedValue === filterItems[i].dataset.category) {
-            filterItems[i].classList.add("active");
-        } else {
-            filterItems[i].classList.remove("active");
-        }
     }
 }
 
@@ -670,7 +680,7 @@ function updatePageContent(t) {
 
     // Update filter buttons
     const filterButtons = document.querySelectorAll('[data-filter-btn]');
-    const filters = ['filterAll', 'filterWebApps', 'filterCrypto', 'filterEcommerce', 'filterTools', 'filterAnime', 'filterVideo', 'filterProductivity'];
+    const filters = ['filterAll', 'filterCrypto', 'filterEcommerce', 'filterTools', 'filterAnime', 'filterVideo', 'filterProductivity'];
     filterButtons.forEach((btn, index) => {
         if (filters[index]) {
             btn.textContent = t[filters[index]];

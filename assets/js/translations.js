@@ -98,7 +98,6 @@ const translations = {
         // Portfolio
         portfolioTitle: "Portfolio",
         filterAll: "All",
-        filterWebApps: "Web Apps",
         filterCrypto: "Crypto",
         filterEcommerce: "E-commerce",
         filterTools: "Tools",
@@ -234,7 +233,6 @@ const translations = {
         // Portfolio
         portfolioTitle: "Portfolio",
         filterAll: "Tous",
-        filterWebApps: "Applications Web",
         filterCrypto: "Crypto",
         filterEcommerce: "E-commerce",
         filterTools: "Outils",

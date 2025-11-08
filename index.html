@@ -993,25 +993,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <button class="active" data-filter-btn>All</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>Web Apps</button>
+                        <button data-filter-btn data-category="crypto">Crypto</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>Crypto</button>
+                        <button data-filter-btn data-category="ecommerce">E-commerce</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>E-commerce</button>
+                        <button data-filter-btn data-category="tools">Tools</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>Tools</button>
+                        <button data-filter-btn data-category="anime">Anime</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>Anime</button>
+                        <button data-filter-btn data-category="video">Video</button>
                     </li>
                     <li class="filter-item">
-                        <button data-filter-btn>Video</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn>Productivity</button>
+                        <button data-filter-btn data-category="productivity">Productivity</button>
                     </li>
                 </ul>
 
@@ -1023,30 +1020,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     </button>
 
-                    <ul class="select-list">
-                        <li class="select-item">
-                            <button data-select-item>All</button>
+                    <ul class="filter-list">
+                        <li class="filter-item">
+                            <button class="active" data-filter-btn>All</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Web Apps</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="crypto">Crypto</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Crypto</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="e-commerce">E-commerce</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>E-commerce</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="tools">Tools</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Tools</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="anime">Anime</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Anime</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="video">Video</button>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Video</button>
-                        </li>
-                        <li class="select-item">
-                            <button data-select-item>Productivity</button>
+                        <li class="filter-item">
+                            <button data-filter-btn data-category="productivity">Productivity</button>
                         </li>
                     </ul>
                 </div>
@@ -1109,7 +1103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </li>
 
                     <!--==================== SNOOKDEV NEWSLETTER ====================-->
-                    <li class="project-item active" data-filter-item data-category="web apps">
+                    <li class="project-item active" data-filter-item data-category="tools">
                         <a href="https://snookdev.netlify.app/" target="_blank">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
@@ -1247,6 +1241,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <h3 class="project-title">URL Shortener</h3>
                             <p class="project-category">URL Shortening Service</p>
                         </a>
+                    </li>
+
+                    <!--==================== SMART DNS RESOLVER ====================-->
+                    <li class="project-item active" data-filter-item data-category="tools" data-has-case-study="true" data-project-id="dns-resolver">
+                        <a href="https://dns.catchee.xyz/" target="_blank" class="project-link">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </div>
+                                <img src="assets/img/dns.png" alt="Smart DNS Resolver - Comprehensive DNS Record Query Tool" loading="lazy">
+                            </figure>
+                            <div class="project-content">
+                                <h3 class="project-title">Smart DNS Resolver</h3>
+                                <p class="project-category">DNS Query & Analysis Tool</p>
+                                <div class="project-tech-stack">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">DNS</span>
+                                    <span class="tech-tag">Real-time</span>
+                                </div>
+                            </div>
+                        </a>
+                        <button class="case-study-btn" data-project="dns-resolver">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>View Case Study</span>
+                        </button>
                     </li>
                 </ul>
             </section>
@@ -1600,6 +1620,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>Sub-second authentication with Clerk's optimized flow</li>
                     <li>99.9% video availability with Cloudinary's CDN infrastructure</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Smart DNS Resolver Case Study Modal -->
+<div class="case-study-modal-container" data-case-study-modal id="dns-resolver-modal">
+    <div class="overlay" data-case-study-overlay></div>
+    <section class="case-study-modal">
+        <button class="modal-close-btn" data-case-study-close>
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+        <div class="case-study-content">
+            <div class="case-study-header">
+                <h2 class="h2">Smart DNS Resolver</h2>
+                <p class="case-study-subtitle">Comprehensive DNS Record Query Tool</p>
+                <div class="case-study-meta">
+                    <span class="meta-item"><ion-icon name="calendar-outline"></ion-icon> 2024</span>
+                    <span class="meta-item"><ion-icon name="code-outline"></ion-icon> HTML, Node.js, DNS</span>
+                    <a href="https://dns.catchee.xyz/" target="_blank" class="meta-link">
+                        <ion-icon name="open-outline"></ion-icon> Visit Live Site
+                    </a>
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Project Overview</h3>
+                <p>Smart DNS Resolver is a powerful web application built with HTML and Node.js that allows users to query comprehensive DNS records for any domain. The tool provides detailed information including A records, AAAA records, MX records, NS records, SOA records, and TXT records in an intuitive and user-friendly interface.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">The Challenge</h3>
+                <p>Network administrators, developers, and IT professionals needed a simple yet powerful tool to quickly query and analyze DNS records without relying on command-line tools or complex network utilities. The challenge was to create a responsive, fast, and comprehensive DNS lookup tool accessible from any device using lightweight technologies.</p>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Solution & Approach</h3>
+                <ul class="case-study-list">
+                    <li><strong>Node.js Backend:</strong> Implemented server-side DNS resolution with Node.js dns module for accurate and comprehensive record retrieval</li>
+                    <li><strong>Lightweight Frontend:</strong> Built a clean HTML interface with vanilla JavaScript for optimal performance</li>
+                    <li><strong>Query History:</strong> Implemented client-side storage to track and display previous DNS queries</li>
+                    <li><strong>Real-time Processing:</strong> Optimized DNS queries to provide results in milliseconds</li>
+                    <li><strong>Comprehensive Data Display:</strong> Organized complex DNS information into clear, categorized sections</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Key Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <h4>Multi-Record Query</h4>
+                        <p>Retrieve A, AAAA, MX, NS, SOA, and TXT records in a single query</p>
+                    </div>
+                    <div class="feature-item">
+                        <ion-icon name="time-outline"></ion-icon>
+                        <h4>Query History</h4>
+                        <p>Track and review previous DNS queries with timestamps</p>
+                    </div>
+                    <div class="feature-item">
+                        <ion-icon name="speedometer-outline"></ion-icon>
+                        <h4>Performance Metrics</h4>
+                        <p>Display query execution time and response details</p>
+                    </div>
+                    <div class="feature-item">
+                        <ion-icon name="server-outline"></ion-icon>
+                        <h4>DNS Analysis</h4>
+                        <p>Complete DNS record analysis with structured output</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Technologies Used</h3>
+                <div class="tech-stack-list">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">Node.js</span>
+                    <span class="tech-badge">DNS Module</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">Express.js</span>
+                </div>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Results & Impact</h3>
+                <ul class="case-study-list">
+                    <li>Provides comprehensive DNS analysis in under 0.04 seconds per query</li>
+                    <li>Supports all major DNS record types for complete domain analysis</li>
+                    <li>Maintains query history for quick reference and comparison</li>
+                    <li>Lightweight implementation with fast load times</li>
+                    <li>Eliminates need for command-line tools for basic DNS queries</li>
+                </ul>
+            </div>
+
+            <div class="case-study-section">
+                <h3 class="h3">Sample Query Output</h3>
+                <div class="sample-output">
+                    <div class="output-section">
+                        <h4>🌐 google.com</h4>
+                        <div class="output-item">
+                            <strong>Primary Address:</strong> 142.250.200.110
+                        </div>
+                        <div class="output-item">
+                            <strong>IPv4 (A Records):</strong> 142.250.185.14
+                        </div>
+                        <div class="output-item">
+                            <strong>IPv6 (AAAA Records):</strong> 2a00:1450:4003:803::200e
+                        </div>
+                        <div class="output-item">
+                            <strong>MX Records (Mail Servers):</strong> 10 smtp.google.com
+                        </div>
+                        <div class="output-item">
+                            <strong>NS Records (Name Servers):</strong> ns4.google.com, ns1.google.com, ns3.google.com, ns2.google.com
+                        </div>
+                        <div class="output-item">
+                            <strong>SOA Record:</strong> NS Name: ns1.google.com, Host Master: dns-admin.google.com
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
