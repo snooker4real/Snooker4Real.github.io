@@ -162,10 +162,17 @@ const selectedIcon = localStorage.getItem('selected-icon');
 const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
 const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
 
+// Set dark mode as default if no theme is saved
 if (selectedTheme) {
     document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
     if (themeButton) {
         themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
+    }
+} else {
+    // Default to dark theme for new visitors
+    document.body.classList.add(darkTheme);
+    if (themeButton) {
+        themeButton.classList.add(iconTheme);
     }
 }
 
