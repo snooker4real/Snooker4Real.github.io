@@ -11,6 +11,7 @@ const translations = {
         birthday: "Birthday",
         location: "Location",
         downloadCV: "Download CV",
+        viewCV: "View / Download CV",
         theme: "Theme",
         language: "Language",
 
@@ -146,6 +147,7 @@ const translations = {
         birthday: "Anniversaire",
         location: "Localisation",
         downloadCV: "Télécharger CV",
+        viewCV: "Voir / Télécharger CV",
         theme: "Thème",
         language: "Langue",
 

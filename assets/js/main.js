@@ -10,6 +10,23 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 // sidebar toggle functionality for mobile
 sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
+// CV Selector toggle functionality
+const cvSelector = document.querySelector('.cv-selector');
+const cvToggleBtn = document.querySelector('[data-cv-toggle]');
+
+if (cvToggleBtn && cvSelector) {
+    cvToggleBtn.addEventListener('click', function() {
+        elementToggleFunc(cvSelector);
+    });
+
+    // Close CV dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!cvSelector.contains(e.target) && cvSelector.classList.contains('active')) {
+            cvSelector.classList.remove('active');
+        }
+    });
+}
+
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
@@ -585,9 +602,13 @@ function updateContactLabels(t) {
         }
     });
 
-    // Update download CV button
+    // Update download CV button (legacy support)
     const downloadBtn = document.querySelector('.download-btn span');
     if (downloadBtn) downloadBtn.textContent = t.downloadCV;
+
+    // Update CV selector button
+    const cvSelectorBtn = document.querySelector('.cv-selector-btn > span');
+    if (cvSelectorBtn) cvSelectorBtn.textContent = t.viewCV;
 }
 
 function updatePageContent(t) {
