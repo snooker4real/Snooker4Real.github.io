@@ -148,14 +148,73 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <div class="separator"></div>
 
-            <!-- Download CV Button -->
-            <div class="sidebar-download">
-                <a href="assets/pdf/Cindano_Jonathan_CV.pdf" download class="download-btn">
+            <!-- CV Selector -->
+            <div class="cv-selector">
+                <button class="cv-selector-btn" data-cv-toggle>
                     <div class="icon-box">
-                        <ion-icon name="download-outline"></ion-icon>
+                        <ion-icon name="document-text-outline"></ion-icon>
                     </div>
-                    <span>Download CV</span>
-                </a>
+                    <span data-i18n="viewCV">View / Download CV</span>
+                    <ion-icon name="chevron-down" class="cv-chevron"></ion-icon>
+                </button>
+                <div class="cv-dropdown" data-cv-dropdown>
+                    <div class="cv-dropdown-item">
+                        <span class="cv-type">
+                            <ion-icon name="code-slash-outline"></ion-icon>
+                            Web Developer
+                        </span>
+                        <div class="cv-actions">
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </a>
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" download class="cv-action-btn" title="Download">
+                                <ion-icon name="download-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cv-dropdown-item">
+                        <span class="cv-type">
+                            <ion-icon name="server-outline"></ion-icon>
+                            Backend Developer
+                        </span>
+                        <div class="cv-actions">
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </a>
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" download class="cv-action-btn" title="Download">
+                                <ion-icon name="download-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cv-dropdown-item">
+                        <span class="cv-type">
+                            <ion-icon name="phone-portrait-outline"></ion-icon>
+                            Mobile Developer
+                        </span>
+                        <div class="cv-actions">
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </a>
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" download class="cv-action-btn" title="Download">
+                                <ion-icon name="download-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cv-dropdown-item">
+                        <span class="cv-type">
+                            <ion-icon name="construct-outline"></ion-icon>
+                            DevOps Engineer
+                        </span>
+                        <div class="cv-actions">
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
+                                <ion-icon name="eye-outline"></ion-icon>
+                            </a>
+                            <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" download class="cv-action-btn" title="Download">
+                                <ion-icon name="download-outline"></ion-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="separator"></div>

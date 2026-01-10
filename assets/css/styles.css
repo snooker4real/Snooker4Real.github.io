@@ -2112,6 +2112,177 @@ textarea.form-input::-webkit-resizer { display: none; }
     }
 }
 
+/*========== CV SELECTOR ==========*/
+.cv-selector {
+    position: relative;
+    padding: 0 10px;
+    margin: 15px 0;
+}
+
+.cv-selector-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--border-gradient-onyx);
+    border-radius: 12px;
+    color: var(--light-gray);
+    transition: all var(--transition-1);
+    position: relative;
+    z-index: 1;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.cv-selector-btn::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.cv-selector-btn:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+}
+
+.cv-selector-btn:hover::before {
+    background: var(--first-color-lighter);
+}
+
+.cv-selector-btn .icon-box {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+}
+
+.cv-selector-btn > span {
+    flex: 1;
+    font-size: var(--fs-7);
+    font-weight: var(--fw-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-chevron {
+    font-size: 16px;
+    transition: transform var(--transition-1);
+}
+
+.cv-selector.active .cv-chevron {
+    transform: rotate(180deg);
+}
+
+/* CV Dropdown */
+.cv-dropdown {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: calc(100% + 8px);
+    background: var(--eerie-black-1);
+    border: 1px solid var(--jet);
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: var(--shadow-3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all var(--transition-1);
+    z-index: 100;
+}
+
+.cv-selector.active .cv-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cv-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background var(--transition-1);
+}
+
+.cv-dropdown-item:hover {
+    background: var(--onyx);
+}
+
+.cv-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white-2);
+    font-size: var(--fs-8);
+    font-weight: var(--fw-500);
+}
+
+.cv-type ion-icon {
+    font-size: 16px;
+    color: var(--first-color);
+}
+
+.cv-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.cv-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--border-gradient-onyx);
+    border-radius: 8px;
+    color: var(--light-gray);
+    transition: all var(--transition-1);
+    position: relative;
+    z-index: 1;
+}
+
+.cv-action-btn::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    background: var(--bg-gradient-jet);
+    border-radius: inherit;
+    z-index: -1;
+    transition: var(--transition-1);
+}
+
+.cv-action-btn:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+    transform: scale(1.1);
+}
+
+.cv-action-btn:hover::before {
+    background: var(--first-color-lighter);
+}
+
+.cv-action-btn ion-icon {
+    font-size: 14px;
+}
+
+/* Responsive adjustments for CV Selector */
+@media (min-width: 1250px) {
+    .cv-selector {
+        padding: 0;
+    }
+
+    .cv-dropdown {
+        left: 0;
+        right: 0;
+    }
+}
+
 /*========== HERO SECTION ==========*/
 .hero-section {
     margin-bottom: 50px;
