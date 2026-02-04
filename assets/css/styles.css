@@ -2317,6 +2317,102 @@ textarea.form-input::-webkit-resizer { display: none; }
     }
 }
 
+/*========== MOBILE CV FLOATING BUTTON ==========*/
+.mobile-cv-fab {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 10;
+}
+
+@media (max-width: 1024px) {
+    .mobile-cv-fab {
+        display: block;
+    }
+}
+
+@media (max-width: 580px) {
+    .mobile-cv-fab {
+        bottom: 70px;
+        right: 15px;
+    }
+}
+
+.mobile-cv-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: var(--first-color);
+    color: var(--smoky-black);
+    border: none;
+    border-radius: 50px;
+    font-size: var(--fs-7);
+    font-weight: var(--fw-600);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(255, 198, 0, 0.4);
+    transition: all var(--transition-1);
+}
+
+.mobile-cv-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(255, 198, 0, 0.5);
+}
+
+.mobile-cv-btn ion-icon {
+    font-size: 20px;
+}
+
+.mobile-cv-menu {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    right: 0;
+    background: var(--eerie-black-1);
+    border: 1px solid var(--jet);
+    border-radius: 12px;
+    padding: 8px;
+    min-width: 160px;
+    box-shadow: var(--shadow-3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-1);
+}
+
+.mobile-cv-fab.active .mobile-cv-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.mobile-cv-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    color: var(--light-gray);
+    font-size: var(--fs-8);
+    font-weight: var(--fw-500);
+    border-radius: 8px;
+    transition: all var(--transition-1);
+}
+
+.mobile-cv-item:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+}
+
+.mobile-cv-item ion-icon {
+    font-size: 18px;
+    color: var(--first-color);
+    transition: color var(--transition-1);
+}
+
+.mobile-cv-item:hover ion-icon {
+    color: var(--smoky-black);
+}
+
 /*========== HERO SECTION ==========*/
 .hero-section {
     margin-bottom: 50px;

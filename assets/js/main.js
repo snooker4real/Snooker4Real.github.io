@@ -27,6 +27,23 @@ if (cvToggleBtn && cvSelector) {
     });
 }
 
+// Mobile CV Floating Button
+const mobileCvFab = document.querySelector('[data-mobile-cv]');
+const mobileCvToggle = document.querySelector('[data-mobile-cv-toggle]');
+
+if (mobileCvToggle && mobileCvFab) {
+    mobileCvToggle.addEventListener('click', function() {
+        elementToggleFunc(mobileCvFab);
+    });
+
+    // Close mobile CV menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!mobileCvFab.contains(e.target) && mobileCvFab.classList.contains('active')) {
+            mobileCvFab.classList.remove('active');
+        }
+    });
+}
+
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
 const modalContainer = document.querySelector("[data-modal-container]");
