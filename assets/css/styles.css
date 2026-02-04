@@ -1831,6 +1831,46 @@ textarea.form-input::-webkit-resizer { display: none; }
     box-shadow: 0 5px 20px rgba(255, 198, 0, 0.3);
 }
 
+/* Store Links for Mobile Apps */
+.project-store-links {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all var(--transition-1);
+    z-index: 2;
+}
+
+.project-item:hover .project-store-links {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.store-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--first-color);
+    border-radius: 10px;
+    color: var(--first-color);
+    font-size: 20px;
+    transition: all var(--transition-1);
+}
+
+.store-link:hover {
+    background: var(--first-color);
+    color: var(--smoky-black);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 198, 0, 0.3);
+}
+
 /* Project Content Wrapper */
 .project-content {
     padding: 0 10px;
