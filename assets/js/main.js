@@ -79,16 +79,35 @@ overlay.addEventListener("click", testimonialsModalFunc);
 // custom select variables
 const select = document.querySelector("[data-select]");
 const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
+const selectValue = document.querySelector("[data-select-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
+// filter function for portfolio items
+const filterFunc = function (selectedValue) {
+    const filterItems = document.querySelectorAll("[data-filter-item]");
+    for (let i = 0; i < filterItems.length; i++) {
+        if (selectedValue === "all") {
+            filterItems[i].classList.add("active");
+            filterItems[i].style.display = "block";
+        } else if (filterItems[i].dataset.category === selectedValue) {
+            filterItems[i].classList.add("active");
+            filterItems[i].style.display = "block";
+        } else {
+            filterItems[i].classList.remove("active");
+            filterItems[i].style.display = "none";
+        }
+    }
+}
+
+if (select) {
+    select.addEventListener("click", function () { elementToggleFunc(this); });
+}
 
 // add event in all select items
 for (let i = 0; i < selectItems.length; i++) {
     selectItems[i].addEventListener("click", function () {
         let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
+        if (selectValue) selectValue.innerText = this.innerText;
         elementToggleFunc(select);
         filterFunc(selectedValue);
     });
