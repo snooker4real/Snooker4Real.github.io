@@ -379,7 +379,7 @@ async function fetchSubstackArticles() {
     const error = $('#blog-error');
     try {
         const rssUrl = 'https://cindanojonathan.substack.com/feed';
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=9`;
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
         const res = await fetch(apiUrl);
         const data = await res.json();
         if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error('feed error');
