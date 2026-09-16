@@ -1,855 +1,418 @@
 'use strict';
 
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+/* ============================================================
+   Jonathan Cindano — Portfolio · interactions
+   ============================================================ */
 
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+const $  = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+/* ---------- Header shadow + scroll progress + back-to-top ---------- */
+const header = $('[data-header]');
+const toTop = $('.to-top');
+const progress = $('[data-progress]');
 
-// CV Selector toggle functionality
-const cvSelector = document.querySelector('.cv-selector');
-const cvToggleBtn = document.querySelector('[data-cv-toggle]');
-
-if (cvToggleBtn && cvSelector) {
-    cvToggleBtn.addEventListener('click', function() {
-        elementToggleFunc(cvSelector);
-    });
-
-    // Close CV dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!cvSelector.contains(e.target) && cvSelector.classList.contains('active')) {
-            cvSelector.classList.remove('active');
-        }
-    });
-}
-
-// Mobile CV Floating Button
-const mobileCvFab = document.querySelector('[data-mobile-cv]');
-const mobileCvToggle = document.querySelector('[data-mobile-cv-toggle]');
-
-if (mobileCvToggle && mobileCvFab) {
-    mobileCvToggle.addEventListener('click', function() {
-        elementToggleFunc(mobileCvFab);
-    });
-
-    // Close mobile CV menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!mobileCvFab.contains(e.target) && mobileCvFab.classList.contains('active')) {
-            mobileCvFab.classList.remove('active');
-        }
-    });
-}
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-    modalContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-    testimonialsItem[i].addEventListener("click", function () {
-        modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-        modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-        modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-        modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-        testimonialsModalFunc();
-    });
-}
-
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-select-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-// filter function for portfolio items
-const filterFunc = function (selectedValue) {
-    const filterItems = document.querySelectorAll("[data-filter-item]");
-    for (let i = 0; i < filterItems.length; i++) {
-        if (selectedValue === "all") {
-            filterItems[i].classList.add("active");
-            filterItems[i].style.display = "block";
-        } else if (filterItems[i].dataset.category === selectedValue) {
-            filterItems[i].classList.add("active");
-            filterItems[i].style.display = "block";
-        } else {
-            filterItems[i].classList.remove("active");
-            filterItems[i].style.display = "none";
-        }
+const onScroll = () => {
+    const y = window.scrollY;
+    if (header) header.classList.toggle('is-scrolled', y > 8);
+    if (toTop) toTop.classList.toggle('is-visible', y > 600);
+    if (progress) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
     }
-}
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('resize', onScroll, { passive: true });
+onScroll();
 
-if (select) {
-    select.addEventListener("click", function () { elementToggleFunc(this); });
-}
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].addEventListener("click", function () {
-        let selectedValue = this.innerText.toLowerCase();
-        if (selectValue) selectValue.innerText = this.innerText;
-        elementToggleFunc(select);
-        filterFunc(selectedValue);
+/* ---------- Tech marquee (seamless loop, paused off-screen) ---------- */
+const marquee = $('[data-marquee]');
+if (marquee) {
+    $$('.marquee__row', marquee).forEach(row => { row.innerHTML += row.innerHTML; });
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            marquee.classList.toggle('is-paused', !entry.isIntersecting);
+        }, { rootMargin: '120px' }).observe(marquee);
+    }
+    document.addEventListener('visibilitychange', () => {
+        marquee.classList.toggle('is-paused', document.hidden);
     });
 }
 
-// Filter projects
-const filterBtns = document.querySelectorAll('[data-filter-btn]');
-const projectItems = document.querySelectorAll('[data-filter-item]');
+/* ---------- Mobile navigation ---------- */
+const navToggle = $('#nav-toggle');
+const siteNav = $('#site-nav');
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-        // Remove active class from all buttons
-        filterBtns.forEach(b => b.classList.remove('active'));
-        // Add active class to clicked button
-        this.classList.add('active');
-
-        const filterValue = this.textContent.trim();
-
-        projectItems.forEach(item => {
-            const category = item.getAttribute('data-category');
-
-            if (filterValue === 'All' || category === filterValue.toLowerCase()) {
-                item.classList.add('active');
-                item.style.display = 'block';
-            } else {
-                item.classList.remove('active');
-                item.style.display = 'none';
-            }
-        });
-    });
-});
-
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-    filterBtn[i].addEventListener("click", function () {
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        filterFunc(selectedValue);
-        lastClickedBtn.classList.remove("active");
-        this.classList.add("active");
-        lastClickedBtn = this;
-    });
-}
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-        // check form validation
-        if (form.checkValidity()) {
-            formBtn.removeAttribute("disabled");
-        } else {
-            formBtn.setAttribute("disabled", "");
-        }
-    });
-}
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// Map of i18n keys to page names
-const navMapping = {
-    'navAbout': 'about',
-    'navResume': 'resume',
-    'navPortfolio': 'portfolio',
-    'navContact': 'contact',
-    'navBlog': 'blog'
+const closeNav = () => {
+    if (!siteNav) return;
+    siteNav.classList.remove('is-open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+    navToggle?.setAttribute('aria-label', 'Open menu');
 };
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-    navigationLinks[i].addEventListener("click", function () {
-        const i18nKey = this.getAttribute('data-i18n');
-        const targetPage = navMapping[i18nKey] || this.innerHTML.toLowerCase();
-
-        for (let j = 0; j < pages.length; j++) {
-            if (targetPage === pages[j].dataset.page) {
-                pages[j].classList.add("active");
-                navigationLinks[j].classList.add("active");
-                window.scrollTo(0, 0);
-            } else {
-                pages[j].classList.remove("active");
-                navigationLinks[j].classList.remove("active");
-            }
-        }
+if (navToggle && siteNav) {
+    navToggle.addEventListener('click', () => {
+        const open = siteNav.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', String(open));
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    siteNav.addEventListener('click', (e) => {
+        if (e.target.closest('a')) closeNav();
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) closeNav();
     });
 }
 
-// Theme toggle functionality (keeping your original theme logic)
-const themeButton = document.getElementById('theme-button');
-const darkTheme = 'dark-theme';
-const iconTheme = 'uil-sun';
+/* ---------- Scroll spy ---------- */
+const navLinks = $$('[data-nav-link]');
+const sections = navLinks
+    .map(link => document.getElementById(link.getAttribute('href').slice(1)))
+    .filter(Boolean);
 
-// Check if user previously selected a theme
-const selectedTheme = localStorage.getItem('selected-theme');
-const selectedIcon = localStorage.getItem('selected-icon');
-
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'uil-moon' : 'uil-sun';
-
-// Set dark mode as default if no theme is saved
-if (selectedTheme) {
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-    if (themeButton) {
-        themeButton.classList[selectedIcon === 'uil-moon' ? 'add' : 'remove'](iconTheme);
-    }
-} else {
-    // Default to dark theme for new visitors
-    document.body.classList.add(darkTheme);
-    if (themeButton) {
-        themeButton.classList.add(iconTheme);
-    }
+if (sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+                link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+            });
+        });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(sec => spy.observe(sec));
 }
 
-if (themeButton) {
-    themeButton.addEventListener('click', () => {
-        document.body.classList.toggle(darkTheme);
-        themeButton.classList.toggle(iconTheme);
-        localStorage.setItem('selected-theme', getCurrentTheme());
-        localStorage.setItem('selected-icon', getCurrentIcon());
-    });
-}
+/* ---------- Theme ---------- */
+const themeButton = $('#theme-button');
+const storedTheme = localStorage.getItem('selected-theme');
 
-// Initialize form button state
-if (form && formBtn) {
-    if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-    } else {
-        formBtn.setAttribute("disabled", "");
-    }
-}
+const applyTheme = (theme) => {
+    document.documentElement.classList.toggle('light', theme === 'light');
+    localStorage.setItem('selected-theme', theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'light' ? '#f3f7f4' : '#0a0f0d');
+};
 
-// Initialize all projects as active
-document.addEventListener('DOMContentLoaded', function() {
-    const projects = document.querySelectorAll('.project-item');
-    projects.forEach(project => {
-        project.classList.add('active');
-    });
+applyTheme(storedTheme === 'light' ? 'light' : 'dark');
+
+themeButton?.addEventListener('click', () => {
+    const next = document.documentElement.classList.contains('light') ? 'dark' : 'light';
+    applyTheme(next);
 });
 
-// Skills animation on scroll
-function animateSkillsOnScroll() {
-    const skillsSection = document.querySelector('.skill');
-    const skillItems = document.querySelectorAll('.skills-item');
+/* ---------- Internationalisation ---------- */
+const languageButtons = ['#language-button'].map(s => $(s)).filter(Boolean);
+let currentLanguage = localStorage.getItem('selected-language') || 'en';
 
-    if (!skillsSection) return;
+function applyTranslations(lang) {
+    const t = (typeof translations !== 'undefined' && translations[lang]) ? translations[lang] : null;
+    if (!t) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                skillItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.style.animation = `fadeInUp 0.6s ease forwards`;
-                    }, index * 100);
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
+    $$('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] != null) el.textContent = t[key];
+    });
+    $$('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] != null) el.setAttribute('placeholder', t[key]);
+    });
+    $$('[data-i18n-aria]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria');
+        if (t[key] != null) el.setAttribute('aria-label', t[key]);
+    });
+    $$('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[key] != null) el.innerHTML = t[key];
+    });
 
-    observer.observe(skillsSection);
+    if (Array.isArray(t.heroRoles)) window.currentTypingRoles = t.heroRoles;
+
+    languageButtons.forEach(btn => {
+        const span = btn.querySelector('.current-lang');
+        if (span) span.textContent = lang.toUpperCase();
+    });
+
+    document.documentElement.lang = lang;
+    localStorage.setItem('selected-language', lang);
+    window.__lang = lang;
 }
 
-// Initialize skills animation
-document.addEventListener('DOMContentLoaded', function() {
-    animateSkillsOnScroll();
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'en' ? 'fr' : 'en';
+    applyTranslations(currentLanguage);
+}
 
-    // Animate progress bars when they come into view
-    const progressBars = document.querySelectorAll('.skill-progress-fill');
+languageButtons.forEach(btn => btn.addEventListener('click', toggleLanguage));
+applyTranslations(currentLanguage);
 
-    const progressObserver = new IntersectionObserver((entries) => {
+/* ---------- Hero typing animation ---------- */
+const typingText = $('#typing-text');
+if (typingText) {
+    const fallback = ['Full Stack Developer', 'Web3 Enthusiast', 'UI/UX Designer', 'Problem Solver', 'Mobile App Developer'];
+    if (!Array.isArray(window.currentTypingRoles)) window.currentTypingRoles = fallback;
+
+    if (prefersReducedMotion) {
+        typingText.textContent = window.currentTypingRoles[0];
+    } else {
+        let roleIndex = 0, charIndex = 0, deleting = false;
+
+        const tick = () => {
+            const roles = window.currentTypingRoles;
+            const role = roles[roleIndex % roles.length];
+            charIndex += deleting ? -1 : 1;
+            typingText.textContent = role.slice(0, charIndex);
+
+            let delay = deleting ? 45 : 95;
+            if (!deleting && charIndex === role.length) { delay = 1900; deleting = true; }
+            else if (deleting && charIndex === 0) { deleting = false; roleIndex++; delay = 420; }
+            setTimeout(tick, delay);
+        };
+        tick();
+    }
+}
+
+/* ---------- Animated counters ---------- */
+const hero = $('.hero');
+if (hero) {
+    const renderStat = (el, value, suffix) =>
+        el.innerHTML = value + (suffix ? `<b>${suffix}</b>` : '');
+
+    const runCounters = () => {
+        $$('.stat__value', hero).forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            const suffix = el.getAttribute('data-suffix') || '';
+            if (prefersReducedMotion) { renderStat(el, target, suffix); return; }
+            const duration = 900;
+            const start = performance.now();
+            const step = (now) => {
+                const p = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - p, 4);
+                renderStat(el, Math.round(target * eased), p > 0.9 ? suffix : '');
+                if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    };
+    const statObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.style.width;
-                entry.target.style.width = '0%';
-                setTimeout(() => {
-                    entry.target.style.width = width;
-                }, 100);
-                progressObserver.unobserve(entry.target);
-            }
+            if (entry.isIntersecting) { runCounters(); statObs.disconnect(); }
+        });
+    }, { threshold: 0.4 });
+    statObs.observe(hero);
+}
+
+/* ---------- Skill bars ---------- */
+const skillBars = $$('.skill-bar__fill');
+if (skillBars.length) {
+    skillBars.forEach(bar => {
+        bar.dataset.target = bar.style.width || '0%';
+        if (!prefersReducedMotion) bar.style.width = '0%';
+    });
+    const barObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const bar = entry.target;
+            requestAnimationFrame(() => { bar.style.width = bar.dataset.target; });
+            barObs.unobserve(bar);
         });
     }, { threshold: 0.5 });
+    skillBars.forEach(bar => barObs.observe(bar));
+}
 
-    progressBars.forEach(bar => {
-        progressObserver.observe(bar);
+/* ---------- CV dropdown ---------- */
+const cv = $('[data-cv]');
+const cvToggle = $('[data-cv-toggle]');
+if (cv && cvToggle) {
+    cvToggle.addEventListener('click', () => {
+        const open = cv.classList.toggle('is-open');
+        cvToggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+        if (!cv.contains(e.target) && cv.classList.contains('is-open')) {
+            cv.classList.remove('is-open');
+            cvToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+/* ---------- Portfolio filter ---------- */
+const filterButtons = $$('.filter');
+const filterItems = $$('[data-filter-item]');
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const value = btn.dataset.filter;
+        filterItems.forEach(item => {
+            const show = value === 'all' || item.dataset.category === value;
+            item.hidden = !show;
+        });
     });
 });
 
-// Blog - Fetch Substack articles
-async function fetchSubstackArticles() {
-    const blogPostsList = document.getElementById('blog-posts-list');
-    const blogLoading = document.getElementById('blog-loading');
-    const blogError = document.getElementById('blog-error');
+/* ---------- Testimonials modal ---------- */
+const tModal = $('[data-modal-container]');
+if (tModal) {
+    const tImg = $('[data-modal-img]', tModal);
+    const tTitle = $('[data-modal-title]', tModal);
+    const tText = $('[data-modal-text]', tModal);
+    const toggleTModal = () => tModal.classList.toggle('active');
 
-    try {
-        // Use RSS2JSON API to convert RSS feed to JSON (handles CORS)
-        const rssUrl = 'https://cindanojonathan.substack.com/feed';
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=10`;
-
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        if (data.status !== 'ok') {
-            throw new Error('Failed to fetch articles');
-        }
-
-        // Hide loading, show posts
-        blogLoading.style.display = 'none';
-
-        // Clear existing content
-        blogPostsList.innerHTML = '';
-
-        // If no articles found
-        if (!data.items || data.items.length === 0) {
-            blogError.style.display = 'flex';
-            return;
-        }
-
-        // Create article cards
-        data.items.forEach(article => {
-            const articleItem = createBlogPostCard(article);
-            blogPostsList.appendChild(articleItem);
+    $$('[data-testimonials-item]').forEach(item => {
+        item.addEventListener('click', () => {
+            const avatar = $('[data-testimonials-avatar]', item);
+            if (avatar && tImg) { tImg.src = avatar.src; tImg.alt = avatar.alt; }
+            if (tTitle) tTitle.textContent = $('[data-testimonials-title]', item)?.textContent.trim() || '';
+            if (tText) tText.innerHTML = $('[data-testimonials-text]', item)?.innerHTML || '';
+            tModal.classList.add('active');
         });
+    });
+    $('[data-modal-close-btn]', tModal)?.addEventListener('click', toggleTModal);
+    $('[data-overlay]', tModal)?.addEventListener('click', toggleTModal);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') tModal.classList.remove('active');
+    });
+}
 
-    } catch (error) {
-        console.error('Error fetching Substack articles:', error);
-        blogLoading.style.display = 'none';
-        blogError.style.display = 'flex';
-    }
+/* ---------- Case study modals ---------- */
+const caseModals = $$('[data-case-study-modal]');
+const closeCaseModals = () => {
+    caseModals.forEach(m => m.classList.remove('active'));
+    document.body.style.overflow = '';
+};
+$$('[data-project]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const modal = document.getElementById(`${btn.dataset.project}-modal`);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+$$('[data-case-study-close]').forEach(btn => btn.addEventListener('click', closeCaseModals));
+$$('[data-case-study-overlay]').forEach(ov => ov.addEventListener('click', closeCaseModals));
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeCaseModals();
+});
+
+/* ---------- Contact form validation ---------- */
+const form = $('[data-form]');
+const formBtn = $('[data-form-btn]');
+if (form && formBtn) {
+    const sync = () => formBtn.toggleAttribute('disabled', !form.checkValidity());
+    form.addEventListener('input', sync);
+    sync();
+}
+
+/* ---------- Reveal on scroll ---------- */
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    $$('.section-head, .section-lead, .about-panel, .marquee, .testimonials, .resume-grid, .skills-grid, .filters, .contact-grid, .blog-grid')
+        .forEach(el => { el.classList.add('reveal'); revealObs.observe(el); });
+
+    $$('.project').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = `${Math.min(i, 5) * 45}ms`;
+        revealObs.observe(el);
+    });
+}
+
+/* ---------- Blog (Substack via rss2json) ---------- */
+const blogSection = $('#blog');
+let blogLoaded = false;
+
+function blogDate(dateStr) {
+    const d = new Date(dateStr);
+    const locale = (window.__lang === 'fr') ? 'fr-FR' : 'en-US';
+    return d.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 function createBlogPostCard(article) {
     const li = document.createElement('li');
     li.className = 'blog-post-item';
 
-    // Extract image from content or use thumbnail
     let imageUrl = article.thumbnail || article.enclosure?.link || '';
-
-    // If no image, try to extract from content
     if (!imageUrl && article.content) {
-        const imgMatch = article.content.match(/<img[^>]+src="([^">]+)"/);
-        if (imgMatch) {
-            imageUrl = imgMatch[1];
-        }
+        const m = article.content.match(/<img[^>]+src="([^">]+)"/);
+        if (m) imageUrl = m[1];
     }
 
-    // Format date
-    const publishDate = new Date(article.pubDate);
-    const formattedDate = publishDate.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
+    const tmp = document.createElement('div');
+    tmp.innerHTML = article.description || article.content || '';
+    const excerpt = tmp.textContent.trim().slice(0, 150).trim() + '…';
 
-    // Extract excerpt (remove HTML tags)
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = article.description || article.content || '';
-    const excerpt = tempDiv.textContent.trim().substring(0, 150) + '...';
+    const readLabel = (typeof translations !== 'undefined' && translations[window.__lang || 'en']?.readArticle) || 'Read article';
 
     li.innerHTML = `
         <a href="${article.link}" target="_blank" rel="noopener noreferrer" class="blog-post-link">
-            ${imageUrl ? `
-            <figure class="blog-post-banner">
-                <img src="${imageUrl}" alt="${article.title}" loading="lazy">
-            </figure>
-            ` : ''}
+            ${imageUrl ? `<figure class="blog-post-banner"><img src="${imageUrl}" alt="" loading="lazy"></figure>` : ''}
             <div class="blog-post-content">
                 <div class="blog-post-meta">
-                    <div class="blog-post-date">
+                    <span class="blog-post-date">
                         <ion-icon name="calendar-outline"></ion-icon>
-                        <time datetime="${article.pubDate}">${formattedDate}</time>
-                    </div>
+                        <time datetime="${article.pubDate}">${blogDate(article.pubDate)}</time>
+                    </span>
                 </div>
                 <h3 class="blog-post-title">${article.title}</h3>
                 <p class="blog-post-excerpt">${excerpt}</p>
-                <div class="blog-read-more">
-                    <span>Read article</span>
-                    <ion-icon name="arrow-forward-outline"></ion-icon>
-                </div>
+                <span class="blog-read-more">${readLabel} <ion-icon name="arrow-forward-outline"></ion-icon></span>
             </div>
-        </a>
-    `;
-
+        </a>`;
     return li;
 }
 
-// Load blog articles when blog page becomes active
-const blogPage = document.querySelector('[data-page="blog"]');
-let blogLoaded = false;
+async function fetchSubstackArticles() {
+    const list = $('#blog-posts-list');
+    const loading = $('#blog-loading');
+    const error = $('#blog-error');
+    try {
+        const rssUrl = 'https://cindanojonathan.substack.com/feed';
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=9`;
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error('feed error');
 
-// Observer to detect when blog page is shown
-const blogObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.target.classList.contains('active') && !blogLoaded) {
+        loading?.setAttribute('hidden', '');
+        list.innerHTML = '';
+        if (!data.items.length) { error?.removeAttribute('hidden'); return; }
+        data.items.forEach(article => list.appendChild(createBlogPostCard(article)));
+    } catch (err) {
+        console.warn('Blog: Substack feed unavailable, showing fallback —', err && err.message);
+        loading?.setAttribute('hidden', '');
+        error?.removeAttribute('hidden');
+    }
+}
+
+if (blogSection) {
+    const blogObs = new IntersectionObserver((entries) => {
+        if (blogLoaded) { blogObs.disconnect(); return; }
+        if (entries.some(e => e.isIntersecting)) {
             blogLoaded = true;
+            blogObs.disconnect();
             fetchSubstackArticles();
         }
-    });
-});
-
-if (blogPage) {
-    blogObserver.observe(blogPage, { attributes: true, attributeFilter: ['class'] });
-
-    // If blog is already active on page load, fetch immediately
-    if (blogPage.classList.contains('active')) {
-        blogLoaded = true;
-        fetchSubstackArticles();
-    }
+    }, { rootMargin: '200px' });
+    blogObs.observe(blogSection);
 }
 
-// Hero - Typing Animation
-const typingText = document.getElementById('typing-text');
-window.typingText = typingText;
-if (typingText) {
-    // Get initial texts from translations
-    const lang = localStorage.getItem('selected-language') || 'en';
-    window.currentTypingRoles = translations && translations[lang] ? translations[lang].heroRoles : [
-        'Full Stack Developer',
-        'Web3 Enthusiast',
-        'UI/UX Designer',
-        'Problem Solver',
-        'Mobile App Developer'
-    ];
+/* ---------- Footer year ---------- */
+$$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-
-    function type() {
-        const texts = window.currentTypingRoles;
-        const currentText = texts[textIndex];
-
-        if (isDeleting) {
-            typingText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typingText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
-
-        if (!isDeleting && charIndex === currentText.length) {
-            // Pause at end
-            typingSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 500;
-        }
-
-        setTimeout(type, typingSpeed);
-    }
-
-    // Start typing animation
-    type();
-}
-
-// Hero - Animated Counter for Statistics
-function animateCounter(element) {
-    const target = parseInt(element.getAttribute('data-target'));
-    const duration = 2000; // 2 seconds
-    const increment = target / (duration / 16); // 60fps
-    let current = 0;
-
-    const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-            element.textContent = Math.floor(current);
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    };
-
-    updateCounter();
-}
-
-// Observe when hero stats come into view
-const heroStats = document.querySelector('.hero-stats');
-if (heroStats) {
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    animateCounter(stat);
-                });
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    statsObserver.observe(heroStats);
-}
-
-// Hero CTA - Navigation
-const ctaButtons = document.querySelectorAll('[data-nav-to]');
-ctaButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetPage = btn.getAttribute('data-nav-to');
-
-        // Find the corresponding nav link and trigger click
-        const navLinks = document.querySelectorAll('[data-nav-link]');
-        navLinks.forEach(link => {
-            if (link.textContent.toLowerCase() === targetPage) {
-                link.click();
-            }
-        });
-    });
-});
-
-// Case Study Modals
-const caseStudyBtns = document.querySelectorAll('[data-project]');
-const caseStudyModals = document.querySelectorAll('[data-case-study-modal]');
-const caseStudyOverlays = document.querySelectorAll('[data-case-study-overlay]');
-const caseStudyCloseBtns = document.querySelectorAll('[data-case-study-close]');
-
-// Function to open case study modal
-const openCaseStudyModal = (projectName) => {
-    const modal = document.querySelector(`#${projectName}-modal`);
-    if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-};
-
-// Function to close case study modal
-const closeCaseStudyModal = () => {
-    caseStudyModals.forEach(modal => {
-        modal.classList.remove('active');
-    });
-    document.body.style.overflow = 'auto';
-};
-
-// Add click event to case study buttons
-caseStudyBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const projectName = btn.getAttribute('data-project');
-        openCaseStudyModal(projectName);
-    });
-});
-
-// Add click event to close buttons
-caseStudyCloseBtns.forEach(btn => {
-    btn.addEventListener('click', closeCaseStudyModal);
-});
-
-// Add click event to overlays
-caseStudyOverlays.forEach(overlay => {
-    overlay.addEventListener('click', closeCaseStudyModal);
-});
-
-// Close modal with ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeCaseStudyModal();
-    }
-});
-
-// Language Toggle functionality
-const languageButton = document.getElementById('language-button');
-const navbarLanguageButton = document.getElementById('navbar-language-button');
-let currentLanguage = localStorage.getItem('selected-language') || 'en';
-
-// Set initial language
-document.documentElement.lang = currentLanguage;
-updateLanguage(currentLanguage);
-updateLanguageButtonDisplay(currentLanguage);
-
-function updateLanguage(lang) {
-    if (!translations || !translations[lang]) return;
-
-    const t = translations[lang];
-
-    // Update all elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (t[key]) {
-            element.textContent = t[key];
-        }
-    });
-
-    // Update typing animation roles
-    if (window.typingText) {
-        window.currentTypingRoles = t.heroRoles;
-    }
-
-    // Update sidebar
-    const sidebarBtn = document.querySelector('[data-sidebar-btn] span');
-    if (sidebarBtn) {
-        const isExpanded = document.querySelector('[data-sidebar]').classList.contains('active');
-        sidebarBtn.textContent = isExpanded ? t.hideContacts : t.showContacts;
-    }
-
-    // Update contact labels
-    updateContactLabels(t);
-
-    // Update page titles and sections
-    updatePageContent(t);
-
-    // Update form placeholders
-    updateFormPlaceholders(t);
-
-    // Store current language
-    localStorage.setItem('selected-language', lang);
-    document.documentElement.lang = lang;
-}
-
-function updateContactLabels(t) {
-    const contactTitles = document.querySelectorAll('.contact-title');
-    const labels = ['email', 'phone', 'birthday', 'location'];
-    contactTitles.forEach((title, index) => {
-        if (labels[index]) {
-            title.textContent = t[labels[index]];
-        }
-    });
-
-    // Update download CV button (legacy support)
-    const downloadBtn = document.querySelector('.download-btn span');
-    if (downloadBtn) downloadBtn.textContent = t.downloadCV;
-
-    // Update CV selector button
-    const cvSelectorBtn = document.querySelector('.cv-selector-btn > span');
-    if (cvSelectorBtn) cvSelectorBtn.textContent = t.viewCV;
-}
-
-function updatePageContent(t) {
-    // Hero section
-    const heroGreeting = document.querySelector('.hero-greeting');
-    if (heroGreeting) heroGreeting.textContent = t.heroGreeting;
-
-    const heroDescription = document.querySelector('.hero-description');
-    if (heroDescription) heroDescription.textContent = t.heroDescription;
-
-    // CTA buttons
-    const ctaBtns = document.querySelectorAll('.cta-btn span');
-    if (ctaBtns[0]) ctaBtns[0].textContent = t.viewMyWork;
-    if (ctaBtns[1]) ctaBtns[1].textContent = t.getInTouch;
-
-    // Stats labels
-    const statLabels = document.querySelectorAll('.stat-label');
-    const stats = ['yearsExperience', 'projectsCompleted', 'happyClients', 'technologies'];
-    statLabels.forEach((label, index) => {
-        if (stats[index]) {
-            label.textContent = t[stats[index]];
-        }
-    });
-
-    // About section
-    const aboutTitle = document.querySelector('.about .article-title');
-    if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
-
-    const aboutTexts = document.querySelectorAll('.about-text p');
-    if (aboutTexts[0]) aboutTexts[0].textContent = t.aboutText1;
-    if (aboutTexts[1]) aboutTexts[1].textContent = t.aboutText2;
-
-    // Services section
-    const serviceTitle = document.querySelector('.service-title');
-    if (serviceTitle) serviceTitle.textContent = t.servicesTitle;
-
-    const serviceTitles = document.querySelectorAll('.service-item-title');
-    const serviceTexts = document.querySelectorAll('.service-item-text');
-    const services = [
-        { title: 'serviceWeb', text: 'serviceWebDesc' },
-        { title: 'serviceMobile', text: 'serviceMobileDesc' },
-        { title: 'serviceDesign', text: 'serviceDesignDesc' },
-        { title: 'serviceWeb3', text: 'serviceWeb3Desc' }
-    ];
-
-    services.forEach((service, index) => {
-        if (serviceTitles[index]) serviceTitles[index].textContent = t[service.title];
-        if (serviceTexts[index]) serviceTexts[index].textContent = t[service.text];
-    });
-
-    // Tech stack
-    const techStackTitle = document.querySelector('.tech-stack-title');
-    if (techStackTitle) techStackTitle.textContent = t.techStackTitle;
-
-    // Testimonials
-    const testimonialsTitle = document.querySelector('.testimonials-title');
-    if (testimonialsTitle) testimonialsTitle.textContent = t.testimonialsTitle;
-
-    const testimonialTitles = document.querySelectorAll('.testimonials-item-title');
-    if (testimonialTitles[0]) testimonialTitles[0].textContent = t.testimonial1Title;
-    if (testimonialTitles[1]) testimonialTitles[1].textContent = t.testimonial2Title;
-
-    const testimonialTexts = document.querySelectorAll('.testimonials-text p');
-    if (testimonialTexts[0]) testimonialTexts[0].textContent = t.testimonial1Text;
-    if (testimonialTexts[1]) testimonialTexts[1].textContent = t.testimonial2Text;
-
-    // Resume section
-    const resumeTitle = document.querySelector('.resume .article-title');
-    if (resumeTitle) resumeTitle.textContent = t.resumeTitle;
-
-    const educationTitle = document.querySelectorAll('.timeline .h3')[0];
-    const experienceTitle = document.querySelectorAll('.timeline .h3')[1];
-    if (educationTitle) educationTitle.textContent = t.educationTitle;
-    if (experienceTitle) experienceTitle.textContent = t.experienceTitle;
-
-    const skillsTitle = document.querySelector('.skills-title');
-    if (skillsTitle) skillsTitle.textContent = t.skillsTitle;
-
-    // Skills categories
-    const skillsCategoryTitles = document.querySelectorAll('.skills-category-title');
-    const categories = ['skillsFrontend', 'skillsBackend', 'skillsDatabase', 'skillsMobile', 'skillsDevOps', 'skillsWeb3', 'skillsProfessional'];
-    skillsCategoryTitles.forEach((title, index) => {
-        if (categories[index] && t[categories[index]]) {
-            // Keep the icon, only update text
-            const textNode = Array.from(title.childNodes).find(node => node.nodeType === Node.TEXT_NODE);
-            if (textNode) {
-                textNode.textContent = t[categories[index]];
-            } else {
-                title.append(document.createTextNode(t[categories[index]]));
-            }
-        }
-    });
-
-    // Portfolio section
-    const portfolioTitle = document.querySelector('.portfolio .article-title');
-    if (portfolioTitle) portfolioTitle.textContent = t.portfolioTitle;
-
-    // Update filter buttons
-    const filterButtons = document.querySelectorAll('[data-filter-btn]');
-    const filters = ['filterAll', 'filterCrypto', 'filterEcommerce', 'filterTools', 'filterAnime', 'filterVideo', 'filterProductivity'];
-    filterButtons.forEach((btn, index) => {
-        if (filters[index]) {
-            btn.textContent = t[filters[index]];
-        }
-    });
-
-    // Update select items
-    const selectItems = document.querySelectorAll('[data-select-item]');
-    selectItems.forEach((item, index) => {
-        if (filters[index]) {
-            item.textContent = t[filters[index]];
-        }
-    });
-
-    // Update select value
-    const selectValue = document.querySelector('[data-selecct-value]');
-    if (selectValue) selectValue.textContent = t.selectCategory;
-
-    // Contact section
-    const contactTitle = document.querySelector('.contact .article-title');
-    if (contactTitle) contactTitle.textContent = t.contactTitle;
-
-    const formTitle = document.querySelector('.form-title');
-    if (formTitle) formTitle.textContent = t.formTitle;
-
-    // Blog section
-    const blogTitle = document.querySelector('.blog .article-title');
-    if (blogTitle) blogTitle.textContent = t.blogTitle;
-
-    const blogLoading = document.querySelector('#blog-loading p');
-    if (blogLoading) blogLoading.textContent = t.blogLoading;
-
-    // Update "Present" text in timeline
-    const timelineSpans = document.querySelectorAll('.timeline-item span');
-    timelineSpans.forEach(span => {
-        if (span.textContent.includes('Present') || span.textContent.includes('Présent')) {
-            span.textContent = span.textContent.replace(/Present|Présent/, t.present);
-        }
-    });
-}
-
-function updateFormPlaceholders(t) {
-    const fullNameInput = document.querySelector('input[name="fullname"]');
-    const emailInput = document.querySelector('input[name="email"]');
-    const messageInput = document.querySelector('textarea[name="message"]');
-    const sendBtn = document.querySelector('.form-btn span');
-
-    if (fullNameInput) fullNameInput.placeholder = t.fullName;
-    if (emailInput) emailInput.placeholder = t.emailAddress;
-    if (messageInput) messageInput.placeholder = t.yourMessage;
-    if (sendBtn) sendBtn.textContent = t.sendMessage;
-}
-
-function updateLanguageButtonDisplay(lang) {
-    const currentLangElements = document.querySelectorAll('.current-lang');
-    const otherLangElements = document.querySelectorAll('.other-lang');
-
-    currentLangElements.forEach(el => {
-        el.textContent = lang.toUpperCase();
-    });
-
-    otherLangElements.forEach(el => {
-        el.textContent = lang === 'en' ? 'FR' : 'EN';
-    });
-}
-
-function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'fr' : 'en';
-    updateLanguage(currentLanguage);
-    updateLanguageButtonDisplay(currentLanguage);
-}
-
-// Add event listeners to both language buttons
-if (languageButton) {
-    languageButton.addEventListener('click', toggleLanguage);
-}
-
-if (navbarLanguageButton) {
-    navbarLanguageButton.addEventListener('click', toggleLanguage);
-}
-
-// Update sidebar button text when toggled
-const sidebarBtnElement = document.querySelector('[data-sidebar-btn]');
-if (sidebarBtnElement) {
-    sidebarBtnElement.addEventListener('click', function() {
-        setTimeout(() => {
-            const t = translations[currentLanguage];
-            const isExpanded = document.querySelector('[data-sidebar]').classList.contains('active');
-            const btnText = this.querySelector('span');
-            if (btnText && t) {
-                btnText.textContent = isExpanded ? t.hideContacts : t.showContacts;
-            }
-        }, 10);
-    });
-}
-
-// Service Worker Registration
+/* ---------- Service worker ---------- */
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('Service Worker registered successfully:', registration.scope);
-            })
-            .catch((error) => {
-                console.log('Service Worker registration failed:', error);
-            });
+        navigator.serviceWorker.register('/sw.js').catch(() => { /* offline support optional */ });
     });
 }
