@@ -11,10 +11,10 @@
 
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Jonathan Cindano - Full Stack Developer specializing in React, Node.js, Web3, and modern web technologies. View my portfolio of projects."/>
-    <meta name="keywords" content="Full Stack Developer, React, Node.js, Web3, Blockchain, JavaScript, TypeScript, Portfolio, Lyon, France"/>
+    <meta name="description" content="Jonathan Cindano - Full Stack Developer specializing in Spring Boot, Quarkus, React, Node.js and Web3. Explore selected work, résumé and writing."/>
+    <meta name="keywords" content="Full Stack Developer, Spring Boot, Quarkus, React, Node.js, Web3, Blockchain, JavaScript, TypeScript, Portfolio, Lyon, France"/>
     <meta name="author" content="Jonathan Cindano"/>
-    <meta name="theme-color" content="#FFC600"/>
+    <meta name="theme-color" content="#10b981"/>
 
     <!--==================== SEO ====================-->
     <link rel="canonical" href="https://snooker4real.github.io/"/>
@@ -22,19 +22,19 @@
     <!--==================== OPEN GRAPH / FACEBOOK ====================-->
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://snooker4real.github.io/"/>
-    <meta property="og:title" content="Jonathan Cindano - Full Stack Developer | Spring Boot, React, Node.js, Web3"/>
-    <meta property="og:description" content="Full Stack Developer with 5+ years of experience specializing in React, Node.js, Web3, and modern web technologies. Building innovative digital solutions in Lyon, France."/>
+    <meta property="og:title" content="Jonathan Cindano - Full Stack Developer | Spring Boot, Quarkus, React, Web3"/>
+    <meta property="og:description" content="Full Stack Developer with 5+ years of experience specializing in Spring Boot, Quarkus, React, Node.js and Web3. Building innovative digital solutions in Lyon, France."/>
     <meta property="og:image" content="https://snooker4real.github.io/assets/img/perfil.png"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
-    <meta property="og:locale" content="fr_FR"/>
+    <meta property="og:locale" content="en_US"/>
     <meta property="og:site_name" content="Jonathan Cindano Portfolio"/>
 
     <!--==================== TWITTER CARD ====================-->
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:url" content="https://snooker4real.github.io/"/>
-    <meta name="twitter:title" content="Jonathan Cindano - Full Stack Developer | Spring Boot, React, Node.js, Web3"/>
-    <meta name="twitter:description" content="Full Stack Developer with 5+ years of experience specializing in React, Node.js, Web3, and modern web technologies. Building innovative digital solutions."/>
+    <meta name="twitter:title" content="Jonathan Cindano - Full Stack Developer"/>
+    <meta name="twitter:description" content="Full Stack Developer with 5+ years of experience specializing in Spring Boot, Quarkus, React, Node.js and Web3."/>
     <meta name="twitter:image" content="https://snooker4real.github.io/assets/img/perfil.png"/>
 
     <!--==================== PWA ====================-->
@@ -43,6 +43,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
     <meta name="apple-mobile-web-app-title" content="JC Portfolio"/>
+
+    <!--==================== FONTS ====================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!--==================== UNICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
@@ -57,7 +62,7 @@
     <!--==================== TRANSLATIONS ====================-->
     <script src="./assets/js/translations.js"></script>
 
-    <title>Jonathan Cindano - Full Stack Developer | Spring Boot, React, Node.js, Web3 Portfolio</title>
+    <title>Jonathan Cindano - Full Stack Developer | Spring Boot, Quarkus, React, Web3 Portfolio</title>
 
     <!--==================== LOGO ====================-->
     <link rel="shortcut icon" href="./assets/img/CJ.png" type="image/x-icon"/>
@@ -68,1466 +73,768 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!--
-  - #MAIN
--->
+<a class="skip-link" href="#about">Skip to content</a>
+
+<!--==================== HEADER ====================-->
+<header class="site-header" data-header>
+    <div class="wrap site-header__inner">
+        <a href="#about" class="brand" aria-label="Jonathan Cindano — home">
+            <span class="brand__mark">JC</span>
+            <span class="brand__name">Jonathan&nbsp;Cindano</span>
+        </a>
+
+        <nav class="site-nav" id="site-nav" data-nav>
+            <a href="#about" class="site-nav__link" data-nav-link data-i18n="navAbout">About</a>
+            <a href="#resume" class="site-nav__link" data-nav-link data-i18n="navResume">Resume</a>
+            <a href="#portfolio" class="site-nav__link" data-nav-link data-i18n="navPortfolio">Work</a>
+            <a href="#contact" class="site-nav__link" data-nav-link data-i18n="navContact">Contact</a>
+            <a href="#blog" class="site-nav__link" data-nav-link data-i18n="navBlog">Blog</a>
+        </nav>
+
+        <div class="site-header__actions">
+            <button class="icon-btn lang-btn" id="language-button" type="button"
+                    aria-label="Switch language" data-i18n-aria="toggleLang">
+                <ion-icon name="language-outline"></ion-icon>
+                <span class="current-lang">EN</span>
+            </button>
+            <button class="icon-btn" id="theme-button" type="button"
+                    aria-label="Toggle theme" data-i18n-aria="toggleTheme">
+                <ion-icon name="moon-outline" class="ico-moon"></ion-icon>
+                <ion-icon name="sunny-outline" class="ico-sun"></ion-icon>
+            </button>
+            <button class="icon-btn nav-toggle" id="nav-toggle" type="button"
+                    aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                <ion-icon name="menu-outline" class="ico-open"></ion-icon>
+                <ion-icon name="close-outline" class="ico-close"></ion-icon>
+            </button>
+        </div>
+    </div>
+    <div class="site-header__progress" data-progress></div>
+</header>
 
 <main>
 
-    <!--
-      - #SIDEBAR
-    -->
+    <!--==================== ABOUT / HERO ====================-->
+    <section id="about" class="section section--about">
+        <div class="wrap">
 
-    <aside class="sidebar" data-sidebar>
+            <div class="hero">
+                <!-- hero main -->
+                <div class="hero__main">
+                    <article class="tile tile--intro">
+                        <p class="kicker" data-i18n="heroKicker">Full Stack Developer · Lyon, France</p>
+                        <h1 class="hero__name" data-i18n="heroGreeting">Jonathan Cindano</h1>
+                        <p class="hero__typing">
+                            <span class="prompt mono">&gt;</span>
+                            <span id="typing-text"></span><span class="caret" aria-hidden="true"></span>
+                        </p>
+                        <p class="hero__desc" data-i18n="heroDescription">
+                            5+ years turning complex problems into simple, fast and intuitive products —
+                            from Spring Boot &amp; Quarkus backends to React web and mobile apps.
+                        </p>
+                        <div class="hero__cta">
+                            <a href="#portfolio" class="btn btn--primary" data-i18n="viewMyWork">View my work</a>
+                            <a href="#contact" class="btn btn--ghost" data-i18n="getInTouch">Get in touch</a>
+                        </div>
+                    </article>
 
-        <div class="sidebar-info">
+                    <article class="tile tile--portrait">
+                        <img src="./assets/img/perfil.png" alt="Portrait of Jonathan Cindano" width="480" height="480" loading="eager">
+                        <div class="portrait__meta">
+                            <span class="tag">@snooker4real</span>
+                            <span class="live" data-i18n="heroOpen">Open to work</span>
+                        </div>
+                    </article>
+                </div>
 
-            <figure class="avatar-box">
-                <img src="./assets/img/perfil.png" alt="Jonathan Cindano" width="80">
-            </figure>
+                <!-- metrics -->
+                <div class="hero__metrics">
+                    <article class="tile stat">
+                        <span class="stat__value" data-target="5">0</span>
+                        <span class="stat__label" data-i18n="yearsExperience">Years experience</span>
+                    </article>
+                    <article class="tile stat">
+                        <span class="stat__value" data-target="50" data-suffix="+">0</span>
+                        <span class="stat__label" data-i18n="projectsCompleted">Projects shipped</span>
+                    </article>
+                    <article class="tile stat">
+                        <span class="stat__value" data-target="30" data-suffix="+">0</span>
+                        <span class="stat__label" data-i18n="happyClients">Happy clients</span>
+                    </article>
+                    <article class="tile stat">
+                        <span class="stat__value" data-target="15" data-suffix="+">0</span>
+                        <span class="stat__label" data-i18n="technologies">Technologies</span>
+                    </article>
+                </div>
 
-            <div class="info-content">
-                <h1 class="name" title="Jonathan Cindano">Jonathan Cindano</h1>
-                <p class="title">Full Stack Developer</p>
+                <!-- meta -->
+                <div class="hero__meta">
+                    <article class="tile tile--status">
+                        <span class="status__line">
+                            <span class="dot"></span>
+                            <span data-i18n="heroAvailable">Available for freelance &amp; full-time</span>
+                        </span>
+                        <span class="status__sub" data-i18n="heroBased">Based in Lyon, France · CET timezone</span>
+                        <ul class="social-inline">
+                            <li><a href="https://www.linkedin.com/in/jonathan-c-7298b2133/" target="_blank" rel="noopener" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                            <li><a href="https://github.com/Snooker4Real" target="_blank" rel="noopener" aria-label="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
+                            <li><a href="https://www.facebook.com/TheRealSnooker/" target="_blank" rel="noopener" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                            <li><a href="https://cindanojonathan.substack.com/" target="_blank" rel="noopener" aria-label="Substack"><ion-icon name="newspaper-outline"></ion-icon></a></li>
+                        </ul>
+                    </article>
+
+                    <article class="tile tile--cv" data-cv>
+                        <button class="cv__trigger" type="button" data-cv-toggle aria-expanded="false">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span data-i18n="viewCV">View / download CV</span>
+                            <ion-icon name="chevron-down" class="cv__chevron"></ion-icon>
+                        </button>
+                        <div class="cv__menu" data-cv-menu>
+                            <div class="cv__row">
+                                <span class="cv__label"><ion-icon name="layers-outline"></ion-icon><span data-i18n="cvFullstack">Full Stack Developer</span></span>
+                                <span class="cv__actions">
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_FULLSTACK_DEV.pdf" target="_blank" rel="noopener" aria-label="View CV"><ion-icon name="eye-outline"></ion-icon></a>
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_FULLSTACK_DEV.pdf" download aria-label="Download CV"><ion-icon name="download-outline"></ion-icon></a>
+                                </span>
+                            </div>
+                            <div class="cv__row">
+                                <span class="cv__label"><ion-icon name="code-slash-outline"></ion-icon><span data-i18n="cvWeb">Web Developer</span></span>
+                                <span class="cv__actions">
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" target="_blank" rel="noopener" aria-label="View CV"><ion-icon name="eye-outline"></ion-icon></a>
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" download aria-label="Download CV"><ion-icon name="download-outline"></ion-icon></a>
+                                </span>
+                            </div>
+                            <div class="cv__row">
+                                <span class="cv__label"><ion-icon name="server-outline"></ion-icon><span data-i18n="cvBackend">Backend Developer</span></span>
+                                <span class="cv__actions">
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" target="_blank" rel="noopener" aria-label="View CV"><ion-icon name="eye-outline"></ion-icon></a>
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" download aria-label="Download CV"><ion-icon name="download-outline"></ion-icon></a>
+                                </span>
+                            </div>
+                            <div class="cv__row">
+                                <span class="cv__label"><ion-icon name="phone-portrait-outline"></ion-icon><span data-i18n="cvMobile">Mobile Developer</span></span>
+                                <span class="cv__actions">
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" target="_blank" rel="noopener" aria-label="View CV"><ion-icon name="eye-outline"></ion-icon></a>
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" download aria-label="Download CV"><ion-icon name="download-outline"></ion-icon></a>
+                                </span>
+                            </div>
+                            <div class="cv__row">
+                                <span class="cv__label"><ion-icon name="construct-outline"></ion-icon><span data-i18n="cvDevOps">DevOps Engineer</span></span>
+                                <span class="cv__actions">
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" target="_blank" rel="noopener" aria-label="View CV"><ion-icon name="eye-outline"></ion-icon></a>
+                                    <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" download aria-label="Download CV"><ion-icon name="download-outline"></ion-icon></a>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
 
-            <button class="info_more-btn" data-sidebar-btn>
-                <span>Show Contacts</span>
-                <ion-icon name="chevron-down"></ion-icon>
-            </button>
-
-        </div>
-
-        <div class="sidebar-info_more">
-
-            <div class="separator"></div>
-
-            <ul class="contacts-list">
-
-                <li class="contact-item">
-                    <div class="icon-box">
-                        <ion-icon name="mail-outline"></ion-icon>
+            <!-- About text -->
+            <div class="block">
+                <div class="section-head">
+                    <span class="section-head__num">01</span>
+                    <h2 class="section-head__title" data-i18n="aboutTitle">About me</h2>
+                    <span class="section-head__meta" data-i18n="sectionAbout">About</span>
+                </div>
+                <div class="panel about-panel">
+                    <div class="about-panel__img">
+                        <img src="./assets/img/about.jpg" alt="Jonathan at work" loading="lazy">
                     </div>
-                    <div class="contact-info">
-                        <p class="contact-title">Email</p>
-                        <a href="mailto:cindanojonathan@icloud.com" class="contact-link">cindanojonathan@icloud.com</a>
-                    </div>
-                </li>
-
-                <li class="contact-item">
-                    <div class="icon-box">
-                        <ion-icon name="phone-portrait-outline"></ion-icon>
-                    </div>
-                    <div class="contact-info">
-                        <p class="contact-title">Phone</p>
-                        <a href="tel:+33758916877" class="contact-link">+33 7 58 91 68 77</a>
-                    </div>
-                </li>
-
-                <li class="contact-item">
-                    <div class="icon-box">
-                        <ion-icon name="calendar-outline"></ion-icon>
-                    </div>
-                    <div class="contact-info">
-                        <p class="contact-title">Birthday</p>
-                        <time datetime="1999-08-05">August 5, 1999</time>
-                    </div>
-                </li>
-
-                <li class="contact-item">
-                    <div class="icon-box">
-                        <ion-icon name="location-outline"></ion-icon>
-                    </div>
-                    <div class="contact-info">
-                        <p class="contact-title">Location</p>
-                        <address>Lyon, France</address>
-                    </div>
-                </li>
-
-            </ul>
-
-            <div class="separator"></div>
-
-            <!-- CV Selector -->
-            <div class="cv-selector">
-                <button class="cv-selector-btn" data-cv-toggle>
-                    <div class="icon-box">
-                        <ion-icon name="document-text-outline"></ion-icon>
-                    </div>
-                    <span data-i18n="viewCV">View / Download CV</span>
-                    <ion-icon name="chevron-down" class="cv-chevron"></ion-icon>
-                </button>
-                <div class="cv-dropdown" data-cv-dropdown>
-                    <div class="cv-dropdown-item">
-                        <span class="cv-type">
-                            <ion-icon name="code-slash-outline"></ion-icon>
-                            Web Developer
-                        </span>
-                        <div class="cv-actions">
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
-                                <ion-icon name="eye-outline"></ion-icon>
-                            </a>
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" download class="cv-action-btn" title="Download">
-                                <ion-icon name="download-outline"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cv-dropdown-item">
-                        <span class="cv-type">
-                            <ion-icon name="server-outline"></ion-icon>
-                            Backend Developer
-                        </span>
-                        <div class="cv-actions">
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
-                                <ion-icon name="eye-outline"></ion-icon>
-                            </a>
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" download class="cv-action-btn" title="Download">
-                                <ion-icon name="download-outline"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cv-dropdown-item">
-                        <span class="cv-type">
-                            <ion-icon name="phone-portrait-outline"></ion-icon>
-                            Mobile Developer
-                        </span>
-                        <div class="cv-actions">
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
-                                <ion-icon name="eye-outline"></ion-icon>
-                            </a>
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" download class="cv-action-btn" title="Download">
-                                <ion-icon name="download-outline"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="cv-dropdown-item">
-                        <span class="cv-type">
-                            <ion-icon name="construct-outline"></ion-icon>
-                            DevOps Engineer
-                        </span>
-                        <div class="cv-actions">
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" target="_blank" class="cv-action-btn" title="View">
-                                <ion-icon name="eye-outline"></ion-icon>
-                            </a>
-                            <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" download class="cv-action-btn" title="Download">
-                                <ion-icon name="download-outline"></ion-icon>
-                            </a>
-                        </div>
+                    <div class="about-panel__text">
+                        <p data-i18n="aboutText1">My job is to build your application so it is functional and user-friendly, but also attractive. I add a personal touch to your product and make sure it is eye-catching and easy to use.</p>
+                        <p data-i18n="aboutText2">My aim is to bring across your message and identity in the most creative way, leveraging modern technologies and best practices to deliver exceptional digital experiences.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="separator"></div>
-
-            <ul class="social-list">
-                <li class="social-item">
-                    <a href="https://www.linkedin.com/in/jonathan-c-7298b2133/" target="_blank" class="social-link">
-                        <ion-icon name="logo-linkedin"></ion-icon>
-                    </a>
-                </li>
-                <li class="social-item">
-                    <a href="https://github.com/Snooker4Real" target="_blank" class="social-link">
-                        <ion-icon name="logo-github"></ion-icon>
-                    </a>
-                </li>
-                <li class="social-item">
-                    <a href="https://www.facebook.com/TheRealSnooker/" target="_blank" class="social-link">
-                        <ion-icon name="logo-facebook"></ion-icon>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="separator"></div>
-
-            <!-- Theme Toggle Button -->
-            <div class="theme-toggle-wrapper">
-                <button class="theme-toggle-btn" id="theme-button" title="Toggle dark/light mode">
-                    <ion-icon name="moon-outline" class="uil-moon"></ion-icon>
-                    <ion-icon name="sunny-outline" class="uil-sun"></ion-icon>
-                    <span class="theme-text" data-i18n="theme">Theme</span>
-                </button>
+            <!-- Services -->
+            <div class="block">
+                <h3 class="block__title" data-i18n="servicesTitle">What I'm doing</h3>
+                <div class="services">
+                    <article class="tile service">
+                        <span class="service__icon"><img src="./assets/img/icon-dev.svg" alt="" width="26" height="26" loading="lazy"></span>
+                        <h4 class="service__title" data-i18n="serviceWeb">Web Development</h4>
+                        <p class="service__text" data-i18n="serviceWebDesc">High-quality development of websites at the professional level.</p>
+                    </article>
+                    <article class="tile service">
+                        <span class="service__icon"><img src="./assets/img/icon-app.svg" alt="" width="26" height="26" loading="lazy"></span>
+                        <h4 class="service__title" data-i18n="serviceMobile">Mobile Apps</h4>
+                        <p class="service__text" data-i18n="serviceMobileDesc">Professional development of applications for iOS and Android.</p>
+                    </article>
+                    <article class="tile service">
+                        <span class="service__icon"><img src="./assets/img/icon-design.svg" alt="" width="26" height="26" loading="lazy"></span>
+                        <h4 class="service__title" data-i18n="serviceDesign">Web Design</h4>
+                        <p class="service__text" data-i18n="serviceDesignDesc">Modern, high-quality design made at a professional level.</p>
+                    </article>
+                    <article class="tile service">
+                        <span class="service__icon"><img src="./assets/img/icon-btc.svg" alt="" width="26" height="26" loading="lazy"></span>
+                        <h4 class="service__title" data-i18n="serviceWeb3">Web3 &amp; Blockchain</h4>
+                        <p class="service__text" data-i18n="serviceWeb3Desc">Smart contracts and decentralized applications development.</p>
+                    </article>
+                </div>
             </div>
 
-            <div class="separator"></div>
-
-            <!-- Language Toggle Button -->
-            <div class="language-toggle-wrapper">
-                <button class="language-toggle-btn" id="language-button" title="Switch language / Changer de langue">
-                    <ion-icon name="language-outline"></ion-icon>
-                    <span class="language-text"><span class="current-lang">EN</span> / <span class="other-lang">FR</span></span>
-                </button>
-            </div>
-
-        </div>
-
-    </aside>
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-        <!--
-          - #NAVBAR
-        -->
-
-        <nav class="navbar">
-            <ul class="navbar-list">
-                <li class="navbar-item">
-                    <button class="navbar-link active" data-nav-link data-i18n="navAbout">About</button>
-                </li>
-                <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link data-i18n="navResume">Resume</button>
-                </li>
-                <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link data-i18n="navPortfolio">Portfolio</button>
-                </li>
-                <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link data-i18n="navContact">Contact</button>
-                </li>
-                <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link data-i18n="navBlog">Blog</button>
-                </li>
-                <li class="navbar-item navbar-language">
-                    <button class="navbar-language-btn" id="navbar-language-button" title="Switch language / Changer de langue">
-                        <ion-icon name="language-outline"></ion-icon>
-                        <span class="navbar-lang-text"><span class="current-lang">EN</span></span>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-
-        <!--
-          - #ABOUT
-        -->
-
-        <article class="about active" data-page="about">
-            <!--
-              - #HERO SECTION
-            -->
-            <section class="hero-section">
-                <div class="hero-content">
-                    <h1 class="hero-title">
-                        <span class="hero-greeting">Hi, I'm Jonathan Cindano</span>
-                        <span class="hero-typing-wrapper">
-          <span class="hero-typing-text" id="typing-text"></span>
-          <span class="hero-cursor">|</span>
-        </span>
-                    </h1>
-                    <p class="hero-description">
-                        Full Stack Developer with 5+ years of experience, specializing in web development and software technologies.
-                        I turn complex problems into simple, beautiful and intuitive solutions.
-                    </p>
-
-                    <div class="hero-cta">
-                        <a href="#projects" class="cta-btn primary-cta" data-nav-to="portfolio">
-                            <ion-icon name="briefcase-outline"></ion-icon>
-                            <span>View My Work</span>
-                        </a>
-                        <a href="#contact" class="cta-btn secondary-cta" data-nav-to="contact">
-                            <ion-icon name="mail-outline"></ion-icon>
-                            <span>Get In Touch</span>
-                        </a>
+            <!-- Tech marquee -->
+            <div class="block">
+                <h3 class="block__title" data-i18n="techStackTitle">Technologies I work with</h3>
+                <div class="marquee" data-marquee>
+                    <div class="marquee__row">
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="">TypeScript</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="">Vue.js</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="">Angular</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="">Sass</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="">iOS</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="">Android</span>
                     </div>
-
-                    <!-- Statistics -->
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="5">0</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="50">0</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="30">0</span>
-                            <span class="stat-label">Happy Clients</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-target="15">0</span>
-                            <span class="stat-label">Technologies</span>
-                        </div>
+                    <div class="marquee__row marquee__row--rev">
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="">Java</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="">Spring Boot</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/quarkus/quarkus-original.svg" alt="">Quarkus</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Node.js</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="">PostgreSQL</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="">Docker</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="">Kubernetes</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</span>
+                        <span class="marquee__item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="">Firebase</span>
+                        <span class="marquee__item"><img src="https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg" alt="">Bitcoin</span>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <header>
-                <h2 class="h2 article-title">About me</h2>
-            </header>
-
-            <section class="about-text">
-                <p>
-                    My job is to build your application so that it is functional and user-friendly but at the same time attractive.
-                    I add a personal touch to your product and make sure that it is eye-catching and easy to use.
-                </p>
-                <p>
-                    My aim is to bring across your message and identity in the most creative way, leveraging modern technologies
-                    and best practices to deliver exceptional digital experiences.
-                </p>
-            </section>
-
-            <!--
-              - service
-            -->
-            <section class="service">
-                <h3 class="h3 service-title">What I'm doing</h3>
-                <ul class="service-list">
-                    <li class="service-item">
-                        <div class="service-icon-box">
-                            <img src="./assets/img/icon-dev.svg" alt="Web development icon" width="40">
-                        </div>
-                        <div class="service-content-box">
-                            <h4 class="h4 service-item-title">Web Development</h4>
-                            <p class="service-item-text">High-quality development of websites at the professional level.</p>
-                        </div>
-                    </li>
-
-                    <li class="service-item">
-                        <div class="service-icon-box">
-                            <img src="./assets/img/icon-app.svg" alt="mobile app icon" width="40">
-                        </div>
-                        <div class="service-content-box">
-                            <h4 class="h4 service-item-title">Mobile Apps</h4>
-                            <p class="service-item-text">Professional development of applications for iOS and Android.</p>
-                        </div>
-                    </li>
-
-                    <li class="service-item">
-                        <div class="service-icon-box">
-                            <img src="./assets/img/icon-design.svg" alt="design icon" width="40">
-                        </div>
-                        <div class="service-content-box">
-                            <h4 class="h4 service-item-title">Web Design</h4>
-                            <p class="service-item-text">The most modern and high-quality design made at a professional level.</p>
-                        </div>
-                    </li>
-
-                    <li class="service-item">
-                        <div class="service-icon-box">
-                            <img src="assets/img/icon-btc.svg" alt="camera icon" width="40">
-                        </div>
-                        <div class="service-content-box">
-                            <h4 class="h4 service-item-title">Web3 & Blockchain</h4>
-                            <p class="service-item-text">Smart contracts and decentralized applications development.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <!--
-              - technologies
-            -->
-            <section class="tech-stack">
-                <h3 class="h3 tech-stack-title">Technologies I Work With</h3>
-                <ul class="tech-list">
-                    <!-- Frontend -->
-                    <li class="tech-item" data-tooltip="React">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="tech-logo">
-                        </div>
-                        <span class="tech-name">React</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="JavaScript">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="tech-logo">
-                        </div>
-                        <span class="tech-name">JavaScript</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Vue.js">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Vue.js</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Angular">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Angular</span>
-                    </li>
-
-                    <!-- Backend -->
-                    <li class="tech-item" data-tooltip="Java">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Java</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Spring Boot">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Spring Boot</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Quarkus">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/quarkus/quarkus-original.svg" alt="Quarkus" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Quarkus</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Python">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Python</span>
-                    </li>
-
-                    <!-- Database & Cloud -->
-                    <li class="tech-item" data-tooltip="Firebase">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Firebase</span>
-                    </li>
-
-                    <!-- DevOps -->
-                    <li class="tech-item" data-tooltip="Docker">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Docker</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Git">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Git</span>
-                    </li>
-
-                    <!-- CSS Frameworks -->
-                    <li class="tech-item" data-tooltip="Sass">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt="Sass" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Sass</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="CSS3">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="tech-logo">
-                        </div>
-                        <span class="tech-name">CSS3</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="HTML5">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="tech-logo">
-                        </div>
-                        <span class="tech-name">HTML5</span>
-                    </li>
-
-                    <!-- Web3 -->
-                    <li class="tech-item" data-tooltip="Bitcoin">
-                        <div class="tech-icon-box">
-                            <img src="https://www.vectorlogo.zone/logos/bitcoin/bitcoin-icon.svg" alt="Bitcoin" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Bitcoin</span>
-                    </li>
-
-                    <!-- Mobile -->
-                    <li class="tech-item" data-tooltip="iOS">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS" class="tech-logo">
-                        </div>
-                        <span class="tech-name">iOS</span>
-                    </li>
-
-                    <li class="tech-item" data-tooltip="Android">
-                        <div class="tech-icon-box">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" class="tech-logo">
-                        </div>
-                        <span class="tech-name">Android</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!--
-              - testimonials
-            -->
-            <section class="testimonials">
-                <h3 class="h3 testimonials-title">Testimonials</h3>
-                <ul class="testimonials-list has-scrollbar">
-                    <li class="testimonials-item">
-                        <div class="content-card" data-testimonials-item>
-                            <figure class="testimonials-avatar-box">
-                                <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="100" data-testimonials-avatar>
-                            </figure>
-                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Client Review</h4>
-                            <div class="testimonials-text" data-testimonials-text>
-                                <p>
-                                    Jonathan was hired to create a corporate identity. We were very pleased with the work done.
-                                    He has a lot of experience and is very concerned about the needs of client.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="testimonials-item">
-                        <div class="content-card" data-testimonials-item>
-                            <figure class="testimonials-avatar-box">
-                                <img src="./assets/img/avatar-2.png" alt="Jessica miller" width="100" data-testimonials-avatar>
-                            </figure>
-                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Project Partner</h4>
-                            <div class="testimonials-text" data-testimonials-text>
-                                <p>
-                                    Jonathan delivered exceptional work on our web application.
-                                    His attention to detail and technical expertise made the project a great success.
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-            <!--
-              - testimonials modal
-            -->
-            <div class="modal-container" data-modal-container>
-                <div class="overlay" data-overlay></div>
-                <section class="testimonials-modal">
-                    <button class="modal-close-btn" data-modal-close-btn>
-                        <ion-icon name="close-outline"></ion-icon>
-                    </button>
-                    <div class="modal-img-wrapper">
-                        <figure class="modal-avatar-box">
-                            <img src="./assets/img/avatar-1.png" alt="Daniel lewis" width="100" data-modal-img>
+            <!-- Testimonials -->
+            <div class="block">
+                <h3 class="block__title" data-i18n="testimonialsTitle">Testimonials</h3>
+                <div class="testimonials">
+                    <button class="tile testimonial" type="button" data-testimonials-item>
+                        <figure class="testimonial__avatar">
+                            <img src="./assets/img/avatar-1.png" alt="Client" width="64" height="64" data-testimonials-avatar>
                         </figure>
-                        <img src="./assets/img/icon-quote.svg" alt="quote icon">
-                    </div>
-                    <div class="modal-content">
-                        <h4 class="h3 modal-title" data-modal-title>Client Review</h4>
-                        <time datetime="2021-06-14">14 June, 2021</time>
-                        <div data-modal-text>
-                            <p>
-                                Jonathan was hired to create a corporate identity.
-                                We were very pleased with the work done. He has a lot of experience
-                                and is very concerned about the needs of client.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </article>
-
-
-        <!--
-          - #RESUME
-        -->
-
-        <article class="resume" data-page="resume">
-            <header>
-                <h2 class="h2 article-title">Resume</h2>
-            </header>
-
-            <section class="timeline">
-                <div class="title-wrapper">
-                    <div class="icon-box">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </div>
-                    <h3 class="h3">Education</h3>
-                </div>
-
-                <ol class="timeline-list">
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Computer Science</h4>
-                        <span>2021</span>
-                        <p class="timeline-text">
-                            Lyon - Human Booster
-                        </p>
-                    </li>
-
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Computer Engineer</h4>
-                        <span>2019 — 2021</span>
-                        <p class="timeline-text">
-                            Lyon II - University
-                        </p>
-                    </li>
-
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Physics Technology & Industrial Engineering</h4>
-                        <span>2017 — 2019</span>
-                        <p class="timeline-text">
-                            Lille - Lycée Gustave Eiffel
-                        </p>
-                    </li>
-                </ol>
-            </section>
-
-            <section class="timeline">
-                <div class="title-wrapper">
-                    <div class="icon-box">
-                        <ion-icon name="book-outline"></ion-icon>
-                    </div>
-                    <h3 class="h3">Experience</h3>
-                </div>
-
-                <ol class="timeline-list">
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Backend Developer - Quarkus & Kubernetes</h4>
-                        <span>2026 — Present</span>
-                        <p class="timeline-text">
-                            Scalian (ESN) - Orange Wholesale France (OWF)
-                        </p>
-                    </li>
-
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Java Developer</h4>
-                        <span>2023 — 2026</span>
-                        <p class="timeline-text">
-                            Lyon 3e - Fiducial Informatique
-                        </p>
-                    </li>
-
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Software Engineering</h4>
-                        <span>2021 — 2023</span>
-                        <p class="timeline-text">
-                            Lyon 9e - CGI
-                        </p>
-                    </li>
-
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">CMS Developer</h4>
-                        <span>2019 — 2021</span>
-                        <p class="timeline-text">
-                            Lyon - Lidency Media
-                        </p>
-                    </li>
-                </ol>
-            </section>
-
-            <!--
-            - #SKILLS
-            -->
-
-            <section class="skill">
-                <h3 class="h3 skills-title">My Skills</h3>
-
-                <div class="skills-content">
-
-                    <!-- Frontend Development -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="code-slash-outline" class="skills-category-icon"></ion-icon>
-                            Frontend Development
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">React & React Ecosystem</h5>
-                                    <data value="85">85%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 85%;"></div>
-                                </div>
-                                <p class="skill-description">React, React Native, Redux, Context API, React Router</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Vue.js & Angular</h5>
-                                    <data value="60">60%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 60%;"></div>
-                                </div>
-                                <p class="skill-description">Vue.js, Vuex, Angular, TypeScript integration</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Modern CSS & Frameworks</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">CSS3, Sass, Tailwind CSS, Bootstrap, Responsive Design</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">JavaScript (ES6+)</h5>
-                                    <data value="90">90%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 90%;"></div>
-                                </div>
-                                <p class="skill-description">Modern JavaScript, TypeScript, Async/Await, Modules</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Backend Development -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="server-outline" class="skills-category-icon"></ion-icon>
-                            Backend Development
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Java & Spring Boot</h5>
-                                    <data value="85">85%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 85%;"></div>
-                                </div>
-                                <p class="skill-description">Spring Boot, Spring MVC, Spring Security, JPA/Hibernate</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Quarkus</h5>
-                                    <data value="70">70%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 70%;"></div>
-                                </div>
-                                <p class="skill-description">Quarkus Framework, Cloud-Native Java, GraalVM, Reactive Programming</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Node.js & Express</h5>
-                                    <data value="75">75%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="skill-description">Express.js, REST APIs, WebSocket, Middleware</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Python & Django</h5>
-                                    <data value="70">70%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 70%;"></div>
-                                </div>
-                                <p class="skill-description">Python, Django, Flask, FastAPI, Data Analysis</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">PHP & Symfony</h5>
-                                    <data value="65">65%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 65%;"></div>
-                                </div>
-                                <p class="skill-description">PHP, Symfony, Laravel, Composer</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Database & Cloud -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="cloud-outline" class="skills-category-icon"></ion-icon>
-                            Database & Cloud
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">SQL Databases</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">PostgreSQL, MySQL, SQL Server, Database Design</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">NoSQL Databases</h5>
-                                    <data value="70">70%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 70%;"></div>
-                                </div>
-                                <p class="skill-description">MongoDB, Redis, Firebase, Document Databases</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Cloud Services</h5>
-                                    <data value="75">75%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="skill-description">AWS, Google Cloud, Vercel, Netlify, Heroku</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Mobile Development -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="phone-portrait-outline" class="skills-category-icon"></ion-icon>
-                            Mobile Development
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">React Native</h5>
-                                    <data value="75">75%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="skill-description">Cross-platform mobile apps, Expo, Native modules</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Flutter & Dart</h5>
-                                    <data value="65">65%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 65%;"></div>
-                                </div>
-                                <p class="skill-description">Flutter SDK, Dart programming, Widget development</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Native Mobile</h5>
-                                    <data value="60">60%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 60%;"></div>
-                                </div>
-                                <p class="skill-description">Android (Kotlin), iOS (Swift), Mobile UI/UX</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- DevOps & Tools -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="construct-outline" class="skills-category-icon"></ion-icon>
-                            DevOps & Tools
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Containerization</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">Docker, Docker Compose, Container Orchestration</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">CI/CD & Automation</h5>
-                                    <data value="75">75%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="skill-description">Jenkins, GitHub Actions, GitLab CI/CD, Automated
-                                    Testing</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Version Control</h5>
-                                    <data value="90">90%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 90%;"></div>
-                                </div>
-                                <p class="skill-description">Git, GitHub, GitLab, Bitbucket, Branching Strategies</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Build Tools</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">Webpack, Vite, Maven, Gradle, NPM/Yarn</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Web3 & Blockchain -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="logo-bitcoin" class="skills-category-icon"></ion-icon>
-                            Web3 & Blockchain
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Smart Contracts</h5>
-                                    <data value="70">70%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 70%;"></div>
-                                </div>
-                                <p class="skill-description">Solidity, Hardhat, Truffle, Smart Contract Development</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">DApp Development</h5>
-                                    <data value="65">65%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 65%;"></div>
-                                </div>
-                                <p class="skill-description">Web3.js, Ethers.js, MetaMask Integration, DeFi
-                                    Protocols</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Blockchain Fundamentals</h5>
-                                    <data value="75">75%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 75%;"></div>
-                                </div>
-                                <p class="skill-description">Ethereum, IPFS, Cryptography, Token Standards (ERC-20,
-                                    ERC-721)</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Soft Skills -->
-                    <div class="skills-category">
-                        <h4 class="h4 skills-category-title">
-                            <ion-icon name="people-outline" class="skills-category-icon"></ion-icon>
-                            Professional Skills
-                        </h4>
-                        <ul class="skills-list content-card">
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Project Management</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">Agile/Scrum, Jira, Trello, Project Planning, Team
-                                    Leadership</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Problem Solving</h5>
-                                    <data value="85">85%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 85%;"></div>
-                                </div>
-                                <p class="skill-description">Algorithm Design, Debugging, System Architecture,
-                                    Optimization</p>
-                            </li>
-
-                            <li class="skills-item">
-                                <div class="title-wrapper">
-                                    <h5 class="h5">Communication</h5>
-                                    <data value="80">80%</data>
-                                </div>
-                                <div class="skill-progress-bg">
-                                    <div class="skill-progress-fill" style="width: 80%;"></div>
-                                </div>
-                                <p class="skill-description">Technical Documentation, Client Communication, Team
-                                    Collaboration</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </section>
-
-        </article>
-
-        <!--
-          - #PORTFOLIO
-        -->
-
-        <article class="portfolio" data-page="portfolio">
-            <header>
-                <h2 class="h2 article-title">Portfolio</h2>
-            </header>
-
-            <section class="projects">
-                <ul class="filter-list">
-                    <li class="filter-item">
-                        <button class="active" data-filter-btn>All</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="crypto">Crypto</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="ecommerce">E-commerce</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="tools">Tools</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="anime">Anime</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="video">Video</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="productivity">Productivity</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn data-category="mobile">Mobile</button>
-                    </li>
-                </ul>
-
-                <div class="filter-select-box">
-                    <button class="filter-select" data-select>
-                        <div class="select-value" data-select-value>Select category</div>
-                        <div class="select-icon">
-                            <ion-icon name="chevron-down"></ion-icon>
+                        <div>
+                            <h4 class="testimonial__title" data-testimonials-title data-i18n="testimonial1Title">Client Review</h4>
+                            <div class="testimonial__text" data-testimonials-text>
+                                <p data-i18n="testimonial1Text">Jonathan was hired to create a corporate identity. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of the client.</p>
+                            </div>
                         </div>
                     </button>
+                    <button class="tile testimonial" type="button" data-testimonials-item>
+                        <figure class="testimonial__avatar">
+                            <img src="./assets/img/avatar-2.png" alt="Project partner" width="64" height="64" data-testimonials-avatar>
+                        </figure>
+                        <div>
+                            <h4 class="testimonial__title" data-testimonials-title data-i18n="testimonial2Title">Project Partner</h4>
+                            <div class="testimonial__text" data-testimonials-text>
+                                <p data-i18n="testimonial2Text">Jonathan delivered exceptional work on our web application. His attention to detail and technical expertise made the project a great success.</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </div>
 
-                    <ul class="select-list">
-                        <li class="select-item">
-                            <button data-select-item>All</button>
+        </div>
+    </section>
+
+    <!--==================== RESUME ====================-->
+    <section id="resume" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-head__num">02</span>
+                <h2 class="section-head__title" data-i18n="resumeTitle">Career &amp; education</h2>
+                <span class="section-head__meta" data-i18n="sectionResume">Resume</span>
+            </div>
+
+            <div class="resume-grid">
+                <article class="panel timeline">
+                    <h3 class="timeline__head"><ion-icon name="school-outline"></ion-icon><span data-i18n="educationTitle">Education</span></h3>
+                    <ol class="timeline__list">
+                        <li class="tl">
+                            <span class="tl__date mono">2021</span>
+                            <h4 class="tl__title" data-i18n="eduCsTitle">Computer Science</h4>
+                            <p class="tl__place">Lyon — Human Booster</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Crypto</button>
+                        <li class="tl">
+                            <span class="tl__date mono">2019 — 2021</span>
+                            <h4 class="tl__title" data-i18n="eduEngTitle">Computer Engineer</h4>
+                            <p class="tl__place">Lyon II — University</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>E-commerce</button>
+                        <li class="tl">
+                            <span class="tl__date mono">2017 — 2019</span>
+                            <h4 class="tl__title" data-i18n="eduPhysTitle">Physics Technology &amp; Industrial Engineering</h4>
+                            <p class="tl__place">Lille — Lycée Gustave Eiffel</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Tools</button>
+                    </ol>
+                </article>
+
+                <article class="panel timeline">
+                    <h3 class="timeline__head"><ion-icon name="briefcase-outline"></ion-icon><span data-i18n="experienceTitle">Experience</span></h3>
+                    <ol class="timeline__list">
+                        <li class="tl">
+                            <span class="tl__date mono">2026 — <span data-i18n="present">Present</span></span>
+                            <h4 class="tl__title" data-i18n="expBackendTitle">Backend Developer — Quarkus &amp; Kubernetes</h4>
+                            <p class="tl__place">Scalian (ESN) — Orange Wholesale France (OWF)</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Anime</button>
+                        <li class="tl">
+                            <span class="tl__date mono">2023 — 2026</span>
+                            <h4 class="tl__title" data-i18n="expJavaTitle">Java Developer</h4>
+                            <p class="tl__place">Lyon 3e — Fiducial Informatique</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Video</button>
+                        <li class="tl">
+                            <span class="tl__date mono">2021 — 2023</span>
+                            <h4 class="tl__title" data-i18n="expSoftwareTitle">Software Engineering</h4>
+                            <p class="tl__place">Lyon 9e — CGI</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Productivity</button>
+                        <li class="tl">
+                            <span class="tl__date mono">2019 — 2021</span>
+                            <h4 class="tl__title" data-i18n="expCmsTitle">CMS Developer</h4>
+                            <p class="tl__place">Lyon — Lidency Media</p>
                         </li>
-                        <li class="select-item">
-                            <button data-select-item>Mobile</button>
+                    </ol>
+                </article>
+            </div>
+
+            <div class="block">
+                <h3 class="block__title" data-i18n="skillsTitle">My skills</h3>
+                <div class="skills-grid">
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="code-slash-outline"></ion-icon><span data-i18n="skillsFrontend">Frontend Development</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>React &amp; React Ecosystem</span><span class="mono">85%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:85%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Vue.js &amp; Angular</span><span class="mono">60%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:60%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Modern CSS &amp; Frameworks</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>JavaScript (ES6+)</span><span class="mono">90%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:90%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="server-outline"></ion-icon><span data-i18n="skillsBackend">Backend Development</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>Java &amp; Spring Boot</span><span class="mono">85%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:85%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Quarkus</span><span class="mono">70%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Node.js &amp; Express</span><span class="mono">75%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Python &amp; Django</span><span class="mono">70%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>PHP &amp; Symfony</span><span class="mono">65%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:65%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="cloud-outline"></ion-icon><span data-i18n="skillsDatabase">Database &amp; Cloud</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>SQL Databases</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>NoSQL Databases</span><span class="mono">70%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Cloud Services</span><span class="mono">75%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="phone-portrait-outline"></ion-icon><span data-i18n="skillsMobile">Mobile Development</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>React Native</span><span class="mono">75%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Flutter &amp; Dart</span><span class="mono">65%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:65%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Native Mobile</span><span class="mono">60%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:60%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="construct-outline"></ion-icon><span data-i18n="skillsDevOps">DevOps &amp; Tools</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>Containerization</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>CI/CD &amp; Automation</span><span class="mono">75%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Version Control</span><span class="mono">90%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:90%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Build Tools</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat">
+                        <h4 class="skill-cat__title"><ion-icon name="logo-bitcoin"></ion-icon><span data-i18n="skillsWeb3">Web3 &amp; Blockchain</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>Smart Contracts</span><span class="mono">70%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:70%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>DApp Development</span><span class="mono">65%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:65%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Blockchain Fundamentals</span><span class="mono">75%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div></li>
+                        </ul>
+                    </article>
+
+                    <article class="panel skill-cat skill-cat--wide">
+                        <h4 class="skill-cat__title"><ion-icon name="people-outline"></ion-icon><span data-i18n="skillsProfessional">Professional Skills</span></h4>
+                        <ul class="skill-list">
+                            <li class="skill"><div class="skill__row"><span>Project Management</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Problem Solving</span><span class="mono">85%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:85%"></div></div></li>
+                            <li class="skill"><div class="skill__row"><span>Communication</span><span class="mono">80%</span></div><div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div></li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==================== PORTFOLIO ====================-->
+    <section id="portfolio" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-head__num">03</span>
+                <h2 class="section-head__title" data-i18n="portfolioTitle">Selected work</h2>
+                <span class="section-head__meta" data-i18n="sectionWork">Selected work</span>
+            </div>
+            <p class="section-lead" data-i18n="portfolioSubtitle">A selection of products, tools and platforms I have designed and built.</p>
+
+            <div class="filters" role="tablist">
+                <button class="filter is-active" type="button" data-filter="all" data-i18n="filterAll">All</button>
+                <button class="filter" type="button" data-filter="crypto" data-i18n="filterCrypto">Crypto</button>
+                <button class="filter" type="button" data-filter="e-commerce" data-i18n="filterEcommerce">E-commerce</button>
+                <button class="filter" type="button" data-filter="tools" data-i18n="filterTools">Tools</button>
+                <button class="filter" type="button" data-filter="anime" data-i18n="filterAnime">Anime</button>
+                <button class="filter" type="button" data-filter="video" data-i18n="filterVideo">Video</button>
+                <button class="filter" type="button" data-filter="productivity" data-i18n="filterProductivity">Productivity</button>
+                <button class="filter" type="button" data-filter="mobile" data-i18n="filterMobile">Mobile</button>
+            </div>
+
+            <div class="project-grid">
+
+                <article class="project" data-filter-item data-category="mobile">
+                    <a href="https://dashboard.catchee.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/catchee logo.jpg" alt="Catchee — mobile recruitment app" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">Catchee</h3>
+                        <p class="project__cat">Mobile Recruitment App</p>
+                        <ul class="project__tags"><li>React Native</li><li>Spring Boot</li><li>PostgreSQL</li><li>AI embeddings</li></ul>
+                    </div>
+                    <div class="project__foot">
+                        <a href="https://play.google.com/store/apps/details?id=com.catchee.app" target="_blank" rel="noopener" class="chip"><ion-icon name="logo-google-playstore"></ion-icon> Play</a>
+                        <a href="https://apps.apple.com/us/app/catchee/id6756895690" target="_blank" rel="noopener" class="chip"><ion-icon name="logo-apple"></ion-icon> App Store</a>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="crypto" data-has-case-study="true" data-project-id="athlytics">
+                    <a href="https://athlytics.netlify.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/athlytics.png" alt="ATHlytics Crypto Analytics platform" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">ATHlytics Crypto Analytics</h3>
+                        <p class="project__cat">Crypto Analytics Platform</p>
+                        <ul class="project__tags"><li>React</li><li>Node.js</li><li>Chart.js</li><li>CoinGecko API</li></ul>
+                    </div>
+                    <div class="project__foot">
+                        <button class="chip chip--accent case-study-btn" type="button" data-project="athlytics"><ion-icon name="document-text-outline"></ion-icon> <span data-i18n="viewCaseStudy">View case study</span></button>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools">
+                    <a href="https://snooker4real.github.io/RollDice.github.io/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/des_project.png" alt="Dice Roller app" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">Dice Roller</h3>
+                        <p class="project__cat">Interactive Game Tool</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools">
+                    <a href="https://invoicefr.netlify.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/invoice.png" alt="InvoiceFR — invoice generator" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">InvoiceFR</h3>
+                        <p class="project__cat">Professional Invoice Generator</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools">
+                    <a href="https://snookdev.netlify.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/newsletter.png" alt="SnookDev Newsletter" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">SnookDev Newsletter</h3>
+                        <p class="project__cat">Newsletter Platform</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="e-commerce">
+                    <a href="https://popep.fr/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/popep.png" alt="POPEP — gaming platform" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">POPEP Jeu T'adore</h3>
+                        <p class="project__cat">E-commerce Gaming Platform</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="e-commerce" data-has-case-study="true" data-project-id="jonshop">
+                    <a href="https://jonshop.vercel.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/jon_shop.png" alt="Jon Shop — e-commerce platform" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">Jon Shop</h3>
+                        <p class="project__cat">Modern E-commerce Platform</p>
+                        <ul class="project__tags"><li>React</li><li>Next.js</li><li>Stripe</li><li>Tailwind CSS</li></ul>
+                    </div>
+                    <div class="project__foot">
+                        <button class="chip chip--accent case-study-btn" type="button" data-project="jonshop"><ion-icon name="document-text-outline"></ion-icon> <span data-i18n="viewCaseStudy">View case study</span></button>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools">
+                    <a href="https://cvxpert.netlify.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/cvxpert.png" alt="CVXpert — CV generator" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">CVXpert</h3>
+                        <p class="project__cat">Professional CV Generator</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="anime">
+                    <a href="https://animehorizon.netlify.app/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/animehorizon.png" alt="AnimeHorizon — anime discovery" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">AnimeHorizon</h3>
+                        <p class="project__cat">Anime Discovery Platform</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="video" data-has-case-study="true" data-project-id="clipzilla">
+                    <a href="https://clipzilla.netlify.app/sign-in" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/clipzilla.png" alt="ClipZilla — video tutorial platform" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">ClipZilla</h3>
+                        <p class="project__cat">Video Tutorial Platform</p>
+                        <ul class="project__tags"><li>React</li><li>Firebase</li><li>Clerk Auth</li><li>Cloudinary</li></ul>
+                    </div>
+                    <div class="project__foot">
+                        <button class="chip chip--accent case-study-btn" type="button" data-project="clipzilla"><ion-icon name="document-text-outline"></ion-icon> <span data-i18n="viewCaseStudy">View case study</span></button>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="productivity">
+                    <a href="https://miraculous-morning.netlify.app" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/miraclemorning.png" alt="Miracle Morning — habit tracking" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">Miracle Morning</h3>
+                        <p class="project__cat">Productivity &amp; Habit Tracking</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools">
+                    <a href="https://shorturl.catchee.xyz" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/url-shortener.png" alt="URL Shortener service" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">URL Shortener</h3>
+                        <p class="project__cat">URL Shortening Service</p>
+                    </div>
+                </article>
+
+                <article class="project" data-filter-item data-category="tools" data-has-case-study="true" data-project-id="dns-resolver">
+                    <a href="https://dns.catchee.xyz/" target="_blank" rel="noopener" class="project__media">
+                        <img src="assets/img/dns.png" alt="Smart DNS Resolver tool" loading="lazy">
+                        <span class="project__open"><ion-icon name="arrow-forward-outline"></ion-icon></span>
+                    </a>
+                    <div class="project__body">
+                        <h3 class="project__title">Smart DNS Resolver</h3>
+                        <p class="project__cat">DNS Query &amp; Analysis Tool</p>
+                        <ul class="project__tags"><li>HTML</li><li>Node.js</li><li>DNS</li><li>Real-time</li></ul>
+                    </div>
+                    <div class="project__foot">
+                        <button class="chip chip--accent case-study-btn" type="button" data-project="dns-resolver"><ion-icon name="document-text-outline"></ion-icon> <span data-i18n="viewCaseStudy">View case study</span></button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!--==================== CONTACT ====================-->
+    <section id="contact" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-head__num">04</span>
+                <h2 class="section-head__title" data-i18n="contactTitle">Let's work together</h2>
+                <span class="section-head__meta" data-i18n="sectionContact">Contact</span>
+            </div>
+            <p class="section-lead" data-i18n="contactSubtitle">Have a project in mind or just want to say hi? Drop me a message.</p>
+
+            <div class="contact-grid">
+                <article class="panel contact-info">
+                    <ul class="contact-list">
+                        <li>
+                            <span class="contact-list__ico"><ion-icon name="mail-outline"></ion-icon></span>
+                            <span><span class="contact-list__label" data-i18n="email">Email</span>
+                            <a href="mailto:cindanojonathan@icloud.com">cindanojonathan@icloud.com</a></span>
+                        </li>
+                        <li>
+                            <span class="contact-list__ico"><ion-icon name="phone-portrait-outline"></ion-icon></span>
+                            <span><span class="contact-list__label" data-i18n="phone">Phone</span>
+                            <a href="tel:+33758916877">+33 7 58 91 68 77</a></span>
+                        </li>
+                        <li>
+                            <span class="contact-list__ico"><ion-icon name="calendar-outline"></ion-icon></span>
+                            <span><span class="contact-list__label" data-i18n="birthday">Birthday</span>
+                            <time datetime="1999-08-05">August 5, 1999</time></span>
+                        </li>
+                        <li>
+                            <span class="contact-list__ico"><ion-icon name="location-outline"></ion-icon></span>
+                            <span><span class="contact-list__label" data-i18n="location">Location</span>
+                            <address>Lyon, France</address></span>
                         </li>
                     </ul>
-                </div>
 
-                <ul class="project-list">
-                    <!--==================== CATCHEE ====================-->
-                    <li class="project-item active" data-filter-item data-category="mobile">
-                        <a href="https://dashboard.catchee.app/" target="_blank" class="project-link">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/catchee logo.jpg" alt="Catchee - Application de recrutement innovante" loading="lazy">
-                            </figure>
-                            <div class="project-content">
-                                <h3 class="project-title">Catchee</h3>
-                                <p class="project-category">Mobile Recruitment App</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-tag">React Native</span>
-                                    <span class="tech-tag">Spring Boot</span>
-                                    <span class="tech-tag">PostgreSQL</span>
-                                    <span class="tech-tag">Embedding AI models</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="project-store-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.catchee.app" target="_blank" class="store-link" title="Google Play">
-                                <ion-icon name="logo-android"></ion-icon>
-                            </a>
-                            <a href="https://apps.apple.com/us/app/catchee/id6756895690" target="_blank" class="store-link" title="App Store">
-                                <ion-icon name="logo-apple"></ion-icon>
-                            </a>
+                    <ul class="social-inline social-inline--lg">
+                        <li><a href="https://www.linkedin.com/in/jonathan-c-7298b2133/" target="_blank" rel="noopener" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                        <li><a href="https://github.com/Snooker4Real" target="_blank" rel="noopener" aria-label="GitHub"><ion-icon name="logo-github"></ion-icon></a></li>
+                        <li><a href="https://www.facebook.com/TheRealSnooker/" target="_blank" rel="noopener" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                        <li><a href="https://cindanojonathan.substack.com/" target="_blank" rel="noopener" aria-label="Substack"><ion-icon name="newspaper-outline"></ion-icon></a></li>
+                    </ul>
+
+                    <figure class="contact-map">
+                        <iframe title="Lyon, France map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22298.223403566342!2d4.805743294133222!3d45.75781312712153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea516ae88797%3A0x408ab2ae4bb21f0!2sLyon%2C%20France!5e0!3m2!1sen!2sus!4v1647608789441!5m2!1sen!2sus"
+                                width="400" height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </figure>
+                </article>
+
+                <article class="panel contact-form-panel">
+                    <h3 class="block__title" data-i18n="formTitle">Send a message</h3>
+                    <form action="https://formsubmit.co/ba441248eea5239dcc3283586f042ae1" class="form" data-form method="POST" target="_blank">
+                        <div class="form__row">
+                            <label class="field">
+                                <span class="field__label" data-i18n="fullName">Full name</span>
+                                <input type="text" name="fullname" required data-form-input data-i18n-placeholder="fullName" placeholder="Full name">
+                            </label>
+                            <label class="field">
+                                <span class="field__label" data-i18n="emailAddress">Email address</span>
+                                <input type="email" name="email" required data-form-input data-i18n-placeholder="emailAddress" placeholder="Email address">
+                            </label>
                         </div>
-                    </li>
-
-                    <!--==================== ATHLYTICS CRYPTO ANALYTICS ====================-->
-                    <li class="project-item active" data-filter-item data-category="crypto" data-has-case-study="true" data-project-id="athlytics">
-                        <a href="https://athlytics.netlify.app/" target="_blank" class="project-link">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/athlytics.png" alt="ATHlytics Crypto Analytics Platform"
-                                     loading="lazy">
-                            </figure>
-                            <div class="project-content">
-                                <h3 class="project-title">ATHlytics Crypto Analytics</h3>
-                                <p class="project-category">Crypto Analytics Platform</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">Chart.js</span>
-                                    <span class="tech-tag">CoinGecko API</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="case-study-btn" data-project="athlytics">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                            <span>View Case Study</span>
-                        </button>
-                    </li>
-
-                    <!--==================== DICE ROLLER ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools">
-                        <a href="https://snooker4real.github.io/RollDice.github.io/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/des_project.png" alt="Dice Roller App" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">Dice Roller</h3>
-                            <p class="project-category">Interactive Game Tool</p>
-                        </a>
-                    </li>
-
-                    <!--==================== INVOICEFR ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools">
-                        <a href="https://invoicefr.netlify.app/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/invoice.png" alt="InvoiceFR - Générateur de Factures"
-                                     loading="lazy">
-                            </figure>
-                            <h3 class="project-title">InvoiceFR</h3>
-                            <p class="project-category">Professional Invoice Generator</p>
-                        </a>
-                    </li>
-
-                    <!--==================== SNOOKDEV NEWSLETTER ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools">
-                        <a href="https://snookdev.netlify.app/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/newsletter.png" alt="SnookDev Newsletter" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">SnookDev Newsletter</h3>
-                            <p class="project-category">Newsletter Platform</p>
-                        </a>
-                    </li>
-
-                    <!--==================== POPEP JEU T'ADORE ====================-->
-                    <li class="project-item active" data-filter-item data-category="e-commerce">
-                        <a href="https://popep.fr/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/popep.png" alt="POPEP - Plateforme de Gestion" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">POPEP Jeu T'adore</h3>
-                            <p class="project-category">E-commerce Gaming Platform</p>
-                        </a>
-                    </li>
-
-                    <!--==================== JON SHOP ====================-->
-                    <li class="project-item active" data-filter-item data-category="e-commerce" data-has-case-study="true" data-project-id="jonshop">
-                        <a href="https://jonshop.vercel.app/" target="_blank" class="project-link">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/jon_shop.png" alt="Jon Shop - E-commerce Platform" loading="lazy">
-                            </figure>
-                            <div class="project-content">
-                                <h3 class="project-title">Jon Shop</h3>
-                                <p class="project-category">Modern E-commerce Platform</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Next.js</span>
-                                    <span class="tech-tag">Stripe</span>
-                                    <span class="tech-tag">Tailwind CSS</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="case-study-btn" data-project="jonshop">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                            <span>View Case Study</span>
-                        </button>
-                    </li>
-
-                    <!--==================== CVXPERT ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools">
-                        <a href="https://cvxpert.netlify.app/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/cvxpert.png" alt="CVXpert - Générateur de CV Professionnels"
-                                     loading="lazy">
-                            </figure>
-                            <h3 class="project-title">CVXpert</h3>
-                            <p class="project-category">Professional CV Generator</p>
-                        </a>
-                    </li>
-
-                    <!--==================== ANIME HORIZON ====================-->
-                    <li class="project-item active" data-filter-item data-category="anime">
-                        <a href="https://animehorizon.netlify.app/" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/animehorizon.png"
-                                     alt="AnimeHorizon - Infinite Anime Discovery Platform" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">AnimeHorizon</h3>
-                            <p class="project-category">Anime Discovery Platform</p>
-                        </a>
-                    </li>
-
-                    <!--==================== CLIPZILLA ====================-->
-                    <li class="project-item active" data-filter-item data-category="video" data-has-case-study="true" data-project-id="clipzilla">
-                        <a href="https://clipzilla.netlify.app/sign-in" target="_blank" class="project-link">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/clipzilla.png"
-                                     alt="ClipZilla - Plateforme de Partage de Vidéos Tutoriels" loading="lazy">
-                            </figure>
-                            <div class="project-content">
-                                <h3 class="project-title">ClipZilla</h3>
-                                <p class="project-category">Video Tutorial Platform</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-tag">React</span>
-                                    <span class="tech-tag">Firebase</span>
-                                    <span class="tech-tag">Clerk Auth</span>
-                                    <span class="tech-tag">Cloudinary</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="case-study-btn" data-project="clipzilla">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                            <span>View Case Study</span>
-                        </button>
-                    </li>
-
-                    <!--==================== MIRACLE MORNING ====================-->
-                    <li class="project-item active" data-filter-item data-category="productivity">
-                        <a href="https://miraculous-morning.netlify.app" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/miraclemorning.png"
-                                     alt="Miracle Morning - Application de Routine Matinale" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">Miracle Morning</h3>
-                            <p class="project-category">Productivity & Habit Tracking</p>
-                        </a>
-                    </li>
-
-                    <!--==================== URL SHORTENER ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools">
-                        <a href="https://shorturl.catchee.xyz" target="_blank">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/url-shortener.png"
-                                     alt="URL Shortener - Service de raccourcissement d'URL" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">URL Shortener</h3>
-                            <p class="project-category">URL Shortening Service</p>
-                        </a>
-                    </li>
-
-                    <!--==================== SMART DNS RESOLVER ====================-->
-                    <li class="project-item active" data-filter-item data-category="tools" data-has-case-study="true" data-project-id="dns-resolver">
-                        <a href="https://dns.catchee.xyz/" target="_blank" class="project-link">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <ion-icon name="eye-outline"></ion-icon>
-                                </div>
-                                <img src="assets/img/dns.png" alt="Smart DNS Resolver - Comprehensive DNS Record Query Tool" loading="lazy">
-                            </figure>
-                            <div class="project-content">
-                                <h3 class="project-title">Smart DNS Resolver</h3>
-                                <p class="project-category">DNS Query & Analysis Tool</p>
-                                <div class="project-tech-stack">
-                                    <span class="tech-tag">HTML</span>
-                                    <span class="tech-tag">Node.js</span>
-                                    <span class="tech-tag">DNS</span>
-                                    <span class="tech-tag">Real-time</span>
-                                </div>
-                            </div>
-                        </a>
-                        <button class="case-study-btn" data-project="dns-resolver">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                            <span>View Case Study</span>
-                        </button>
-                    </li>
-
-                </ul>
-            </section>
-        </article>
-
-        <!--
-          - #CONTACT
-        -->
-
-        <article class="contact" data-page="contact">
-            <header>
-                <h2 class="h2 article-title">Contact</h2>
-            </header>
-
-            <section class="mapbox" data-mapbox>
-                <figure>
-                    <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22298.223403566342!2d4.805743294133222!3d45.75781312712153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea516ae88797%3A0x408ab2ae4bb21f0!2sLyon%2C%20France!5e0!3m2!1sen!2sus!4v1647608789441!5m2!1sen!2sus"
-                            width="400" height="300" loading="lazy"></iframe>
-                </figure>
-            </section>
-
-            <section class="contact-form">
-                <h3 class="h3 form-title">Contact Form</h3>
-                <form action="https://formsubmit.co/ba441248eea5239dcc3283586f042ae1" class="form" data-form
-                      method="POST" target="_blank">
-                    <div class="input-wrapper">
-                        <label>
-                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required
-                                   data-form-input>
+                        <label class="field">
+                            <span class="field__label" data-i18n="yourMessage">Your message</span>
+                            <textarea name="message" rows="6" required data-form-input data-i18n-placeholder="yourMessage" placeholder="Your message"></textarea>
                         </label>
-                        <label>
-                            <input type="email" name="email" class="form-input" placeholder="Email address" required
-                                   data-form-input>
-                        </label>
-                    </div>
-                    <textarea name="message" class="form-input" placeholder="Your Message" required
-                              data-form-input></textarea>
-                    <button class="form-btn" type="submit" data-form-btn>
-                        <ion-icon name="paper-plane"></ion-icon>
-                        <span>Send Message</span>
-                    </button>
-                </form>
-            </section>
-        </article>
+                        <button class="btn btn--primary form__btn" type="submit" data-form-btn>
+                            <ion-icon name="paper-plane-outline"></ion-icon>
+                            <span data-i18n="sendMessage">Send message</span>
+                        </button>
+                    </form>
+                </article>
+            </div>
+        </div>
+    </section>
 
-        <!--
-          - #BLOG
-        -->
+    <!--==================== BLOG ====================-->
+    <section id="blog" class="section">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="section-head__num">05</span>
+                <h2 class="section-head__title" data-i18n="blogTitle">Latest writing</h2>
+                <span class="section-head__meta" data-i18n="sectionBlog">Blog</span>
+            </div>
+            <p class="section-lead" data-i18n="blogSubtitle">Notes on engineering, product and building on the web — published on Substack.</p>
 
-        <article class="blog" data-page="blog">
-            <header>
-                <h2 class="h2 article-title">Blog</h2>
-            </header>
-
-            <section class="blog-posts">
-                <div class="blog-loading" id="blog-loading">
-                    <ion-icon name="hourglass-outline"></ion-icon>
-                    <p>Loading articles from Substack...</p>
-                </div>
-
-                <div class="blog-error" id="blog-error" style="display: none;">
-                    <ion-icon name="alert-circle-outline"></ion-icon>
-                    <p>Unable to load articles. Please visit <a href="https://cindanojonathan.substack.com/" target="_blank">my Substack</a> directly.</p>
-                </div>
-
-                <ul class="blog-posts-list" id="blog-posts-list">
-                    <!-- Articles will be dynamically loaded here -->
-                </ul>
-            </section>
-        </article>
-
-    </div>
+            <div class="blog-state" id="blog-loading">
+                <ion-icon name="hourglass-outline"></ion-icon>
+                <p data-i18n="blogLoading">Loading articles from Substack…</p>
+            </div>
+            <div class="blog-state" id="blog-error" hidden>
+                <ion-icon name="alert-circle-outline"></ion-icon>
+                <p><span data-i18n="blogError">Unable to load articles.</span>
+                    <a href="https://cindanojonathan.substack.com/" target="_blank" rel="noopener" data-i18n="blogErrorLink">Visit my Substack</a></p>
+            </div>
+            <ul class="blog-grid" id="blog-posts-list"></ul>
+        </div>
+    </section>
 
 </main>
 
-<!-- Mobile CV Floating Button -->
-<div class="mobile-cv-fab" data-mobile-cv>
-    <button class="mobile-cv-btn" data-mobile-cv-toggle>
-        <ion-icon name="document-text-outline"></ion-icon>
-        <span>CV</span>
-    </button>
-    <div class="mobile-cv-menu" data-mobile-cv-menu>
-        <a href="assets/pdf/CV_Jonathan_CINDANO_WEB_DEV.pdf" target="_blank" class="mobile-cv-item">
-            <ion-icon name="code-slash-outline"></ion-icon>
-            <span>Web Dev</span>
-        </a>
-        <a href="assets/pdf/CV_Jonathan_CINDANO_BACKEND_DEV.pdf" target="_blank" class="mobile-cv-item">
-            <ion-icon name="server-outline"></ion-icon>
-            <span>Backend</span>
-        </a>
-        <a href="assets/pdf/CV_Jonathan_CINDANO_MOBILE_DEV.pdf" target="_blank" class="mobile-cv-item">
-            <ion-icon name="phone-portrait-outline"></ion-icon>
-            <span>Mobile</span>
-        </a>
-        <a href="assets/pdf/CV_Jonathan_CINDANO_DEVOPS_DEV.pdf" target="_blank" class="mobile-cv-item">
-            <ion-icon name="construct-outline"></ion-icon>
-            <span>DevOps</span>
-        </a>
+<!--==================== FOOTER ====================-->
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-cta">
+            <h2 data-i18n-html="footerCtaTitle">Let's build something <span>great.</span></h2>
+            <a href="mailto:cindanojonathan@icloud.com" class="btn btn--primary">
+                <ion-icon name="mail-outline"></ion-icon>
+                <span data-i18n="getInTouch">Get in touch</span>
+            </a>
+        </div>
+        <div class="site-footer__inner">
+            <div>
+                <a href="#about" class="brand"><span class="brand__mark">JC</span><span class="brand__name">Jonathan Cindano</span></a>
+                <p class="site-footer__tag" data-i18n="footerTagline">Full Stack Developer building for the web, mobile and Web3.</p>
+            </div>
+            <nav class="site-footer__nav">
+                <a href="#about" data-i18n="navAbout">About</a>
+                <a href="#resume" data-i18n="navResume">Resume</a>
+                <a href="#portfolio" data-i18n="navPortfolio">Work</a>
+                <a href="#contact" data-i18n="navContact">Contact</a>
+                <a href="#blog" data-i18n="navBlog">Blog</a>
+            </nav>
+        </div>
+        <p class="site-footer__copy">© <span data-year>2026</span> Jonathan Cindano — <span data-i18n="footerRights">All rights reserved.</span></p>
     </div>
+</footer>
+
+<a href="#about" class="to-top" aria-label="Back to top" data-i18n-aria="backToTop"><ion-icon name="arrow-up-outline"></ion-icon></a>
+
+<!--==================== TESTIMONIALS MODAL ====================-->
+<div class="modal" data-modal-container>
+    <div class="modal__overlay" data-overlay></div>
+    <section class="modal__card testimonial-modal">
+        <button class="modal__close" type="button" data-modal-close-btn aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
+        <figure class="testimonial-modal__avatar">
+            <img src="./assets/img/avatar-1.png" alt="" width="80" height="80" data-modal-img>
+        </figure>
+        <h4 class="testimonial-modal__title" data-modal-title>Client Review</h4>
+        <time datetime="2021-06-14" data-i18n="testimonialDate">14 June, 2021</time>
+        <div class="testimonial-modal__text" data-modal-text><p></p></div>
+    </section>
 </div>
 
-<!--
-  - #CASE STUDY MODALS
--->
+<!--==================== CASE STUDY MODALS ====================-->
 
-<!-- ATHlytics Case Study Modal -->
+<!-- ATHlytics -->
 <div class="case-study-modal-container" data-case-study-modal id="athlytics-modal">
-    <div class="overlay" data-case-study-overlay></div>
-    <section class="case-study-modal">
-        <button class="modal-close-btn" data-case-study-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
+    <div class="modal__overlay" data-case-study-overlay></div>
+    <section class="modal__card case-study-modal">
+        <button class="modal__close" type="button" data-case-study-close aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
         <div class="case-study-content">
             <div class="case-study-header">
-                <h2 class="h2">ATHlytics Crypto Analytics</h2>
+                <h2>ATHlytics Crypto Analytics</h2>
                 <p class="case-study-subtitle">Real-time Cryptocurrency Analytics Platform</p>
                 <div class="case-study-meta">
                     <span class="meta-item"><ion-icon name="calendar-outline"></ion-icon> 2024</span>
                     <span class="meta-item"><ion-icon name="code-outline"></ion-icon> React, Node.js, Chart.js</span>
-                    <a href="https://athlytics.netlify.app/" target="_blank" class="meta-link">
-                        <ion-icon name="open-outline"></ion-icon> Visit Live Site
-                    </a>
+                    <a href="https://athlytics.netlify.app/" target="_blank" rel="noopener" class="meta-link"><ion-icon name="open-outline"></ion-icon> <span data-i18n="visitLiveSite">Visit Live Site</span></a>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Project Overview</h3>
+                <h3 data-i18n="projectOverview">Project Overview</h3>
                 <p>ATHlytics is a comprehensive cryptocurrency analytics platform designed to help investors make informed decisions. The platform provides real-time price tracking, historical data analysis, and advanced charting capabilities for over 100 cryptocurrencies.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">The Challenge</h3>
+                <h3 data-i18n="theChallenge">The Challenge</h3>
                 <p>Cryptocurrency investors needed a centralized platform to track multiple coins, analyze price trends, and make data-driven investment decisions. Existing solutions were either too complex or lacked essential features like real-time updates and comprehensive historical data.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Solution & Approach</h3>
+                <h3 data-i18n="solutionApproach">Solution &amp; Approach</h3>
                 <ul class="case-study-list">
                     <li><strong>Real-time Data Integration:</strong> Integrated CoinGecko API for live cryptocurrency prices and market data</li>
                     <li><strong>Interactive Charts:</strong> Implemented Chart.js for dynamic, responsive data visualization</li>
@@ -1535,47 +842,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><strong>Responsive Design:</strong> Ensured seamless experience across desktop, tablet, and mobile devices</li>
                 </ul>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Key Features</h3>
+                <h3 data-i18n="keyFeatures">Key Features</h3>
                 <div class="features-grid">
-                    <div class="feature-item">
-                        <ion-icon name="trending-up-outline"></ion-icon>
-                        <h4>Real-time Price Tracking</h4>
-                        <p>Live updates every 30 seconds for accurate market data</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="bar-chart-outline"></ion-icon>
-                        <h4>Advanced Charts</h4>
-                        <p>Interactive candlestick and line charts with multiple timeframes</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="search-outline"></ion-icon>
-                        <h4>Smart Search</h4>
-                        <p>Quick search and filtering across 100+ cryptocurrencies</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="analytics-outline"></ion-icon>
-                        <h4>Market Analytics</h4>
-                        <p>Volume analysis, market cap trends, and price change metrics</p>
-                    </div>
+                    <div class="feature-item"><ion-icon name="trending-up-outline"></ion-icon><h4>Real-time Price Tracking</h4><p>Live updates every 30 seconds for accurate market data</p></div>
+                    <div class="feature-item"><ion-icon name="bar-chart-outline"></ion-icon><h4>Advanced Charts</h4><p>Interactive candlestick and line charts with multiple timeframes</p></div>
+                    <div class="feature-item"><ion-icon name="search-outline"></ion-icon><h4>Smart Search</h4><p>Quick search and filtering across 100+ cryptocurrencies</p></div>
+                    <div class="feature-item"><ion-icon name="analytics-outline"></ion-icon><h4>Market Analytics</h4><p>Volume analysis, market cap trends, and price change metrics</p></div>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Technologies Used</h3>
-                <div class="tech-stack-list">
-                    <span class="tech-badge">React 18</span>
-                    <span class="tech-badge">Node.js</span>
-                    <span class="tech-badge">Chart.js</span>
-                    <span class="tech-badge">CoinGecko API</span>
-                    <span class="tech-badge">CSS3</span>
-                    <span class="tech-badge">Netlify</span>
-                </div>
+                <h3 data-i18n="technologiesUsed">Technologies Used</h3>
+                <div class="tech-stack-list"><span class="tech-badge">React 18</span><span class="tech-badge">Node.js</span><span class="tech-badge">Chart.js</span><span class="tech-badge">CoinGecko API</span><span class="tech-badge">CSS3</span><span class="tech-badge">Netlify</span></div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Results & Impact</h3>
+                <h3 data-i18n="resultsImpact">Results &amp; Impact</h3>
                 <ul class="case-study-list">
                     <li>Successfully tracks 100+ cryptocurrencies in real-time</li>
                     <li>Achieved 95+ Lighthouse performance score</li>
@@ -1587,39 +868,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </div>
 
-<!-- JonShop Case Study Modal -->
+<!-- Jon Shop -->
 <div class="case-study-modal-container" data-case-study-modal id="jonshop-modal">
-    <div class="overlay" data-case-study-overlay></div>
-    <section class="case-study-modal">
-        <button class="modal-close-btn" data-case-study-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
+    <div class="modal__overlay" data-case-study-overlay></div>
+    <section class="modal__card case-study-modal">
+        <button class="modal__close" type="button" data-case-study-close aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
         <div class="case-study-content">
             <div class="case-study-header">
-                <h2 class="h2">Jon Shop E-commerce Platform</h2>
+                <h2>Jon Shop E-commerce Platform</h2>
                 <p class="case-study-subtitle">Modern Full-Stack E-commerce Solution</p>
                 <div class="case-study-meta">
                     <span class="meta-item"><ion-icon name="calendar-outline"></ion-icon> 2024</span>
                     <span class="meta-item"><ion-icon name="code-outline"></ion-icon> Next.js, Stripe, Tailwind</span>
-                    <a href="https://jonshop.vercel.app/" target="_blank" class="meta-link">
-                        <ion-icon name="open-outline"></ion-icon> Visit Live Site
-                    </a>
+                    <a href="https://jonshop.vercel.app/" target="_blank" rel="noopener" class="meta-link"><ion-icon name="open-outline"></ion-icon> <span data-i18n="visitLiveSite">Visit Live Site</span></a>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Project Overview</h3>
+                <h3 data-i18n="projectOverview">Project Overview</h3>
                 <p>Jon Shop is a modern, full-featured e-commerce platform built with Next.js and integrated with Stripe for secure payment processing. The platform offers a seamless shopping experience with product browsing, cart management, and secure checkout.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">The Challenge</h3>
+                <h3 data-i18n="theChallenge">The Challenge</h3>
                 <p>Create a fast, secure, and user-friendly e-commerce platform that handles product management, shopping cart functionality, and payment processing while maintaining excellent performance and SEO optimization.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Solution & Approach</h3>
+                <h3 data-i18n="solutionApproach">Solution &amp; Approach</h3>
                 <ul class="case-study-list">
                     <li><strong>Next.js Framework:</strong> Leveraged server-side rendering for optimal performance and SEO</li>
                     <li><strong>Stripe Integration:</strong> Implemented secure payment processing with Stripe's latest API</li>
@@ -1628,47 +901,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><strong>Image Optimization:</strong> Utilized Next.js Image component for automatic optimization</li>
                 </ul>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Key Features</h3>
+                <h3 data-i18n="keyFeatures">Key Features</h3>
                 <div class="features-grid">
-                    <div class="feature-item">
-                        <ion-icon name="cart-outline"></ion-icon>
-                        <h4>Shopping Cart</h4>
-                        <p>Real-time cart updates with quantity management</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="card-outline"></ion-icon>
-                        <h4>Secure Payments</h4>
-                        <p>Stripe-powered checkout with multiple payment methods</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="search-outline"></ion-icon>
-                        <h4>Product Search</h4>
-                        <p>Advanced filtering and search functionality</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <h4>User Accounts</h4>
-                        <p>Order history and profile management</p>
-                    </div>
+                    <div class="feature-item"><ion-icon name="cart-outline"></ion-icon><h4>Shopping Cart</h4><p>Real-time cart updates with quantity management</p></div>
+                    <div class="feature-item"><ion-icon name="card-outline"></ion-icon><h4>Secure Payments</h4><p>Stripe-powered checkout with multiple payment methods</p></div>
+                    <div class="feature-item"><ion-icon name="search-outline"></ion-icon><h4>Product Search</h4><p>Advanced filtering and search functionality</p></div>
+                    <div class="feature-item"><ion-icon name="person-outline"></ion-icon><h4>User Accounts</h4><p>Order history and profile management</p></div>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Technologies Used</h3>
-                <div class="tech-stack-list">
-                    <span class="tech-badge">Next.js 14</span>
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">Stripe</span>
-                    <span class="tech-badge">Tailwind CSS</span>
-                    <span class="tech-badge">Vercel</span>
-                    <span class="tech-badge">TypeScript</span>
-                </div>
+                <h3 data-i18n="technologiesUsed">Technologies Used</h3>
+                <div class="tech-stack-list"><span class="tech-badge">Next.js 14</span><span class="tech-badge">React</span><span class="tech-badge">Stripe</span><span class="tech-badge">Tailwind CSS</span><span class="tech-badge">Vercel</span><span class="tech-badge">TypeScript</span></div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Results & Impact</h3>
+                <h3 data-i18n="resultsImpact">Results &amp; Impact</h3>
                 <ul class="case-study-list">
                     <li>Achieved sub-2-second page load times with Next.js optimization</li>
                     <li>100% secure payment processing with PCI compliance via Stripe</li>
@@ -1680,88 +927,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </div>
 
-<!-- ClipZilla Case Study Modal -->
+<!-- ClipZilla -->
 <div class="case-study-modal-container" data-case-study-modal id="clipzilla-modal">
-    <div class="overlay" data-case-study-overlay></div>
-    <section class="case-study-modal">
-        <button class="modal-close-btn" data-case-study-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
+    <div class="modal__overlay" data-case-study-overlay></div>
+    <section class="modal__card case-study-modal">
+        <button class="modal__close" type="button" data-case-study-close aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
         <div class="case-study-content">
             <div class="case-study-header">
-                <h2 class="h2">ClipZilla Video Platform</h2>
+                <h2>ClipZilla Video Platform</h2>
                 <p class="case-study-subtitle">Video Tutorial Sharing Platform</p>
                 <div class="case-study-meta">
                     <span class="meta-item"><ion-icon name="calendar-outline"></ion-icon> 2024</span>
                     <span class="meta-item"><ion-icon name="code-outline"></ion-icon> React, Firebase, Cloudinary</span>
-                    <a href="https://clipzilla.netlify.app/sign-in" target="_blank" class="meta-link">
-                        <ion-icon name="open-outline"></ion-icon> Visit Live Site
-                    </a>
+                    <a href="https://clipzilla.netlify.app/sign-in" target="_blank" rel="noopener" class="meta-link"><ion-icon name="open-outline"></ion-icon> <span data-i18n="visitLiveSite">Visit Live Site</span></a>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Project Overview</h3>
+                <h3 data-i18n="projectOverview">Project Overview</h3>
                 <p>ClipZilla is a video tutorial sharing platform that enables content creators to upload, manage, and share educational videos. The platform features user authentication, video upload capabilities, and a clean interface for discovering and watching tutorials.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">The Challenge</h3>
+                <h3 data-i18n="theChallenge">The Challenge</h3>
                 <p>Build a scalable video platform that handles large file uploads, provides secure user authentication, and delivers fast video streaming while maintaining a smooth user experience across devices.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Solution & Approach</h3>
+                <h3 data-i18n="solutionApproach">Solution &amp; Approach</h3>
                 <ul class="case-study-list">
                     <li><strong>Clerk Authentication:</strong> Implemented secure, user-friendly authentication with social login options</li>
                     <li><strong>Cloudinary Integration:</strong> Utilized Cloudinary for video hosting, transcoding, and adaptive streaming</li>
                     <li><strong>Firebase Backend:</strong> Leveraged Firestore for real-time data management and user content</li>
                     <li><strong>Video Optimization:</strong> Automatic video compression and format conversion for optimal playback</li>
-                    <li><strong>Search & Discovery:</strong> Built intelligent search and categorization system</li>
+                    <li><strong>Search &amp; Discovery:</strong> Built intelligent search and categorization system</li>
                 </ul>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Key Features</h3>
+                <h3 data-i18n="keyFeatures">Key Features</h3>
                 <div class="features-grid">
-                    <div class="feature-item">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <h4>Video Upload</h4>
-                        <p>Drag-and-drop interface with progress tracking</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="play-circle-outline"></ion-icon>
-                        <h4>Adaptive Streaming</h4>
-                        <p>Automatic quality adjustment based on connection speed</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <h4>Secure Auth</h4>
-                        <p>Multi-factor authentication and social logins</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="bookmark-outline"></ion-icon>
-                        <h4>Collections</h4>
-                        <p>Organize videos into playlists and categories</p>
-                    </div>
+                    <div class="feature-item"><ion-icon name="cloud-upload-outline"></ion-icon><h4>Video Upload</h4><p>Drag-and-drop interface with progress tracking</p></div>
+                    <div class="feature-item"><ion-icon name="play-circle-outline"></ion-icon><h4>Adaptive Streaming</h4><p>Automatic quality adjustment based on connection speed</p></div>
+                    <div class="feature-item"><ion-icon name="lock-closed-outline"></ion-icon><h4>Secure Auth</h4><p>Multi-factor authentication and social logins</p></div>
+                    <div class="feature-item"><ion-icon name="bookmark-outline"></ion-icon><h4>Collections</h4><p>Organize videos into playlists and categories</p></div>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Technologies Used</h3>
-                <div class="tech-stack-list">
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">Firebase</span>
-                    <span class="tech-badge">Clerk Auth</span>
-                    <span class="tech-badge">Cloudinary</span>
-                    <span class="tech-badge">CSS3</span>
-                    <span class="tech-badge">Netlify</span>
-                </div>
+                <h3 data-i18n="technologiesUsed">Technologies Used</h3>
+                <div class="tech-stack-list"><span class="tech-badge">React</span><span class="tech-badge">Firebase</span><span class="tech-badge">Clerk Auth</span><span class="tech-badge">Cloudinary</span><span class="tech-badge">CSS3</span><span class="tech-badge">Netlify</span></div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Results & Impact</h3>
+                <h3 data-i18n="resultsImpact">Results &amp; Impact</h3>
                 <ul class="case-study-list">
                     <li>Handles video uploads up to 500MB with progress tracking</li>
                     <li>Automatic video transcoding for optimal streaming on all devices</li>
@@ -1773,39 +986,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </div>
 
-<!-- Smart DNS Resolver Case Study Modal -->
+<!-- Smart DNS Resolver -->
 <div class="case-study-modal-container" data-case-study-modal id="dns-resolver-modal">
-    <div class="overlay" data-case-study-overlay></div>
-    <section class="case-study-modal">
-        <button class="modal-close-btn" data-case-study-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
+    <div class="modal__overlay" data-case-study-overlay></div>
+    <section class="modal__card case-study-modal">
+        <button class="modal__close" type="button" data-case-study-close aria-label="Close"><ion-icon name="close-outline"></ion-icon></button>
         <div class="case-study-content">
             <div class="case-study-header">
-                <h2 class="h2">Smart DNS Resolver</h2>
+                <h2>Smart DNS Resolver</h2>
                 <p class="case-study-subtitle">Comprehensive DNS Record Query Tool</p>
                 <div class="case-study-meta">
                     <span class="meta-item"><ion-icon name="calendar-outline"></ion-icon> 2024</span>
                     <span class="meta-item"><ion-icon name="code-outline"></ion-icon> HTML, Node.js, DNS</span>
-                    <a href="https://dns.catchee.xyz/" target="_blank" class="meta-link">
-                        <ion-icon name="open-outline"></ion-icon> Visit Live Site
-                    </a>
+                    <a href="https://dns.catchee.xyz/" target="_blank" rel="noopener" class="meta-link"><ion-icon name="open-outline"></ion-icon> <span data-i18n="visitLiveSite">Visit Live Site</span></a>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Project Overview</h3>
+                <h3 data-i18n="projectOverview">Project Overview</h3>
                 <p>Smart DNS Resolver is a powerful web application built with HTML and Node.js that allows users to query comprehensive DNS records for any domain. The tool provides detailed information including A records, AAAA records, MX records, NS records, SOA records, and TXT records in an intuitive and user-friendly interface.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">The Challenge</h3>
+                <h3 data-i18n="theChallenge">The Challenge</h3>
                 <p>Network administrators, developers, and IT professionals needed a simple yet powerful tool to quickly query and analyze DNS records without relying on command-line tools or complex network utilities. The challenge was to create a responsive, fast, and comprehensive DNS lookup tool accessible from any device using lightweight technologies.</p>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Solution & Approach</h3>
+                <h3 data-i18n="solutionApproach">Solution &amp; Approach</h3>
                 <ul class="case-study-list">
                     <li><strong>Node.js Backend:</strong> Implemented server-side DNS resolution with Node.js dns module for accurate and comprehensive record retrieval</li>
                     <li><strong>Lightweight Frontend:</strong> Built a clean HTML interface with vanilla JavaScript for optimal performance</li>
@@ -1814,47 +1019,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><strong>Comprehensive Data Display:</strong> Organized complex DNS information into clear, categorized sections</li>
                 </ul>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Key Features</h3>
+                <h3 data-i18n="keyFeatures">Key Features</h3>
                 <div class="features-grid">
-                    <div class="feature-item">
-                        <ion-icon name="search-outline"></ion-icon>
-                        <h4>Multi-Record Query</h4>
-                        <p>Retrieve A, AAAA, MX, NS, SOA, and TXT records in a single query</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="time-outline"></ion-icon>
-                        <h4>Query History</h4>
-                        <p>Track and review previous DNS queries with timestamps</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="speedometer-outline"></ion-icon>
-                        <h4>Performance Metrics</h4>
-                        <p>Display query execution time and response details</p>
-                    </div>
-                    <div class="feature-item">
-                        <ion-icon name="server-outline"></ion-icon>
-                        <h4>DNS Analysis</h4>
-                        <p>Complete DNS record analysis with structured output</p>
-                    </div>
+                    <div class="feature-item"><ion-icon name="search-outline"></ion-icon><h4>Multi-Record Query</h4><p>Retrieve A, AAAA, MX, NS, SOA, and TXT records in a single query</p></div>
+                    <div class="feature-item"><ion-icon name="time-outline"></ion-icon><h4>Query History</h4><p>Track and review previous DNS queries with timestamps</p></div>
+                    <div class="feature-item"><ion-icon name="speedometer-outline"></ion-icon><h4>Performance Metrics</h4><p>Display query execution time and response details</p></div>
+                    <div class="feature-item"><ion-icon name="server-outline"></ion-icon><h4>DNS Analysis</h4><p>Complete DNS record analysis with structured output</p></div>
                 </div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Technologies Used</h3>
-                <div class="tech-stack-list">
-                    <span class="tech-badge">HTML5</span>
-                    <span class="tech-badge">Node.js</span>
-                    <span class="tech-badge">DNS Module</span>
-                    <span class="tech-badge">JavaScript</span>
-                    <span class="tech-badge">CSS3</span>
-                    <span class="tech-badge">Express.js</span>
-                </div>
+                <h3 data-i18n="technologiesUsed">Technologies Used</h3>
+                <div class="tech-stack-list"><span class="tech-badge">HTML5</span><span class="tech-badge">Node.js</span><span class="tech-badge">DNS Module</span><span class="tech-badge">JavaScript</span><span class="tech-badge">CSS3</span><span class="tech-badge">Express.js</span></div>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Results & Impact</h3>
+                <h3 data-i18n="resultsImpact">Results &amp; Impact</h3>
                 <ul class="case-study-list">
                     <li>Provides comprehensive DNS analysis in under 0.04 seconds per query</li>
                     <li>Supports all major DNS record types for complete domain analysis</li>
@@ -1863,30 +1042,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>Eliminates need for command-line tools for basic DNS queries</li>
                 </ul>
             </div>
-
             <div class="case-study-section">
-                <h3 class="h3">Sample Query Output</h3>
+                <h3>Sample Query Output</h3>
                 <div class="sample-output">
                     <div class="output-section">
                         <h4>🌐 google.com</h4>
-                        <div class="output-item">
-                            <strong>Primary Address:</strong> 142.250.200.110
-                        </div>
-                        <div class="output-item">
-                            <strong>IPv4 (A Records):</strong> 142.250.185.14
-                        </div>
-                        <div class="output-item">
-                            <strong>IPv6 (AAAA Records):</strong> 2a00:1450:4003:803::200e
-                        </div>
-                        <div class="output-item">
-                            <strong>MX Records (Mail Servers):</strong> 10 smtp.google.com
-                        </div>
-                        <div class="output-item">
-                            <strong>NS Records (Name Servers):</strong> ns4.google.com, ns1.google.com, ns3.google.com, ns2.google.com
-                        </div>
-                        <div class="output-item">
-                            <strong>SOA Record:</strong> NS Name: ns1.google.com, Host Master: dns-admin.google.com
-                        </div>
+                        <div class="output-item"><strong>Primary Address:</strong> 142.250.200.110</div>
+                        <div class="output-item"><strong>IPv4 (A Records):</strong> 142.250.185.14</div>
+                        <div class="output-item"><strong>IPv6 (AAAA Records):</strong> 2a00:1450:4003:803::200e</div>
+                        <div class="output-item"><strong>MX Records (Mail Servers):</strong> 10 smtp.google.com</div>
+                        <div class="output-item"><strong>NS Records (Name Servers):</strong> ns4.google.com, ns1.google.com, ns3.google.com, ns2.google.com</div>
+                        <div class="output-item"><strong>SOA Record:</strong> NS Name: ns1.google.com, Host Master: dns-admin.google.com</div>
                     </div>
                 </div>
             </div>
@@ -1894,10 +1060,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 </div>
 
-<!--
-  - custom js link
--->
+<!--==================== JS ====================-->
 <script src="./assets/js/main.js"></script>
-
 </body>
 </html>
