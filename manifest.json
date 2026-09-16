@@ -4,8 +4,8 @@
   "description": "Portfolio of Jonathan Cindano, Full Stack Developer specializing in web development and blockchain technologies",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0C0C0C",
-  "theme_color": "#FFC600",
+  "background_color": "#0a0f0d",
+  "theme_color": "#10b981",
   "orientation": "portrait-primary",
   "icons": [
     {
