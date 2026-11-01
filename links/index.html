@@ -16,7 +16,7 @@ main{max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-item
 .mono{font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace}
 .bubble{position:relative;border:1px solid var(--ink);background:var(--bg);box-shadow:2px 2px 0 var(--ink);padding:6px 10px;margin-bottom:16px;text-align:center;max-width:100%}
 .bubble:after{content:"";position:absolute;left:50%;bottom:-7px;width:8px;height:8px;background:var(--bg);border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);transform:translateX(-50%) rotate(45deg)}
-.mascot{width:96px;height:84px;image-rendering:pixelated;animation:bob 2.4s steps(2) infinite}
+.mascot{width:120px;height:120px;object-fit:contain;image-rendering:pixelated;animation:bob 2.4s steps(2) infinite}
 @keyframes bob{50%{transform:translateY(-3px)}}
 .meter{align-self:flex-end;display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--muted)}
 .meter i{width:9px;height:9px;border:1px solid var(--ink);display:inline-block}
@@ -52,7 +52,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 <body>
 <main>
   <div class="bubble mono" id="say" role="status">salut. moi c'est le dodo de Jonathan.</div>
-  <svg class="mascot" id="dodo" viewBox="0 0 16 14" aria-hidden="true"></svg>
+  <img class="mascot" src="dodo.gif" alt="" width="120" height="120">
   <div class="meter mono" aria-live="polite"><label>CURIOSITÉ</label><span id="mt"></span></div>
   <hr>
   <h1>Jonathan Cindano</h1>
@@ -62,7 +62,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 </main>
 <div class="gate" id="gate">
   <form name="linktree" id="f">
-    <svg class="mascot" id="dodo2" viewBox="0 0 16 14" aria-hidden="true" style="margin-bottom:10px"></svg>
+    <img class="mascot" src="dodo.gif" alt="" width="96" height="96" style="margin-bottom:10px">
     <h2>Bienvenue</h2>
     <p>Ton prénom et ton email pour découvrir mes liens et recevoir mes prochaines sorties.</p>
     <input class="hp" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -92,11 +92,6 @@ const LINKS=[
 {id:'yt',n:'YouTube',s:'@sudododo-p7b',u:'https://youtube.com/@sudododo-p7b',i:'play'},
 {id:'tt',n:'TikTok',s:'@sudododo6',u:'https://www.tiktok.com/@sudododo6',i:'note'},
 {id:'th',n:'Threads',s:'@sudo.dodo',u:'https://www.threads.com/@sudo.dodo',i:'at'}];
-// dodo en pixels : k contour, b corps, w ventre, o bec, e oeil
-const ART=['......kkkk......','....kkbbbbkk....','...kbbbbbbbbk...','...kbbbbbebbkoo.','...kbbbbbbbbkooo','....kbbbbbbbk.o.','...kbbbbbbbbbk..','..kbbwwwwwbbbk..','..kbwwwwwwwbbk..','..kbbwwwwwbbbk..','...kbbbbbbbbk...','....kkkkkkkk....','.....o....o.....','....oo...oo.....'];
-const COL={k:'var(--ink)',b:'var(--bird)',w:'var(--bird2)',o:'var(--beak)',e:'var(--ink)'};
-const dodo=ART.map((r,y)=>[...r].map((c,x)=>COL[c]?`<rect x="${x}" y="${y}" width="1" height="1" fill="${COL[c]}"/>`:'').join('')).join('');
-$('dodo').innerHTML=dodo;$('dodo2').innerHTML=dodo;
 let st={name:'',seen:[]};
 try{Object.assign(st,JSON.parse(store.get('st')||'{}'))}catch(e){}
 if(!Array.isArray(st.seen))st.seen=[];
