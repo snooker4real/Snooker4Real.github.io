@@ -95,11 +95,10 @@ input[type=text],input[type=email]{width:100%;min-height:48px;padding:0 14px;bor
 </div>
 
 <div class="gate" id="gate">
-  <form class="hud" name="linktree" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="f">
+  <form class="hud" name="linktree" id="f">
     <img src="avatar.png" alt="">
     <h2>PRESS START</h2>
     <p>Nom et email pour entrer dans l'arène et recevoir mes prochaines sorties.</p>
-    <input type="hidden" name="form-name" value="linktree">
     <input class="hp" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label for="n">Nom et prénom</label><input id="n" name="nom" type="text" autocomplete="name" required>
     <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required>
@@ -111,7 +110,7 @@ input[type=text],input[type=email]{width:100%;min-height:48px;padding:0 14px;bor
 <div class="toast" id="toast" role="status"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-const DEMO=!location.hostname.endsWith('netlify.app'); // envoi réel seulement sur Netlify (Netlify Forms) ; ailleurs la porte d'entrée est sautée
+const DEMO=!location.hostname.endsWith('netlify.app'); // inscription réelle (API Mailchimp de la newsletter) seulement sur snookdev.netlify.app ; ailleurs la porte d'entrée est sautée
 const $=id=>document.getElementById(id),root=document.documentElement;
 const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const IC={
@@ -161,7 +160,7 @@ if(DEMO||(st.name&&store.get('ok')==='1'))$('gate').hidden=true;
 $('f').onsubmit=async ev=>{
   ev.preventDefault();$('err').textContent='';$('b').disabled=true;
   try{
-    if(!DEMO){const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(ev.target)).toString()});if(!r.ok)throw 0}
+    if(!DEMO){const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('e').value.trim(),name:$('n').value.trim()})});if(!r.ok)throw 0}
     st.name=$('n').value.trim();store.set('ok','1');enter(true);
   }catch(e){$('err').textContent="L'envoi a échoué. Vérifie ta connexion et réessaie.";$('b').disabled=false}
 };
