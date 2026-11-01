@@ -31,7 +31,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rep
 .lvl .row{display:flex;justify-content:space-between;gap:8px}
 .bar{height:10px;margin-top:6px;border:1px solid var(--line);background:#0004}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 12px var(--accent);transition:width .6s cubic-bezier(.2,.8,.2,1)}
-.clock{font:500 .95rem var(--mono);color:var(--accent2)}
 .skins{display:flex;gap:8px}
 .skins button{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);padding:0;cursor:pointer;background:linear-gradient(135deg,var(--a),var(--b))}
 .skins button[aria-pressed=true]{border-color:var(--fg)}
@@ -72,9 +71,8 @@ input[type=text],input[type=email]{width:100%;min-height:48px;padding:0 14px;bor
 <div class="wrap">
   <header class="hud top">
     <img src="avatar.png" alt="Logo Sudo Dodo">
-    <div class="who"><h1>SUDO DODO</h1><p id="hello">Dev · Linux · Sécu · IA · Tech</p></div>
-    <div class="lvl"><div class="row"><span class="lbl" id="rank">user</span><span class="lbl" id="xpt">0 XP</span></div><div class="bar"><i id="xpb"></i></div></div>
-    <div class="clock" id="clk" aria-hidden="true">00:00:00 UTC</div>
+    <div class="who"><h1>SUDO DODO</h1><p id="hello">Je partage ce que j’apprends en tech, simplement</p></div>
+    <div class="lvl"><div class="row"><span class="lbl" id="rank">niveau · visiteur</span><span class="lbl" id="xpt">0 pts</span></div><div class="bar"><i id="xpb"></i></div></div>
     <div class="skins" role="group" aria-label="Choisir un thème">
       <button type="button" data-skin="matrix" style="--a:#19ff8a;--b:#00d4ff" aria-label="Thème Matrix"></button>
       <button type="button" data-skin="cyan" style="--a:#00d4ff;--b:#7a5cff" aria-label="Thème Cyan"></button>
@@ -84,12 +82,12 @@ input[type=text],input[type=email]{width:100%;min-height:48px;padding:0 14px;bor
     </div>
   </header>
 
-  <section class="hud arena" aria-label="Arène 3D des liens">
+  <section class="hud arena" aria-label="Mes liens en 3D">
     <span class="lbl">// arène · touche un cube</span><span class="lbl hint">glisse pour tourner</span>
     <canvas id="cv"></canvas>
   </section>
 
-  <div class="hud quest"><div class="t"><span class="lbl">quête</span><br><b id="qt">Explore tous les liens pour obtenir l'accès root</b></div><div class="lbl" id="qp">0 / 6</div></div>
+  <div class="hud quest"><div class="t"><span class="lbl">à découvrir</span><br><b id="qt">Découvre tous mes liens</b></div><div class="lbl" id="qp">0 / 6</div></div>
 
   <nav class="cards" id="cards" aria-label="Mes liens"></nav>
 </div>
@@ -98,11 +96,11 @@ input[type=text],input[type=email]{width:100%;min-height:48px;padding:0 14px;bor
   <form class="hud" name="linktree" id="f">
     <img src="avatar.png" alt="">
     <h2>PRESS START</h2>
-    <p>Nom et email pour entrer dans l'arène et recevoir mes prochaines sorties.</p>
+    <p>Ton prénom et ton email pour découvrir mes liens et recevoir mes prochaines sorties.</p>
     <input class="hp" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label for="n">Nom et prénom</label><input id="n" name="nom" type="text" autocomplete="name" required>
+    <label for="n">Ton prénom</label><input id="n" name="nom" type="text" autocomplete="name" required>
     <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required>
-    <button class="go" type="submit" id="b">START ▶</button>
+    <button class="go" type="submit" id="b">Entrer</button>
     <p class="err" id="err" role="alert"></p>
     <p class="fine">En continuant, tu acceptes de recevoir mes actualités par email. Désinscription à tout moment.</p>
   </form>
@@ -128,24 +126,24 @@ const LINKS=[
 {id:'yt',n:'YouTube',s:'@sudododo-p7b',u:'https://youtube.com/@sudododo-p7b',i:'play'},
 {id:'tt',n:'TikTok',s:'@sudododo6',u:'https://www.tiktok.com/@sudododo6',i:'note'},
 {id:'th',n:'Threads',s:'@sudo.dodo',u:'https://www.threads.com/@sudo.dodo',i:'at'}];
-const RANKS=['user','sudoer','admin','root'],XP_LINK=100,XP_START=50;
+const RANKS=['visiteur','curieux','fidèle','ami'],XP_LINK=100,XP_START=50;
 let st={name:'',xp:0,seen:[]};
 try{Object.assign(st,JSON.parse(store.get('st')||'{}'))}catch(e){}
 const save=()=>store.set('st',JSON.stringify(st));
 let tt;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
 function hud(){
   const max=XP_START+XP_LINK*LINKS.length,lv=Math.min(3,Math.floor(st.seen.length/2.5));
-  $('rank').textContent='rang · '+RANKS[st.seen.length===LINKS.length?3:Math.min(2,lv)];
-  $('xpt').textContent=st.xp+' XP';$('xpb').style.width=Math.min(100,st.xp/max*100)+'%';
+  $('rank').textContent='niveau · '+RANKS[st.seen.length===LINKS.length?3:Math.min(2,lv)];
+  $('xpt').textContent=st.xp+' pts';$('xpb').style.width=Math.min(100,st.xp/max*100)+'%';
   $('qp').textContent=st.seen.length+' / '+LINKS.length;
-  $('qt').textContent=st.seen.length===LINKS.length?'ACCÈS ROOT DÉBLOQUÉ. Merci !':"Explore tous les liens pour obtenir l'accès root";
-  $('hello').textContent=st.name?'Bienvenue, '+st.name.split(' ')[0]+' · Dev · Linux · Sécu · IA':'Dev · Linux · Sécu · IA · Tech';
-  LINKS.forEach(l=>{const c=$('c-'+l.id),d=st.seen.includes(l.id);c.classList.toggle('done',d);c.querySelector('.xp').textContent=d?'✓ vu':'+'+XP_LINK+' XP'});
+  $('qt').textContent=st.seen.length===LINKS.length?'Tu as tout vu, merci d\'être passé !':"Découvre tous mes liens";
+  $('hello').textContent=st.name?'Bienvenue, '+st.name.split(' ')[0]+' · Dev · Linux · Sécu · IA':'Je partage ce que j’apprends en tech, simplement';
+  LINKS.forEach(l=>{const c=$('c-'+l.id),d=st.seen.includes(l.id);c.classList.toggle('done',d);c.querySelector('.xp').textContent=d?'✓ vu':'+'+XP_LINK+' pts'});
 }
 function visit(id){
   if(st.seen.includes(id))return;
   st.seen.push(id);st.xp+=XP_LINK;save();hud();
-  toast(st.seen.length===LINKS.length?'🔓 ACCÈS ROOT · tous les liens explorés':'+'+XP_LINK+' XP · '+LINKS.find(l=>l.id===id).n);
+  toast(st.seen.length===LINKS.length?'🎉 Tu as tout découvert, merci !':'+'+XP_LINK+' pts · '+LINKS.find(l=>l.id===id).n);
 }
 $('cards').innerHTML=LINKS.map(l=>`<a class="hud card${l.hot?' hot':''}" id="c-${l.id}" href="${l.u}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">${IC[l.i]}</svg><span><span class="n">${l.n}</span><small>${l.s}</small></span><span class="xp"></span></a>`).join('');
 LINKS.forEach(l=>$('c-'+l.id).addEventListener('click',()=>visit(l.id)));
@@ -154,7 +152,7 @@ function skin(s){root.dataset.skin=s;document.querySelectorAll('.skins button').
 document.querySelectorAll('.skins button').forEach(b=>b.onclick=()=>skin(b.dataset.skin));
 skin(store.get('skin')||'matrix');
 // porte d'entrée
-function enter(first){$('gate').hidden=true;if(first){st.xp+=XP_START;save();toast('+'+XP_START+' XP · bienvenue dans l\'arène')}hud()}
+function enter(first){$('gate').hidden=true;if(first){st.xp+=XP_START;save();toast('+'+XP_START+' pts · bienvenue !')}hud()}
 if(DEMO||(st.name&&store.get('ok')==='1'))$('gate').hidden=true;
 $('f').onsubmit=async ev=>{
   ev.preventDefault();$('err').textContent='';$('b').disabled=true;
@@ -164,7 +162,6 @@ $('f').onsubmit=async ev=>{
   }catch(e){$('err').textContent="L'envoi a échoué. Vérifie ta connexion et réessaie.";$('b').disabled=false}
 };
 hud();
-setInterval(()=>{$('clk').textContent=new Date().toISOString().slice(11,19)+' UTC'},1000);
 // arène 3D
 (function(){
   if(!window.THREE)return;
