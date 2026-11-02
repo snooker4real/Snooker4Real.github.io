@@ -127,7 +127,7 @@ LINKS.forEach(l=>$('c-'+l.id).addEventListener('click',()=>visit(l.id)));
 const subscribed=()=>store.get('ok')==='1';
 function paintNews(){const c=$('c-news');if(!c)return;c.querySelector('small').textContent=subscribed()?'Inscrit, merci !':'Mes prochaines sorties par email';c.querySelector('.go').textContent=subscribed()?'✓':'→'}
 function openGate(){if(subscribed()){say('tu es déjà inscrit'+(st.name?', '+st.name:'')+'. merci !');return}$('gate').hidden=false;$('e').focus()}
-function closeGate(){$('gate').hidden=true}
+function closeGate(){$('gate').hidden=true;store.set('no','1')}
 $('c-news').addEventListener('click',ev=>{if(DEMO)return;ev.preventDefault();openGate()});
 $('gx').onclick=closeGate;
 $('gate').addEventListener('click',ev=>{if(ev.target===$('gate'))closeGate()});
@@ -142,6 +142,8 @@ $('f').onsubmit=async ev=>{
 };
 paintNews();
 if(!DEMO&&location.hash==='#newsletter')openGate();
+// proposition unique après 15 s, jamais à l'arrivée ; une fois fermée ou inscrit, elle ne revient pas
+setTimeout(()=>{if(!DEMO&&!subscribed()&&store.get('no')!=='1'&&$('gate').hidden)openGate()},15000);
 draw();
 </script>
 </body>
