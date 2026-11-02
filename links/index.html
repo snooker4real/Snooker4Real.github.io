@@ -34,6 +34,13 @@ nav{width:100%;display:flex;flex-direction:column;gap:14px}
 .txt{flex:1;min-width:0}.txt b{display:block;font-weight:600;font-size:15px}.txt small{display:block;color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .go{color:var(--muted);font-size:14px}
 .card.done .go{color:var(--ink)}
+h2.sect{align-self:flex-start;margin:26px 0 12px;font:500 12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.soc{display:flex;gap:10px;margin:0 0 4px}
+.soc a{width:40px;height:40px;border:1px solid var(--ink);display:grid;place-items:center;color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.soc a:hover,.soc a:focus-visible{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);outline:none}
+.soc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.gate .x{position:absolute;top:8px;right:8px;width:34px;height:34px;margin:0;padding:0;background:transparent;color:var(--ink);border:0;box-shadow:none;font-size:22px;line-height:1;cursor:pointer;width:34px}
+.gate form{position:relative}
 footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 .gate{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:auto}
 .gate form{width:100%;max-width:380px;padding:24px;background:var(--bg);border:1px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:flex;flex-direction:column;align-items:center}
@@ -57,24 +64,26 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
   <hr>
   <h1>Jonathan Cindano</h1>
   <p class="sub">Alias Sudo Dodo. Je partage ce que j'apprends en tech, simplement.</p>
-  <nav id="cards" aria-label="Mes liens"></nav>
+  <div class="soc" id="soc"></div>
+  <div id="cards" style="width:100%"></div>
   <footer>chaque clic nourrit le dodo.</footer>
 </main>
-<div class="gate" id="gate">
+<div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gt">
   <form name="linktree" id="f">
+    <button type="button" class="x" id="gx" aria-label="Fermer">×</button>
     <img class="mascot" src="dodo.gif" alt="" width="96" height="96" style="margin-bottom:10px">
-    <h2>Bienvenue</h2>
-    <p>Ton prénom et ton email pour découvrir mes liens et recevoir mes prochaines sorties.</p>
+    <h2 id="gt">La newsletter</h2>
+    <p>Mes prochaines sorties directement dans ta boîte mail. Seul l'email est obligatoire.</p>
     <input class="hp" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label for="n">Ton prénom</label><input id="n" name="nom" type="text" autocomplete="given-name" required>
+    <label for="n">Ton prénom (facultatif)</label><input id="n" name="nom" type="text" autocomplete="given-name">
     <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required>
-    <button type="submit" id="b">Entrer</button>
+    <button type="submit" id="b">Je m'inscris</button>
     <p class="err" id="err" role="alert"></p>
-    <p class="fine">En continuant, tu acceptes de recevoir mes actualités par email. Désinscription à tout moment.</p>
+    <p class="fine">En t'inscrivant, tu acceptes de recevoir mes actualités par email. Désinscription à tout moment.</p>
   </form>
 </div>
 <script>
-const DEMO=!location.hostname.endsWith('netlify.app'); // inscription réelle (API Mailchimp de la newsletter) seulement sur snookdev.netlify.app ; ailleurs la porte d'entrée est sautée
+const DEMO=!location.hostname.endsWith('netlify.app'); // l'inscription réelle (API Mailchimp) n'existe que sur snookdev.netlify.app ; ailleurs la carte newsletter renvoie vers cette page
 const $=id=>document.getElementById(id);
 const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const IC={
@@ -107,18 +116,32 @@ function visit(id){
   st.seen.push(id);save();draw();
   say(st.seen.length===LINKS.length?'plein à craquer. merci '+(st.name||'')+' !':MIAM[Math.min(st.seen.length-1,MIAM.length-1)]);
 }
-$('cards').innerHTML=LINKS.map(l=>`<a class="card" id="c-${l.id}" href="${l.u}" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[l.i]}</svg></span><span class="txt"><b>${l.n}</b><small>${l.s}</small></span><span class="go">↗</span></a>`).join('');
+const NEWS_URL='https://snookdev.netlify.app/links#newsletter';
+const SECTIONS=[['Newsletter',['news']],['Mes contenus',['port','sub','yt']],['Réseaux sociaux',['ig','tt','th']]];
+const byId=Object.fromEntries(LINKS.map(l=>[l.id,l]));
+const card=l=>`<a class="card" id="c-${l.id}" href="${l.u}" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[l.i]}</svg></span><span class="txt"><b>${l.n}</b><small>${l.s}</small></span><span class="go">↗</span></a>`;
+$('cards').innerHTML=SECTIONS.map(([t,ids])=>`<h2 class="sect">${t}</h2><nav aria-label="${t}" style="display:flex;flex-direction:column;gap:14px">${ids.map(i=>i==='news'?card({id:'news',n:'Recevoir ma newsletter',s:'Mes prochaines sorties par email',u:NEWS_URL,i:'mail'}):card(byId[i])).join('')}</nav>`).join('');
+$('soc').innerHTML=['ig','tt','th','yt'].map(i=>`<a href="${byId[i].u}" target="_blank" rel="noopener" aria-label="${byId[i].n}"><svg viewBox="0 0 24 24" aria-hidden="true">${IC[byId[i].i]}</svg></a>`).join('');
 LINKS.forEach(l=>$('c-'+l.id).addEventListener('click',()=>visit(l.id)));
-// porte d'entrée
-function enter(first){$('gate').hidden=true;if(first)say('bienvenue '+st.name+' !');else if(st.name)say('re-bonjour '+st.name+'.');draw()}
-if(DEMO||(st.name&&store.get('ok')==='1'))enter(false);
+// newsletter : fenêtre d'inscription, seulement quand on la demande
+const subscribed=()=>store.get('ok')==='1';
+function paintNews(){const c=$('c-news');if(!c)return;c.querySelector('small').textContent=subscribed()?'Inscrit, merci !':'Mes prochaines sorties par email';c.querySelector('.go').textContent=subscribed()?'✓':'→'}
+function openGate(){if(subscribed()){say('tu es déjà inscrit'+(st.name?', '+st.name:'')+'. merci !');return}$('gate').hidden=false;$('e').focus()}
+function closeGate(){$('gate').hidden=true}
+$('c-news').addEventListener('click',ev=>{if(DEMO)return;ev.preventDefault();openGate()});
+$('gx').onclick=closeGate;
+$('gate').addEventListener('click',ev=>{if(ev.target===$('gate'))closeGate()});
+addEventListener('keydown',ev=>{if(ev.key==='Escape')closeGate()});
 $('f').onsubmit=async ev=>{
   ev.preventDefault();$('err').textContent='';$('b').disabled=true;
   try{
-    if(!DEMO){const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('e').value.trim(),name:$('n').value.trim()})});if(!r.ok)throw 0}
-    st.name=$('n').value.trim();save();store.set('ok','1');enter(true);
-  }catch(e){$('err').textContent="L'envoi a échoué. Vérifie ta connexion et réessaie.";$('b').disabled=false}
+    const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:$('e').value.trim(),name:$('n').value.trim()})});if(!r.ok)throw 0;
+    st.name=$('n').value.trim();save();store.set('ok','1');closeGate();paintNews();say('merci'+(st.name?' '+st.name:'')+' ! à bientôt dans ta boîte mail.');
+  }catch(e){$('err').textContent="L'envoi a échoué. Vérifie ta connexion et réessaie."}
+  $('b').disabled=false;
 };
+paintNews();
+if(!DEMO&&location.hash==='#newsletter')openGate();
 draw();
 </script>
 </body>
