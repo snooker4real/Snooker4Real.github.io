@@ -39,7 +39,8 @@ h2.sect{align-self:flex-start;margin:26px 0 12px;font:500 12px ui-monospace,SFMo
 .soc a{width:40px;height:40px;border:1px solid var(--ink);display:grid;place-items:center;color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
 .soc a:hover,.soc a:focus-visible{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink);outline:none}
 .soc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.gate .x{position:absolute;top:8px;right:8px;width:34px;height:34px;margin:0;padding:0;background:transparent;color:var(--ink);border:0;box-shadow:none;font-size:22px;line-height:1;cursor:pointer;width:34px}
+.gate .x{position:absolute;top:10px;right:10px;width:36px;height:36px;margin:0;padding:0;background:var(--bg);color:var(--ink);border:1px solid var(--ink);box-shadow:none;font-size:22px;line-height:1;cursor:pointer}
+.gate .no{margin-top:10px;width:auto;padding:6px 8px;background:transparent;color:var(--muted);border:0;box-shadow:none;font:500 13px Inter,sans-serif;text-decoration:underline;cursor:pointer}
 .gate form{position:relative}
 footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
 .gate{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:auto}
@@ -78,6 +79,7 @@ footer{margin-top:28px;color:var(--muted);font-size:13px;text-align:center}
     <label for="n">Ton prénom (facultatif)</label><input id="n" name="nom" type="text" autocomplete="given-name">
     <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required>
     <button type="submit" id="b">Je m'inscris</button>
+    <button type="button" class="no" id="gn">Non merci</button>
     <p class="err" id="err" role="alert"></p>
     <p class="fine">En t'inscrivant, tu acceptes de recevoir mes actualités par email. Désinscription à tout moment.</p>
   </form>
@@ -129,7 +131,7 @@ function paintNews(){const c=$('c-news');if(!c)return;c.querySelector('small').t
 function openGate(){if(subscribed()){say('tu es déjà inscrit'+(st.name?', '+st.name:'')+'. merci !');return}$('gate').hidden=false;$('e').focus()}
 function closeGate(){$('gate').hidden=true;store.set('no','1')}
 $('c-news').addEventListener('click',ev=>{if(DEMO)return;ev.preventDefault();openGate()});
-$('gx').onclick=closeGate;
+$('gx').onclick=closeGate;$('gn').onclick=closeGate;
 $('gate').addEventListener('click',ev=>{if(ev.target===$('gate'))closeGate()});
 addEventListener('keydown',ev=>{if(ev.key==='Escape')closeGate()});
 $('f').onsubmit=async ev=>{
