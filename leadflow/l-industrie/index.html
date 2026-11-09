@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>L&#x27;Industrie — Café à Lyon 8e</title><meta name="description" content="Cuisine française à Lyon 8e.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;600;700&amp;family=DM+Sans:wght@400;600;700&amp;display=swap">
+<style>:root{--c:#b8860b;--ct:#fff;--fh:"DM Serif Display";--fb:"DM Sans"}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.6 var(--fb),system-ui,sans-serif;color:#1d1d1b;background:#fbfaf7}
+h1,h2,h3{font-family:var(--fh),Georgia,serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.2rem,6vw,4rem)}h2{font-size:clamp(1.6rem,3.5vw,2.3rem)}
+a{color:inherit}img{max-width:100%;display:block}
+.demo{background:#1d1d1b;color:#e9e7e0;font:13px/1.4 system-ui,sans-serif;text-align:center;padding:7px 16px}
+header{position:sticky;top:0;z-index:5;background:#fbfaf7ee;backdrop-filter:blur(8px);border-bottom:1px solid #e6e2d8}
+.bar{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:20px}
+.brand{font:700 1.25rem var(--fh),Georgia,serif;text-decoration:none;margin-right:auto;display:flex;align-items:center;gap:10px}
+.brand img{max-height:44px;max-width:160px}
+nav a{text-decoration:none;font-size:.95rem;margin-left:18px}nav a:hover{color:var(--c)}
+.btn{display:inline-block;background:var(--c);color:var(--ct);padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600;border:0;font:600 1rem var(--fb),sans-serif;cursor:pointer}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;color:#fff;background:linear-gradient(135deg,var(--c),#1d1d1b)}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 25%,#000c)}
+.hero div{position:relative;z-index:1;max-width:1100px;width:100%;margin:0 auto;padding:60px 20px}
+.hero p{font-size:1.2rem;max-width:44ch;margin:0 0 1.4em}.hero .btn{margin:0 10px 10px 0}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:600;opacity:.9;margin:0 0 .8em}
+section{max-width:1100px;margin:0 auto;padding:72px 20px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:40px;align-items:start}
+.two>img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:0;list-style:none}
+.cards li{background:#fff;border:1px solid #e6e2d8;border-radius:14px;padding:22px;font-weight:600;border-top:3px solid var(--c)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none}.chips li{border:1px solid #cfcabd;border-radius:999px;padding:5px 14px;font-size:.92rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.menu h3{margin-top:1.6em;color:var(--c)}.menu p{margin:.35em 0;border-bottom:1px dotted #cfcabd;padding-bottom:.35em}
+table{border-collapse:collapse;width:100%}td{padding:7px 0;border-bottom:1px solid #e6e2d8}td:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.panel{background:#fff;border:1px solid #e6e2d8;border-radius:16px;padding:28px}
+form{display:grid;gap:12px}label{font-size:.9rem;font-weight:600;display:grid;gap:4px}
+input,select,textarea{font:inherit;padding:11px 12px;border:1px solid #cfcabd;border-radius:10px;background:#fff;width:100%}
+#ok{display:none;background:#eef6ee;border:1px solid #9cc79c;border-radius:10px;padding:12px;font-size:.95rem}
+iframe{width:100%;height:320px;border:0;border-radius:16px}
+footer{background:#1d1d1b;color:#bdb9ad;font-size:.88rem;padding:36px 20px;text-align:center}footer a{color:#fff}
+.call{display:none}
+@media(max-width:720px){nav{display:none}section{padding:52px 20px}.call{display:block;position:fixed;left:16px;right:16px;bottom:14px;text-align:center;z-index:6;box-shadow:0 6px 20px #0004}body{padding-bottom:76px}}
+main{display:flex;flex-direction:column}main>section{width:100%}
+.hero{min-height:0;display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch;color:#1d1d1b;background:color-mix(in srgb,var(--c) 11%,#fbfaf7)}
+.hero>img{position:static;order:2;height:100%;min-height:560px;border-radius:0 0 0 96px}.hero::after{display:none}
+.hero div{align-self:center;padding:72px 48px;margin:0}.hero .btn.ghost{color:#1d1d1b}.nophoto .hero{grid-template-columns:1fr;border-left:14px solid var(--c)}
+.cards li{border-top:0;border-left:3px solid var(--c);border-radius:4px}#contact{order:-1}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.hero>img{min-height:260px;border-radius:0}.hero div{padding:44px 20px}}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "L'Industrie", "telephone": "+33 4 78 76 44 65", "address": "10 Pl. Ambroise Courtois, 69008 Lyon", "openingHours": "Mo,We,Fr 07:00-22:30; Tu,Th,Sa 06:00-22:30; Su 08:00-22:00", "geo": {"@type": "GeoCoordinates", "latitude": 45.7439501, "longitude": 4.8713975}}</script></head><body class="t1">
+<div class="demo">Maquette de démonstration préparée pour L&#x27;Industrie · contenus à valider avec l'établissement · page non référencée</div>
+<header><div class="bar"><a class="brand" href="#">L&#x27;Industrie</a><nav><a href="#apropos">À propos</a><a href="#photos">Photos</a><a href="#contact">Contact</a></nav><a class="btn" href="tel:+33478764465">Appeler</a></div></header>
+<div class="hero"><img src="img/g-1.jpg" alt="L&#x27;Industrie"><div><p class="kicker">Café · Lyon 8e</p><h1>L&#x27;Industrie</h1><p>Cuisine française à Lyon 8e.</p><a class="btn" href="#contact">Réserver une table</a><a class="btn ghost" href="tel:+33478764465">Appeler</a></div></div>
+<main><section id="apropos"><div class="two"><div><p class="kicker" style="color:var(--c)">Café · Lyon 8e</p><h2>L&#x27;Industrie</h2><p>L&#x27;Industrie, café à Lyon 8e, vous accueille au 10 Pl. Ambroise Courtois, 69008 Lyon.</p><ul class="chips"><li>Cuisine française</li><li>Terrasse</li><li>Accessible PMR</li><li>Wi-Fi</li><li>4,5 ★ sur Google (3279 avis)</li></ul></div><img src="img/g-2.jpg" alt="L&#x27;Industrie" style="border-radius:16px" loading="lazy"></div></section><section id="photos"><h2>En images</h2><div class="gallery"><img src="img/g-3.jpg" alt="L&#x27;Industrie" loading="lazy"><img src="img/g-4.jpg" alt="L&#x27;Industrie" loading="lazy"><img src="img/g-6.jpg" alt="L&#x27;Industrie" loading="lazy"><img src="img/g-7.jpg" alt="L&#x27;Industrie" loading="lazy"></div></section><section id="contact"><div class="two"><div><h2>Nous trouver</h2><p>10 Pl. Ambroise Courtois, 69008 Lyon</p><p><a class="btn" href="tel:+33478764465">+33 4 78 76 44 65</a></p><table><tr><td>Lundi</td><td>07:00–22:30</td></tr><tr><td>Mardi</td><td>06:00–22:30</td></tr><tr><td>Mercredi</td><td>07:00–22:30</td></tr><tr><td>Jeudi</td><td>06:00–22:30</td></tr><tr><td>Vendredi</td><td>07:00–22:30</td></tr><tr><td>Samedi</td><td>06:00–22:30</td></tr><tr><td>Dimanche</td><td>08:00–22:00</td></tr></table><p><a href="https://www.instagram.com/industriecafecomptoirlyon/" rel="noopener">Instagram</a></p><p><a href="https://www.openstreetmap.org/?mlat=45.7439501&mlon=4.8713975#map=18/45.7439501/4.8713975" rel="noopener">Itinéraire</a></p></div><div class="panel"><h2>Réserver une table</h2><form onsubmit="event.preventDefault();document.getElementById('ok').style.display='block'">
+<label>Nom<input required autocomplete="name"></label><label>Téléphone<input type="tel" required autocomplete="tel"></label>
+<label>Date<input type="date" required></label><label>Heure<input type="time" required></label>
+<label>Nombre de couverts<select><option>2</option><option>3</option><option>4</option><option>5</option><option>6 et plus</option></select></label>
+<button class="btn">Envoyer la demande</button><p id="ok">Démonstration : sur le site final, cette demande arrive par e-mail et SMS chez L&#x27;Industrie, avec confirmation automatique au client.</p></form></div></div><p><iframe title="Plan d'accès" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=4.8673975,45.7419501,4.875397499999999,45.7459501&amp;layer=mapnik&amp;marker=45.7439501,4.8713975"></iframe></p></section></main>
+<footer><p><strong>L&#x27;Industrie</strong> · 10 Pl. Ambroise Courtois, 69008 Lyon</p>
+<p>Maquette réalisée par LEADFLOW. Carte © contributeurs OpenStreetMap. Photos reprises de la fiche Google et du site de l'établissement, à valider avec lui.</p></footer>
+<a class="btn call" href="tel:+33478764465">Appeler L&#x27;Industrie</a>
+</body></html>
