@@ -40,13 +40,14 @@ iframe{width:100%;height:320px;border:0;border-radius:16px}
 footer{background:#1d1d1b;color:#bdb9ad;font-size:.88rem;padding:36px 20px;text-align:center}footer a{color:#fff}
 .call{display:none}
 @media(max-width:720px){nav{display:none}section{padding:52px 20px}.call{display:block;position:fixed;left:16px;right:16px;bottom:14px;text-align:center;z-index:6;box-shadow:0 6px 20px #0004}body{padding-bottom:76px}}
-main{display:flex;flex-direction:column}main>section{width:100%}
-.hero{min-height:0;display:grid;grid-template-columns:1.05fr 1fr;align-items:stretch;color:#1d1d1b;background:color-mix(in srgb,var(--c) 11%,#fbfaf7)}
-.hero>img{position:static;order:2;height:100%;min-height:560px;border-radius:0 0 0 96px}.hero::after{display:none}
-.hero div{align-self:center;padding:72px 48px;margin:0}.hero .btn.ghost{color:#1d1d1b}.nophoto .hero{grid-template-columns:1fr;border-left:14px solid var(--c)}
-.cards li{border-top:0;border-left:3px solid var(--c);border-radius:4px}#contact{order:-1}
-@media(max-width:720px){.hero{grid-template-columns:1fr}.hero>img{min-height:260px;border-radius:0}.hero div{padding:44px 20px}}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Coiffeur Franck Brévi", "telephone": "+33 4 72 73 15 38", "address": "266 Av. Jean Jaurès, 69007 Lyon", "openingHours": "Tu-Fr 09:30-19:00; Sa 08:30-17:00", "geo": {"@type": "GeoCoordinates", "latitude": 45.7308924, "longitude": 4.8331459}}</script></head><body class="t1">
+body{background:#f3ede1;color:#2a2118}header{background:#f3ede1;border-bottom:3px double #2a2118}.bar{justify-content:center}.brand{margin:0}nav{display:none}header .btn{display:none}
+.hero{min-height:0;display:block;background:none;color:#2a2118;padding:56px 20px 20px;text-align:left}.hero::after{display:none}
+.hero div{padding:0;max-width:1100px}h1{font-size:clamp(2.2rem,11vw,8rem);overflow-wrap:anywhere;font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:.25em}
+.hero>img{position:static;display:block;width:min(560px,86%);height:360px;margin:34px auto 0;border:12px solid #fff;box-shadow:0 14px 34px #0003;transform:rotate(-2.2deg)}
+.hero .btn.ghost{color:#2a2118}.hero p:not(.kicker){column-count:1;font-size:1.25rem}#apropos .kicker+h2+p::first-letter{float:left;font:900 4.4rem/.8 var(--fh),serif;padding:6px 10px 0 0;color:var(--c)}
+.menu .two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.menu p{border-bottom:1px dotted #2a2118}h2{border-bottom:2px solid #2a2118;padding-bottom:6px}.cards li{background:none;border:2px solid #2a2118;border-radius:0}
+.btn{border-radius:0}.gallery img{border:8px solid #fff;box-shadow:0 8px 20px #0002;border-radius:0}.gallery img:nth-child(odd){transform:rotate(1.2deg)}.gallery img:nth-child(even){transform:rotate(-1.2deg)}.panel{background:#fffaf0;border:2px solid #2a2118;border-radius:0}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Coiffeur Franck Brévi", "telephone": "+33 4 72 73 15 38", "address": "266 Av. Jean Jaurès, 69007 Lyon", "openingHours": "Tu-Fr 09:30-19:00; Sa 08:30-17:00", "geo": {"@type": "GeoCoordinates", "latitude": 45.7308924, "longitude": 4.8331459}}</script></head><body class="t7">
 <div class="demo">Maquette de démonstration préparée pour Coiffeur Franck Brévi · contenus à valider avec l'établissement · page non référencée</div>
 <header><div class="bar"><a class="brand" href="#"><img src="img/logo.jpg" alt="Coiffeur Franck Brévi"></a><nav><a href="#apropos">À propos</a><a href="#prestations">Prestations</a><a href="#photos">Photos</a><a href="#contact">Contact</a></nav><a class="btn" href="tel:+33472731538">Appeler</a></div></header>
 <div class="hero"><img src="img/g-2.jpg" alt="Coiffeur Franck Brévi"><div><p class="kicker">Salon de coiffure · Lyon 7e</p><h1>Coiffeur Franck Brévi</h1><p>Coupe et brushing, coloration et balayage, soins du cheveu à Lyon 7e.</p><a class="btn" href="#contact">Prendre rendez-vous</a><a class="btn ghost" href="tel:+33472731538">Appeler</a></div></div>

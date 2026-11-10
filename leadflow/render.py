@@ -36,7 +36,7 @@ PALETTES = {
     "artisan": [("#1f4e8c", "Archivo", "Inter"), ("#b3541e", "Barlow Condensed", "Barlow"), ("#22543d", "Space Grotesk", "IBM Plex Sans"),
                 ("#8c1c13", "Oswald", "Source Sans 3"), ("#3a3f8f", "Sora", "Rubik")],
 }
-LAYOUTS = 6  # mises en page distinctes, voir THEMES
+LAYOUTS = 12  # mises en page distinctes, voir THEMES
 CUISINE = {"french": "Cuisine française", "italian": "Cuisine italienne", "japanese": "Cuisine japonaise", "chinese": "Cuisine chinoise", "asian": "Cuisine asiatique",
            "indian": "Cuisine indienne", "lebanese": "Cuisine libanaise", "thai": "Cuisine thaïe", "vietnamese": "Cuisine vietnamienne", "regional": "Cuisine régionale",
            "korean": "Cuisine coréenne", "mexican": "Cuisine mexicaine", "turkish": "Cuisine turque", "coffee_shop": "Café", "crepe": "Crêpes", "seafood": "Fruits de mer",
@@ -188,7 +188,7 @@ footer{background:#1d1d1b;color:#bdb9ad;font-size:.88rem;padding:36px 20px;text-
 """
 
 
-# Six mises en page : deux maquettes voisines ne partagent ni structure, ni palette, ni polices
+# Douze mises en page : deux maquettes voisines ne partagent ni structure, ni palette, ni polices
 THEMES = [
     "",  # 0 — photo plein écran, texte en bas à gauche
     """main{display:flex;flex-direction:column}main>section{width:100%}
@@ -221,7 +221,49 @@ header{border-bottom:2px solid #1d1d1b;background:#fff}""",
 .cards li{border:0;border-radius:26px;box-shadow:0 10px 28px #0000000f;padding:28px}.panel{border:0;border-radius:30px;box-shadow:0 10px 34px #00000012}
 .gallery{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.gallery img{border-radius:50% 50% 22px 22px;aspect-ratio:3/4}.two>img{border-radius:30px}
 .chips li{background:#fff;border:0;box-shadow:0 2px 8px #0000000f}iframe{border-radius:30px}footer{margin:0 20px 20px;border-radius:30px}""",
-]
+    # 6 — barre latérale fixe à gauche, contenu en colonne étroite
+    """@media(min-width:900px){body{padding-left:250px}header{position:fixed;left:0;top:0;bottom:0;width:250px;border:0;border-right:1px solid #e6e2d8;background:color-mix(in srgb,var(--c) 9%,#fbfaf7);z-index:7}
+.bar{flex-direction:column;align-items:flex-start;padding:36px 26px;height:100%;gap:26px}.brand{margin:0}nav{display:flex;flex-direction:column;gap:14px}nav a{margin:0;font-size:1.02rem}header .btn{margin-top:auto}.demo{margin-left:-250px;padding-left:250px}}
+.hero{min-height:58vh;align-items:center;color:#1d1d1b;background:none}.hero::after{display:none}.hero>img{position:static;width:46%;height:58vh;order:2;border-radius:200px 0 0 200px}.hero{display:flex;gap:0}.hero div{padding:48px 40px;margin:0;max-width:none}.hero .btn.ghost{color:#1d1d1b}
+.nophoto .hero div{max-width:760px}h1{font-weight:300;letter-spacing:-.03em}.cards li{border:0;border-bottom:1px solid var(--c);border-radius:0;background:none;padding:14px 0}
+.gallery{grid-template-columns:repeat(3,1fr)}@media(max-width:899px){.hero{flex-direction:column}.hero>img{width:100%;height:280px;border-radius:0}}""",
+    # 7 — éditorial : papier, énorme titre, photo cadrée inclinée, colonnes de texte
+    """body{background:#f3ede1;color:#2a2118}header{background:#f3ede1;border-bottom:3px double #2a2118}.bar{justify-content:center}.brand{margin:0}nav{display:none}header .btn{display:none}
+.hero{min-height:0;display:block;background:none;color:#2a2118;padding:56px 20px 20px;text-align:left}.hero::after{display:none}
+.hero div{padding:0;max-width:1100px}h1{font-size:clamp(2.2rem,11vw,8rem);overflow-wrap:anywhere;font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:.25em}
+.hero>img{position:static;display:block;width:min(560px,86%);height:360px;margin:34px auto 0;border:12px solid #fff;box-shadow:0 14px 34px #0003;transform:rotate(-2.2deg)}
+.hero .btn.ghost{color:#2a2118}.hero p:not(.kicker){column-count:1;font-size:1.25rem}#apropos .kicker+h2+p::first-letter{float:left;font:900 4.4rem/.8 var(--fh),serif;padding:6px 10px 0 0;color:var(--c)}
+.menu .two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.menu p{border-bottom:1px dotted #2a2118}h2{border-bottom:2px solid #2a2118;padding-bottom:6px}.cards li{background:none;border:2px solid #2a2118;border-radius:0}
+.btn{border-radius:0}.gallery img{border:8px solid #fff;box-shadow:0 8px 20px #0002;border-radius:0}.gallery img:nth-child(odd){transform:rotate(1.2deg)}.gallery img:nth-child(even){transform:rotate(-1.2deg)}.panel{background:#fffaf0;border:2px solid #2a2118;border-radius:0}""",
+    # 8 — bloc de couleur : fond de la couleur de marque, bordures épaisses, ombres décalées
+    """body{background:var(--c);color:var(--ct)}header{background:var(--c);border-bottom:4px solid #111;color:var(--ct)}.demo{background:#111;color:#fff}nav a:hover{color:inherit;text-decoration:underline}
+#apropos .kicker{color:inherit!important}h1,h2,h3{text-transform:uppercase;font-weight:900;letter-spacing:-.01em}.btn{background:#111;color:#fff;border-radius:0;box-shadow:5px 5px 0 #fff}.btn.ghost{background:#fff;color:#111;border:3px solid #111;box-shadow:5px 5px 0 #111}
+.hero{min-height:0;display:grid;grid-template-columns:1fr 1fr;background:none;color:var(--ct);align-items:center;max-width:1100px;margin:0 auto;gap:28px;padding:44px 20px}.hero::after{display:none}
+.hero>img{position:static;height:480px;border:4px solid #111;box-shadow:12px 12px 0 #111;order:2}.hero div{padding:0;margin:0}.nophoto .hero{grid-template-columns:1fr}
+.cards li,.panel{background:#fff;color:#111;border:3px solid #111;border-radius:0;box-shadow:7px 7px 0 #111}.cards li{border-top:3px solid #111}.menu p{border-color:currentColor}.menu h3{color:inherit;background:#111;color:#fff;display:inline-block;padding:2px 10px}
+.gallery img{border:3px solid #111;border-radius:0;box-shadow:6px 6px 0 #111}.chips li{background:#fff;color:#111;border:2px solid #111;border-radius:0}.two>img{border:3px solid #111;border-radius:0;box-shadow:8px 8px 0 #111}
+td{border-color:currentColor}iframe{border:3px solid #111;border-radius:0}input,select,textarea{border:2px solid #111;border-radius:0}a{color:inherit}.panel a,.cards a{color:#111}footer{background:#111}@media(max-width:720px){.hero{grid-template-columns:1fr}.hero>img{height:280px}}""",
+    # 9 — bento : tuiles de tailles variées sur fond doux
+    """body{background:#eef0f3}header{background:#eef0f3e6;border:0}.hero{margin:8px auto 0;max-width:1100px;width:calc(100% - 40px);border-radius:28px;overflow:hidden;min-height:56vh;align-items:flex-end}
+main{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;max-width:1140px;margin:16px auto;padding:0 20px}main>section{max-width:none;margin:0;padding:30px;background:#fff;border-radius:28px;grid-column:span 6}
+#apropos{grid-column:span 4}#prestations{grid-column:span 2;background:var(--c);color:var(--ct)}#prestations .cards{grid-template-columns:1fr;gap:8px}#prestations .cards li{background:#fff1;border:0;color:inherit;border-radius:12px;padding:12px 14px}
+#carte{grid-column:span 4}#photos{background:none;padding:0;grid-column:span 6}.gallery{grid-template-columns:repeat(6,1fr);gap:16px}.gallery img{grid-column:span 2;aspect-ratio:1;border-radius:24px}.gallery img:first-child{grid-column:span 3;aspect-ratio:3/2}.gallery img:nth-child(2){grid-column:span 3;aspect-ratio:3/2}
+#contact{grid-column:span 6}.two{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.menu .two{grid-template-columns:1fr 1fr}.btn{border-radius:14px}.panel{border:0;background:#f4f5f7;border-radius:22px}
+@media(max-width:820px){main{display:block;padding:0 12px}main>section{margin-bottom:12px}.gallery{grid-template-columns:1fr 1fr}.gallery img,.gallery img:first-child,.gallery img:nth-child(2){grid-column:auto;aspect-ratio:1}}""",
+    # 10 — minimaliste suisse : blanc, filets fins, petites capitales, texte aligné sur une grille
+    """body{background:#fff;font-size:16px;font-weight:300;color:#111}header{background:#fff;border-bottom:1px solid #111}.bar{max-width:1240px}.brand{font-weight:500;font-size:1rem;letter-spacing:.2em;text-transform:uppercase}nav a{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.btn{background:transparent;color:#111;border:1px solid #111;border-radius:0;font-weight:400;text-transform:uppercase;font-size:.78rem;letter-spacing:.16em;padding:13px 26px}.btn:hover{background:#111;color:#fff}header .btn{border-color:var(--c);color:var(--c)}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:0;background:#fff;color:#111;max-width:1240px;margin:0 auto;align-items:end;gap:0;padding:0 20px}.hero::after{display:none}.hero div{padding:80px 40px 56px 0;margin:0}.hero>img{position:static;order:2;height:68vh;min-height:380px}.hero .btn.ghost{color:#111}.nophoto .hero{grid-template-columns:1fr}
+h1{font-weight:200;overflow-wrap:anywhere;font-size:clamp(2.4rem,5.4vw,4.6rem);letter-spacing:-.035em}h2{font-weight:300;font-size:1.05rem;text-transform:uppercase;letter-spacing:.22em;border-top:1px solid #111;padding-top:14px}.kicker{color:var(--c);letter-spacing:.3em!important}
+section{max-width:1240px}.cards{display:block;column-count:2;column-gap:60px}.cards li{border:0;border-bottom:1px solid #ddd;border-radius:0;background:none;padding:14px 0;font-weight:300;break-inside:avoid}
+.two>img,.gallery img,iframe{border-radius:0}.panel{border:0;border-top:1px solid #111;border-radius:0;padding:20px 0}.chips li{border:0;border-bottom:1px solid #111;border-radius:0;padding:2px 0}.menu h3{font-size:.82rem;letter-spacing:.2em;text-transform:uppercase}input,select,textarea{border-radius:0;border-width:0 0 1px}
+footer{background:#fff;color:#555;border-top:1px solid #111}footer a{color:#111}@media(max-width:720px){.hero{grid-template-columns:1fr}.hero div{padding:44px 0 24px}.hero>img{order:-1;height:300px}.cards{column-count:1}}""",
+    # 11 — façon appli : carte arrondie flottante, barre d'onglets fixe en bas
+    """body{background:var(--c);color:#1d1d1b}header{position:static;background:none;border:0}.brand{color:var(--ct)}nav,header .btn{display:none}.demo{background:#0006;color:#fff}
+.hero{margin:0 auto;max-width:560px;min-height:0;background:#fff;border-radius:32px 32px 0 0;overflow:hidden;color:#1d1d1b;display:block}.hero::after{display:none}.hero>img{position:static;height:300px;width:100%}.hero div{padding:26px 22px 8px;margin:0}.hero .btn.ghost{color:#1d1d1b}
+h1{font-size:2.1rem}main{max-width:560px;margin:0 auto;background:#fff;padding-bottom:96px}main>section{padding:24px 22px;max-width:none}h2{font-size:1.35rem}.two{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr;gap:10px}.cards li{border:0;background:color-mix(in srgb,var(--c) 10%,#fff);border-radius:18px;font-size:.95rem;padding:16px}
+.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px}.gallery img{flex:0 0 78%;scroll-snap-align:start;border-radius:20px}.menu .two{grid-template-columns:1fr}.panel{border:0;background:#f5f5f2;border-radius:22px}
+.call{display:block!important;position:fixed;left:50%;transform:translateX(-50%);bottom:16px;width:min(520px,calc(100% - 32px));text-align:center;z-index:6;box-shadow:0 10px 30px #0005;border-radius:999px;padding:16px}footer{max-width:560px;margin:0 auto;padding-bottom:96px}body{padding-bottom:0}""",]
 
 
 def site_html(p, e, slug, k=0):
