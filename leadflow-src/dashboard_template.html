@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEADFLOW Prospects Lyon</title>
+<style>
+:root{--bg:#f7f7f5;--card:#fff;--fg:#1c1c1a;--muted:#6b6b66;--line:#e4e4df;--accent:#2f5bd3;--hi:#c2410c;--mid:#a16207;--lo:#4d7c0f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141413;--card:#1e1e1c;--fg:#ececea;--muted:#9a9a94;--line:#33332f;--accent:#7b9cf0;--hi:#fb923c;--mid:#facc15;--lo:#a3e635}}
+:root[data-theme="dark"]{--bg:#141413;--card:#1e1e1c;--fg:#ececea;--muted:#9a9a94;--line:#33332f;--accent:#7b9cf0;--hi:#fb923c;--mid:#facc15;--lo:#a3e635}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 system-ui,-apple-system,sans-serif}
+main{max-width:1200px;margin:0 auto;padding:24px 16px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.kpi b{display:block;font-size:24px;font-variant-numeric:tabular-nums}
+.kpi span{color:var(--muted);font-size:12px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+select,input{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
+input{flex:1;min-width:160px}
+.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:820px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sc{font-weight:700}.sc.h{color:var(--hi)}.sc.m{color:var(--mid)}.sc.l{color:var(--lo)}
+ul{margin:0;padding-left:16px}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin:0 4px 4px 0;font-size:12px}
+.tag.ok{color:var(--lo);border-color:currentColor}.tag.warn{color:var(--mid);border-color:currentColor}
+a{color:var(--accent)}
+small{color:var(--muted)}
+footer{color:var(--muted);font-size:12px;margin-top:16px}
+</style>
+</head>
+<body>
+<main>
+<h1>Prospects — Lyon</h1>
+<p class="sub">Généré le {{DATE}} · sources : {{SOURCES}}.</p>
+<div class="kpis" id="kpis"></div>
+<div class="bar">
+  <select id="seg"><option value="">Tous les segments</option></select>
+  <select id="offer"><option value="">Toutes les offres</option></select>
+  <input id="q" type="search" placeholder="Rechercher un nom, une rue…">
+</div>
+<div class="wrap"><table>
+<thead><tr>
+  <th data-k="score">Score</th><th data-k="name">Entreprise</th><th>Constats</th><th>Offres</th>
+  <th data-k="setup">Install.</th><th data-k="mrr">/mois</th><th data-k="year1">An 1</th>
+</tr></thead>
+<tbody id="rows"></tbody>
+</table></div>
+<footer>CA potentiel = somme théorique si chaque prospect signait toutes les offres proposées. Ce n'est pas une prévision. « Aucun site trouvé » sans confirmation Google reste à vérifier avant contact. Données © contributeurs OpenStreetMap (ODbL) ; annuaire des entreprises (data.gouv.fr, Licence Ouverte).</footer>
+</main>
+<script>
+const DATA = /*DATA*/[];
+const $ = id => document.getElementById(id);
+const eur = n => n.toLocaleString("fr-FR") + " €";
+const el = (tag, props = {}, kids = []) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
+let sortK = "score", dir = -1;
+
+for (const s of [...new Set(DATA.map(p => p.segment))]) $("seg").append(el("option", {value: s, textContent: s}));
+for (const o of [...new Set(DATA.flatMap(p => p.offers))].sort()) $("offer").append(el("option", {value: o, textContent: o}));
+
+function draw() {
+  const q = $("q").value.toLowerCase(), seg = $("seg").value, off = $("offer").value;
+  const rows = DATA.filter(p => (!seg || p.segment === seg) && (!off || p.offers.includes(off))
+      && (!q || (p.name + " " + p.address).toLowerCase().includes(q)))
+    .sort((a, b) => (a[sortK] > b[sortK] ? 1 : a[sortK] < b[sortK] ? -1 : 0) * dir);
+  const sum = k => rows.reduce((t, p) => t + p[k], 0);
+  $("kpis").replaceChildren(...[
+    [rows.length, "prospects"], [rows.filter(p => p.score >= 60).length, "chauds (score ≥ 60)"],
+    [eur(sum("setup")), "installations potentielles"], [eur(sum("mrr")), "récurrent mensuel potentiel"],
+  ].map(([v, l]) => el("div", {className: "kpi"}, [el("b", {textContent: v}), el("span", {textContent: l})])));
+  $("rows").replaceChildren(...rows.map(p => {
+    const lvl = p.score >= 60 ? "h" : p.score >= 30 ? "m" : "l";
+    const who = el("td", {}, [el("strong", {textContent: p.name}), el("br"),
+      el("small", {textContent: `${p.segment} · ${p.type}${p.address ? " · " + p.address : ""}`}), el("br")]);
+    const link = (href, text) => el("a", {href, target: "_blank", rel: "noopener", textContent: text});
+    who.append(el("span", {className: "tag " + (p.siren ? "ok" : "warn"), title: p.legal_name,
+      textContent: p.siren ? "SIREN " + p.siren : "hors SIRENE"}), el("br"));
+    if (p.phone) who.append(el("a", {href: "tel:" + p.phone.replace(/\s/g, ""), textContent: p.phone}), " ");
+    if (p.website) who.append(link(/^https?:/.test(p.website) ? p.website : "http://" + p.website, `site (${p.website_source})`), " ");
+    if (p.google) who.append(link(p.google, p.rating ? `Google ${p.rating}★ (${p.reviews})` : "Google"), " ");
+    who.append(link(p.osm, "OSM"));
+    return el("tr", {}, [
+      el("td", {className: "n sc " + lvl, textContent: p.score}), who,
+      el("td", {}, [el("ul", {}, p.issues.map(i => el("li", {textContent: i})))]),
+      el("td", {}, p.offers.map(o => el("span", {className: "tag", textContent: o}))),
+      el("td", {className: "n", textContent: eur(p.setup)}), el("td", {className: "n", textContent: eur(p.mrr)}),
+      el("td", {className: "n", textContent: eur(p.year1)}),
+    ]);
+  }));
+}
+document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => { dir = sortK === th.dataset.k ? -dir : -1; sortK = th.dataset.k; draw(); });
+["q", "seg", "offer"].forEach(id => $(id).oninput = draw);
+draw();
+</script>
+</body>
+</html>
